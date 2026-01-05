@@ -1,12 +1,55 @@
-[gd_scene load_steps=5 format=3 uid="uid://db13gohluc1jr"]
+[gd_scene load_steps=10 format=3 uid="uid://db13gohluc1jr"]
 
 [ext_resource type="Script" uid="uid://dld8y81fldu2o" path="res://GameObjects/Enemies/enemy.gd" id="1_7k104"]
+[ext_resource type="Shader" uid="uid://cde276nijeq3g" path="res://Shaders/hitFlash.gdshader" id="2_yeha8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qi2p4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_84pld"]
+shader = ExtResource("2_yeha8")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_value = 0.0
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_4gyqm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7k104"]
+
+[sub_resource type="Animation" id="Animation_yeha8"]
+resource_name = "hitFlash"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/flash_value")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_84pld"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/flash_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ejxh0"]
+_data = {
+&"RESET": SubResource("Animation_84pld"),
+&"hitFlash": SubResource("Animation_yeha8")
+}
 
 [node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 2
@@ -17,6 +60,7 @@ script = ExtResource("1_7k104")
 shape = SubResource("RectangleShape2D_qi2p4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_84pld")
 position = Vector2(-1.1920929e-07, -0.50000024)
 scale = Vector2(20, 21)
 texture = SubResource("PlaceholderTexture2D_4gyqm")
@@ -26,6 +70,11 @@ texture = SubResource("PlaceholderTexture2D_4gyqm")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_7k104")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ejxh0")
+}
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

@@ -15,9 +15,15 @@ var player_in_range: Node = null
 @export var blast_particles: PackedScene = preload("uid://by5v6txb30nmu")
 @export var explosion_particles: PackedScene = preload("uid://61wtmbq585ep")
 
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var sprite: Sprite2D = $Sprite2D
+
 
 func _ready() -> void:
 	health = max_health
+	
+	if sprite.material:
+		sprite.material = sprite.material.duplicate()
 
 
 func _physics_process(delta: float) -> void:
@@ -43,11 +49,12 @@ func _physics_process(delta: float) -> void:
 
 
 func apply_hit(hit_dir: Vector2, damage: int, force: float) -> void:
-
+	
 	if health <= 0:
 		die()
 	else:
 		health -= damage
+		animation_player.play("hitFlash")
 		knockback_velocity += hit_dir * force
 		
 		spawn_particles(blast_particles, self.position, Vector2.ZERO)
