@@ -1,15 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://jj83a527keb2"]
+[gd_scene load_steps=7 format=3 uid="uid://jj83a527keb2"]
 
 [ext_resource type="Script" uid="uid://bghram6j48erd" path="res://Scenes/game.gd" id="1_wowpa"]
 [ext_resource type="PackedScene" uid="uid://doxim378b31eq" path="res://GameObjects/Player/player.tscn" id="1_wrm1d"]
 [ext_resource type="Script" uid="uid://bp3nkf2vpfqqw" path="res://Scenes/camera_2d.gd" id="2_3dryh"]
 [ext_resource type="Texture2D" uid="uid://p4ibcnu606i0" path="res://Assets/placeholder_spritesheets/placeholder8.png" id="2_feb5d"]
 [ext_resource type="PackedScene" uid="uid://db13gohluc1jr" path="res://GameObjects/Enemies/enemy.tscn" id="4_fc0e3"]
+[ext_resource type="PackedScene" uid="uid://dixgwampqxa75" path="res://UserInterface/reload_ui.tscn" id="6_i6g32"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_wowpa")
 
 [node name="Player" parent="." instance=ExtResource("1_wrm1d")]
+unique_name_in_owner = true
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 unique_name_in_owner = true
@@ -22,3 +24,9 @@ texture = ExtResource("2_feb5d")
 [node name="Enemy" parent="." instance=ExtResource("4_fc0e3")]
 position = Vector2(-58, -33)
 collision_mask = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="reloadUI" parent="CanvasLayer" instance=ExtResource("6_i6g32")]
+
+[connection signal="ammo_changed" from="Player" to="CanvasLayer/reloadUI" method="_on_player_ammo_changed"]

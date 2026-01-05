@@ -12,10 +12,20 @@ var knockback_velocity: Vector2 = Vector2.ZERO
 @export var knockback_resistance: float = 0.25
 @export var recoil_strength: float = 900.0
 
+@onready var reload_animation: Node2D = $reloadAnimation
+@export var magazine_size = 6
+var ammo_in_mag = 6
+const reload_length = 2.0
+var reload_speed = 1.0
+var is_reloading: bool = false
+signal ammo_changed
 
 func _ready() -> void:
 	health = max_health
 
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("reload"):
+		reload()
 
 func _physics_process(delta: float) -> void:
 	# Movement
@@ -46,19 +56,22 @@ func _physics_process(delta: float) -> void:
 	# Shooting cooldown
 	fire_timer -= delta
 
-	if Input.is_action_pressed("shoot") and fire_timer <= 0.0:
+	if Input.is_action_pressed("shoot") and fire_timer <= 0.0 && (ammo_in_mag > 0):
 		shoot()
 		var recoil_dir = (global_position - get_global_mouse_position()).normalized()
 		velocity += recoil_dir * recoil_strength
 		fire_timer = fire_delay
+		if ammo_in_mag == 0:
+			reload()
 
 
 func shoot() -> void:
-	Globals.camera.shake(0.25, 10, 15)
-	
 	if bullet_scene == null:
 		return
 	
+	Globals.camera.shake(0.25, 10, 15)
+	ammo_in_mag -= 1
+	ammo_changed.emit()
 	SoundManager.play_gunShot()
 	var bullet = bullet_scene.instantiate()
 	get_parent().add_child(bullet)
@@ -77,6 +90,18 @@ func apply_hit(hit_dir: Vector2, damage: int, force: float) -> void:
 	if health <= 0:
 		die()
 
+func reload():
+	if is_reloading: 
+		return
+	
+	is_reloading = true
+	
+	reload_animation.animation_player.speed_scale = reload_speed
+	reload_animation.play_reload()
+	await get_tree().create_timer(reload_length / reload_speed).timeout
+	ammo_in_mag = magazine_size
+	ammo_changed.emit()
+	is_reloading = false
 
 func die() -> void:
 	print("Player died")
