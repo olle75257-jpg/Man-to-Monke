@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://61wtmbq585ep"]
+
+[ext_resource type="Texture2D" uid="uid://qpgsnsr8iy74" path="res://Assets/Particles/particle.png" id="1_f5ie8"]
+[ext_resource type="Script" uid="uid://yyotwwjqm8bd" path="res://explosion.gd" id="2_kwcsq"]
+
+[sub_resource type="Curve" id="Curve_l4vhm"]
+_limits = [-360.0, 360.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 360), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_pouay"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="Explosion" type="CPUParticles2D"]
+amount = 16
+texture = ExtResource("1_f5ie8")
+lifetime = 0.6
+explosiveness = 0.8
+randomness = 1.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 300.0
+initial_velocity_max = 350.0
+angle_max = 1.0
+angle_curve = SubResource("Curve_l4vhm")
+scale_amount_min = 1.5
+scale_amount_max = 1.5
+scale_amount_curve = SubResource("Curve_pouay")
+script = ExtResource("2_kwcsq")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.6
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

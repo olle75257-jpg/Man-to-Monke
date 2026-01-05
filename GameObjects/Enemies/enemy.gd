@@ -12,6 +12,8 @@ var knockback_velocity: Vector2 = Vector2.ZERO
 var player_in_range: Node = null
 
 @export var blast_particles: PackedScene = preload("uid://by5v6txb30nmu")
+@export var explosion_particles: PackedScene = preload("uid://61wtmbq585ep")
+
 
 func _ready() -> void:
 	health = max_health
@@ -40,13 +42,15 @@ func _physics_process(delta: float) -> void:
 
 
 func apply_hit(hit_dir: Vector2, damage: int, force: float) -> void:
-	health -= damage
-	knockback_velocity += hit_dir * force
-	
-	spawn_particles(blast_particles, self.position, Vector2.ZERO)
 
 	if health <= 0:
-		queue_free()
+		die()
+	else:
+		health -= damage
+		knockback_velocity += hit_dir * force
+		
+		spawn_particles(blast_particles, self.position, Vector2.ZERO)
+		
 
 func _on_body_entered(body: Node) -> void:
 	if attack_timer > 0.0:
@@ -69,6 +73,10 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body == player_in_range:
 		player_in_range = null
+
+func die():
+	spawn_particles(explosion_particles, self.position, Vector2.ZERO)
+	queue_free()
 
 func spawn_particles(SCENE: PackedScene, pos: Vector2, normal: Vector2) -> void:
 	var instance = SCENE.instantiate()
