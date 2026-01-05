@@ -26,6 +26,10 @@ signal ammo_changed
 
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 
+@onready var gun: Sprite2D = $Gun
+@onready var marker_2d: Marker2D = $Gun/Marker2D
+@onready var sprite: Sprite2D = $Sprite
+
 
 func _ready() -> void:
 	health = max_health
@@ -36,6 +40,21 @@ func _input(event: InputEvent) -> void:
 
 func _physics_process(delta: float) -> void:
 	# Movement
+	var mouse_pos = get_global_mouse_position()
+	
+	gun.look_at(get_global_mouse_position())
+	if mouse_pos.x > global_position.x:
+		# Mouse is to the right
+		sprite.scale.x = abs(sprite.scale.x)
+		gun.scale.x = abs(gun.scale.x)
+		gun.scale.y = abs(gun.scale.y)
+		#character_shadow.scale.x = abs(character_shadow.scale.x)
+	else:
+		# Mouse is to the left
+		gun.scale.y = -abs(gun.scale.y)
+		sprite.scale.x = -abs(sprite.scale.x)
+		#character_shadow.scale.x = -abs(character_shadow.scale.x)
+	
 	var input_vector := Vector2.ZERO
 
 	input_vector.x = (
@@ -81,12 +100,12 @@ func shoot() -> void:
 	ammo_changed.emit()
 	SoundManager.play_gunShot()
 	var bullet = bullet_scene.instantiate()
+	
+	
+	bullet.global_position = marker_2d.global_position
 	get_parent().add_child(bullet)
-
-	bullet.global_position = global_position
-
-	var mouse_pos = get_global_mouse_position()
-	bullet.direction = (mouse_pos - global_position).normalized()
+	#var mouse_pos = get_global_mouse_position()
+	#bullet.direction = (mouse_pos - global_position).normalized()
 
 
 func apply_hit(hit_dir: Vector2, damage: int, force: float) -> void:

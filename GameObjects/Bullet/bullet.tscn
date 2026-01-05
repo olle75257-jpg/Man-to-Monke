@@ -4,20 +4,22 @@
 [ext_resource type="Texture2D" uid="uid://cgbm3l26w42qa" path="res://Assets/Projectiles/bullets/bullet_yellow.png" id="2_8emeo"]
 [ext_resource type="Script" uid="uid://bcs1skpe5d76l" path="res://sprite_2d.gd" id="2_t4vbm"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_t2bd8"]
-radius = 5.3851647
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8emeo"]
 
 [node name="Bullet" type="Area2D"]
 collision_layer = 4
-collision_mask = 2
+collision_mask = 10
 script = ExtResource("1_v8qja")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-1.1920929e-07, 9.536743e-07)
+position = Vector2(12, 9.536743e-07)
 texture = ExtResource("2_8emeo")
 script = ExtResource("2_t4vbm")
 
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_t2bd8")
+position = Vector2(15, 0)
+shape = SubResource("RectangleShape2D_8emeo")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
