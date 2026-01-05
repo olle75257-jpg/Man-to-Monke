@@ -23,5 +23,5 @@ position = Vector2(3.5, 1)
 shape = SubResource("RectangleShape2D_fc0e3")
 
 [node name="reloadAnimation" parent="." instance=ExtResource("4_ud8ye")]
-position = Vector2(0, -23)
+position = Vector2(3, -22)
 scale = Vector2(2, 2)
