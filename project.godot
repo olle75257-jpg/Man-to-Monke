@@ -15,11 +15,21 @@ run/main_scene="uid://jj83a527keb2"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+SoundManager="*res://Autoloads/sound_manager.tscn"
+
 [display]
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
 window/stretch/mode="canvas_items"
+
+[file_customization]
+
+folder_colors={
+"res://Autoloads/": "purple"
+}
 
 [global_group]
 

@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://bq3iuwebjem4o"]
+
+[ext_resource type="Script" uid="uid://b6seibtksub8x" path="res://Autoloads/sound_manager.gd" id="1_jerlu"]
+[ext_resource type="AudioStream" uid="uid://csqg7r0ln03v7" path="res://Audio/GunAudio/Cannon shots 7.ogg" id="2_u5vrn"]
+[ext_resource type="AudioStream" uid="uid://bpkurmy4uqg6w" path="res://Audio/GunAudio/1911-reload-6248.mp3" id="3_0x1ep"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_0x1ep"]
+random_pitch = 1.2
+streams_count = 1
+stream_0/stream = ExtResource("2_u5vrn")
+
+[node name="SoundManager" type="Node"]
+script = ExtResource("1_jerlu")
+
+[node name="UI" type="Node" parent="."]
+
+[node name="Game" type="Node" parent="."]
+
+[node name="Gun" type="Node" parent="Game"]
+
+[node name="GunShot" type="AudioStreamPlayer" parent="Game/Gun"]
+stream = SubResource("AudioStreamRandomizer_0x1ep")
+bus = &"SFX"
+
+[node name="Reload" type="AudioStreamPlayer" parent="Game/Gun"]
+stream = ExtResource("3_0x1ep")
+bus = &"SFX"

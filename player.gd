@@ -48,7 +48,8 @@ func _physics_process(delta: float) -> void:
 func shoot() -> void:
 	if bullet_scene == null:
 		return
-
+	
+	SoundManager.play_gunShot()
 	var bullet = bullet_scene.instantiate()
 	get_parent().add_child(bullet)
 
