@@ -126,7 +126,7 @@ func disable_hitbox():
 func reload():
 	if is_reloading: 
 		return
-	
+	SoundManager.play_reload()
 	is_reloading = true
 	
 	reload_animation.animation_player.speed_scale = reload_speed
