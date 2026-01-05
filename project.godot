@@ -29,7 +29,8 @@ window/stretch/mode="canvas_items"
 [file_customization]
 
 folder_colors={
-"res://Autoloads/": "purple"
+"res://Autoloads/": "purple",
+"res://UserInterface/": "blue"
 }
 
 [global_group]

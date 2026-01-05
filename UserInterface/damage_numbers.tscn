@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dsvh4p886swh6"]
+
+[ext_resource type="Script" uid="uid://bn078glmj4n7k" path="res://UserInterface/damage_numbers.gd" id="1_vwe75"]
+[ext_resource type="Theme" uid="uid://17x2rvi1h60b" path="res://UserInterface/theme.tres" id="2_yqpyw"]
+
+[node name="DamageNumbers" type="Node2D"]
+script = ExtResource("1_vwe75")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+theme = ExtResource("2_yqpyw")
+theme_override_constants/outline_size = 20
+text = "Test"

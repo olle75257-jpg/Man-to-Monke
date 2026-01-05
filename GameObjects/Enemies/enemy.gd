@@ -18,6 +18,7 @@ var player_in_range: Node = null
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var sprite: Sprite2D = $Sprite2D
 
+const DAMAGE_NUMBERS = preload("uid://dsvh4p886swh6")
 
 func _ready() -> void:
 	health = max_health
@@ -54,6 +55,12 @@ func apply_hit(hit_dir: Vector2, damage: int, force: float) -> void:
 		die()
 	else:
 		health -= damage
+		
+		var damage_text = DAMAGE_NUMBERS.instantiate() as Node2D
+		get_tree().current_scene.add_child(damage_text)
+		damage_text.global_position = global_position + Vector2(randi_range(-20, 20), randi_range(-90, -100))
+		damage_text.start(str(damage))
+		
 		animation_player.play("hitFlash")
 		knockback_velocity += hit_dir * force
 		
