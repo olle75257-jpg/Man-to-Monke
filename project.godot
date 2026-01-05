@@ -25,6 +25,8 @@ Globals="*res://Autoloads/globals.gd"
 window/size/viewport_width=1280
 window/size/viewport_height=720
 window/stretch/mode="canvas_items"
+mouse_cursor/custom_image="uid://nq0xtypinvpn"
+mouse_cursor/custom_image_hotspot=Vector2(16, 16)
 
 [file_customization]
 
