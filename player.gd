@@ -30,6 +30,8 @@ signal ammo_changed
 @onready var marker_2d: Marker2D = $Gun/Marker2D
 @onready var sprite: Sprite2D = $Sprite
 
+@export var explosion_particles: PackedScene = preload("uid://61wtmbq585ep")
+
 
 func _ready() -> void:
 	health = max_health
@@ -110,11 +112,12 @@ func shoot() -> void:
 
 func apply_hit(hit_dir: Vector2, damage: int, force: float) -> void:
 	Globals.camera.shake(0.25, 25, 15)
+	spawn_particles(explosion_particles, self.position, Vector2.ZERO)
 	health -= damage
 	health_changed.emit()
 	knockback_velocity += hit_dir * force
 	disable_hitbox()
-
+	
 	if health <= 0:
 		die()
 
@@ -139,3 +142,9 @@ func reload():
 func die() -> void:
 	print("Player died")
 	queue_free()
+
+func spawn_particles(SCENE: PackedScene, pos: Vector2, normal: Vector2) -> void:
+	var instance = SCENE.instantiate()
+	get_tree().get_current_scene().add_child(instance)
+	instance.global_position = pos
+	instance.rotation = normal.angle()
