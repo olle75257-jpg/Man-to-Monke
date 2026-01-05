@@ -1,10 +1,14 @@
 extends CharacterBody2D
+class_name Player
 
 @export var move_speed: float = 200.0
 @export var acceleration: float = 10
 @export var friction: float = 15
+
 @export var max_health: int = 5
 var health: int
+signal health_changed
+
 @export var fire_delay: float = 0.25
 var fire_timer: float = 0.0
 @export var bullet_scene: PackedScene
@@ -19,6 +23,9 @@ const reload_length = 2.0
 var reload_speed = 1.0
 var is_reloading: bool = false
 signal ammo_changed
+
+@onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
+
 
 func _ready() -> void:
 	health = max_health
@@ -85,10 +92,17 @@ func shoot() -> void:
 func apply_hit(hit_dir: Vector2, damage: int, force: float) -> void:
 	Globals.camera.shake(0.25, 25, 15)
 	health -= damage
+	health_changed.emit()
 	knockback_velocity += hit_dir * force
+	disable_hitbox()
 
 	if health <= 0:
 		die()
+
+func disable_hitbox():
+	collision_shape_2d.disabled = true
+	await get_tree().create_timer(0.8).timeout
+	collision_shape_2d.disabled = false
 
 func reload():
 	if is_reloading: 
