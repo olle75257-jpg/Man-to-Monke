@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://jj83a527keb2"]
+
+[ext_resource type="Script" uid="uid://bdehlio6b4gwn" path="res://player.gd" id="1_e2o6t"]
+[ext_resource type="PackedScene" uid="uid://cbqslgq647uvs" path="res://bullet.tscn" id="2_fc0e3"]
+[ext_resource type="Texture2D" uid="uid://p4ibcnu606i0" path="res://placeholder_spritesheets/placeholder8.png" id="2_feb5d"]
+[ext_resource type="PackedScene" uid="uid://db13gohluc1jr" path="res://enemy.tscn" id="4_fc0e3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fc0e3"]
+size = Vector2(13, 18)
+
+[node name="Game" type="Node2D"]
+
+[node name="Player" type="CharacterBody2D" parent="." groups=["player"]]
+collision_mask = 3
+script = ExtResource("1_e2o6t")
+bullet_scene = ExtResource("2_fc0e3")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+position = Vector2(2.9999962, -1.0000076)
+scale = Vector2(0.15384616, 0.25892857)
+texture = ExtResource("2_feb5d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(3.5, 1)
+shape = SubResource("RectangleShape2D_fc0e3")
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(117, -18)
+texture = ExtResource("2_feb5d")
+
+[node name="Enemy" parent="." instance=ExtResource("4_fc0e3")]
+position = Vector2(-58, -33)
+collision_mask = 2
