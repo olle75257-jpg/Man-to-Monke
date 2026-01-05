@@ -11,6 +11,7 @@ var health: int
 var knockback_velocity: Vector2 = Vector2.ZERO
 var player_in_range: Node = null
 
+@export var blast_particles: PackedScene = preload("uid://by5v6txb30nmu")
 
 func _ready() -> void:
 	health = max_health
@@ -41,6 +42,8 @@ func _physics_process(delta: float) -> void:
 func apply_hit(hit_dir: Vector2, damage: int, force: float) -> void:
 	health -= damage
 	knockback_velocity += hit_dir * force
+	
+	spawn_particles(blast_particles, self.position, Vector2.ZERO)
 
 	if health <= 0:
 		queue_free()
@@ -66,3 +69,9 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body == player_in_range:
 		player_in_range = null
+
+func spawn_particles(SCENE: PackedScene, pos: Vector2, normal: Vector2) -> void:
+	var instance = SCENE.instantiate()
+	get_tree().get_current_scene().add_child(instance)
+	instance.global_position = pos
+	instance.rotation = normal.angle()

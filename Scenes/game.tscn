@@ -12,17 +12,18 @@ script = ExtResource("1_wowpa")
 
 [node name="Player" parent="." instance=ExtResource("1_wrm1d")]
 unique_name_in_owner = true
+position = Vector2(2011, 1360)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 unique_name_in_owner = true
 script = ExtResource("2_3dryh")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(117, -18)
+position = Vector2(2128, 1342)
 texture = ExtResource("2_feb5d")
 
 [node name="Enemy" parent="." instance=ExtResource("4_fc0e3")]
-position = Vector2(-58, -33)
+position = Vector2(1953, 1523)
 collision_mask = 2
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

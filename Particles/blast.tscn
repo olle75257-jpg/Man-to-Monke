@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://by5v6txb30nmu"]
+
+[ext_resource type="Script" uid="uid://ccw80n7x63kb5" path="res://Particles/blast.gd" id="1_cdicw"]
+[ext_resource type="Texture2D" uid="uid://cc4o02gdrewg6" path="res://Assets/Particles/blast_particle.png" id="1_vo66x"]
+
+[sub_resource type="Curve" id="Curve_vo66x"]
+_limits = [-360.0, 360.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 360), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_gnncw"]
+_data = [Vector2(0.008474581, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="Blast" type="CPUParticles2D"]
+emitting = false
+amount = 16
+texture = ExtResource("1_vo66x")
+lifetime = 0.6
+one_shot = true
+explosiveness = 0.6
+randomness = 1.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 300.0
+initial_velocity_max = 350.0
+angle_max = 1.0
+angle_curve = SubResource("Curve_vo66x")
+scale_amount_max = 1.5
+scale_amount_curve = SubResource("Curve_gnncw")
+script = ExtResource("1_cdicw")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.6
+one_shot = true
