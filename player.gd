@@ -1,6 +1,9 @@
 extends CharacterBody2D
 class_name Player
 
+@export var era_data: player_era
+
+@export_group("Player_stats")
 @export var move_speed: float = 200.0
 @export var acceleration: float = 10
 @export var friction: float = 15
@@ -34,7 +37,40 @@ signal ammo_changed
 
 
 func _ready() -> void:
-	health = max_health
+	if era_data:
+		apply_era_stats(era_data)
+	else:
+		ammo_in_mag = magazine_size
+		health = max_health
+
+func apply_era_stats(data: player_era):
+	#Movement 
+	move_speed = data.move_speed
+	acceleration = data.acceleration
+	friction = data.friction
+	
+	#Health 
+	max_health = data.max_health
+	health = max_health 
+	
+	#Projectile/Weapon Stats
+	fire_delay = data.fire_delay
+	bullet_scene = data.bullet_scene
+	recoil_strength = data.recoil_strength
+	magazine_size = data.magazine_size
+	ammo_in_mag = magazine_size 
+	reload_speed = data.reload_speed
+	
+	#Visuals 
+	if data.weapon:
+		gun.texture = data.weapon
+	if data.sprite:
+		sprite.texture = data.sprite
+	
+	health_changed.emit.call_deferred()
+	ammo_changed.emit.call_deferred()
+	
+	print("Swapped to Era: ", data.era)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("reload"):
@@ -101,10 +137,13 @@ func shoot() -> void:
 	ammo_in_mag -= 1
 	ammo_changed.emit()
 	SoundManager.play_gunShot()
-	var bullet = bullet_scene.instantiate()
-	
+	var bullet = bullet_scene.instantiate() as Projecitle
 	
 	bullet.global_position = marker_2d.global_position
+	bullet.damage = era_data.projectile_damage
+	bullet.speed = era_data.projectile_speed
+	bullet.knockback_force = era_data.projectile_knockback_force
+	
 	get_parent().add_child(bullet)
 	#var mouse_pos = get_global_mouse_position()
 	#bullet.direction = (mouse_pos - global_position).normalized()

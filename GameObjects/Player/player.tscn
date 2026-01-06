@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://doxim378b31eq"]
+[gd_scene load_steps=8 format=3 uid="uid://doxim378b31eq"]
 
 [ext_resource type="Script" uid="uid://bdehlio6b4gwn" path="res://player.gd" id="1_ch4xb"]
+[ext_resource type="Resource" uid="uid://bueln2kq24j2i" path="res://Resources/player_resources/modern_guy.tres" id="2_r6y0m"]
 [ext_resource type="PackedScene" uid="uid://cbqslgq647uvs" path="res://GameObjects/Bullet/bullet.tscn" id="2_ud8ye"]
 [ext_resource type="Texture2D" uid="uid://p4ibcnu606i0" path="res://Assets/placeholder_spritesheets/placeholder8.png" id="3_6oavc"]
 [ext_resource type="PackedScene" uid="uid://baoedj6q1wxcu" path="res://GameObjects/reloadAnimation/reload_animation.tscn" id="4_ud8ye"]
@@ -12,6 +13,7 @@ size = Vector2(13, 18)
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_mask = 3
 script = ExtResource("1_ch4xb")
+era_data = ExtResource("2_r6y0m")
 bullet_scene = ExtResource("2_ud8ye")
 
 [node name="Sprite" type="Sprite2D" parent="."]

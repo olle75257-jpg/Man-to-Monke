@@ -1,4 +1,5 @@
 extends Area2D
+class_name Projecitle
 
 @export var speed: float = 600.0
 @export var damage: int = 1

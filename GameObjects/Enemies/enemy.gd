@@ -50,21 +50,20 @@ func _physics_process(delta: float) -> void:
 
 
 func apply_hit(hit_dir: Vector2, damage: int, force: float) -> void:
+	health -= damage
+	var damage_text = DAMAGE_NUMBERS.instantiate() as Node2D
+	get_tree().current_scene.add_child(damage_text)
+	damage_text.global_position = global_position + Vector2(randi_range(-20, 20), randi_range(-90, -100))
+	damage_text.start(str(damage))
 	
 	if health <= 0:
 		die()
 	else:
-		health -= damage
-		
-		var damage_text = DAMAGE_NUMBERS.instantiate() as Node2D
-		get_tree().current_scene.add_child(damage_text)
-		damage_text.global_position = global_position + Vector2(randi_range(-20, 20), randi_range(-90, -100))
-		damage_text.start(str(damage))
-		
 		animation_player.play("hitFlash")
 		knockback_velocity += hit_dir * force
 		
 		spawn_particles(blast_particles, self.position, Vector2.ZERO)
+		
 		
 
 func _on_body_entered(body: Node) -> void:
