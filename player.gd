@@ -41,6 +41,7 @@ signal ammo_changed
 @export var max_offset: float = 150.0
 
 func _ready() -> void:
+	explosion_particles = preload("uid://61wtmbq585ep")
 	if era_data:
 		apply_era_stats(era_data)
 	else:
@@ -88,7 +89,7 @@ func update_camera_offset():
 	var target_offset = mouse_pos * look_ahead_factor
 	
 	target_offset = target_offset.limit_length(max_offset)
-	camera.offset = target_offset
+	camera.offset = camera.offset.lerp(target_offset, 0.1)
 
 func _physics_process(delta: float) -> void:
 	# Movement
