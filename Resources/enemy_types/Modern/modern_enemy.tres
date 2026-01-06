@@ -4,11 +4,14 @@
 
 [sub_resource type="Gradient" id="Gradient_4w1kj"]
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_x6ttw"]
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_x6ttw"]
 gradient = SubResource("Gradient_4w1kj")
-width = 5
+width = 2
+height = 2
+fill = 1
+fill_to = Vector2(1, 1)
 
 [resource]
 script = ExtResource("1_4w1kj")
-sprite = SubResource("GradientTexture1D_x6ttw")
+sprite = SubResource("GradientTexture2D_x6ttw")
 metadata/_custom_type_script = "uid://bx24qdk0v7frn"

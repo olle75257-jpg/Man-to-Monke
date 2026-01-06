@@ -1,8 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://db13gohluc1jr"]
+[gd_scene load_steps=14 format=3 uid="uid://bmk6jymttrhda"]
 
-[ext_resource type="Script" uid="uid://dld8y81fldu2o" path="res://GameObjects/Enemies/enemy.gd" id="1_7k104"]
-[ext_resource type="Script" uid="uid://bx24qdk0v7frn" path="res://Resources/enemy_type.gd" id="2_84pld"]
-[ext_resource type="Shader" uid="uid://cde276nijeq3g" path="res://Shaders/hitFlash.gdshader" id="2_yeha8"]
+[ext_resource type="Script" uid="uid://dld8y81fldu2o" path="res://GameObjects/Enemies/enemy.gd" id="1_pq4u1"]
+[ext_resource type="Script" uid="uid://bx24qdk0v7frn" path="res://Resources/enemy_type.gd" id="2_pq4u1"]
+[ext_resource type="Shader" uid="uid://cde276nijeq3g" path="res://Shaders/hitFlash.gdshader" id="3_4psv4"]
 
 [sub_resource type="Gradient" id="Gradient_4w1kj"]
 colors = PackedColorArray(0, 0, 1, 1, 1, 1, 1, 1)
@@ -15,14 +15,14 @@ fill = 1
 fill_to = Vector2(1, 1)
 
 [sub_resource type="Resource" id="Resource_lutms"]
-script = ExtResource("2_84pld")
+script = ExtResource("2_pq4u1")
 sprite = SubResource("GradientTexture2D_x6ttw")
 metadata/_custom_type_script = "uid://bx24qdk0v7frn"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qi2p4"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_84pld"]
-shader = ExtResource("2_yeha8")
+shader = ExtResource("3_4psv4")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 shader_parameter/flash_value = 0.0
 
@@ -71,7 +71,7 @@ _data = {
 [node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 2
 collision_mask = 7
-script = ExtResource("1_7k104")
+script = ExtResource("1_pq4u1")
 era_data = SubResource("Resource_lutms")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

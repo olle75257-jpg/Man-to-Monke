@@ -4,10 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://doxim378b31eq" path="res://GameObjects/Player/player.tscn" id="1_wrm1d"]
 [ext_resource type="Script" uid="uid://bp3nkf2vpfqqw" path="res://Scenes/camera_2d.gd" id="2_3dryh"]
 [ext_resource type="Texture2D" uid="uid://p4ibcnu606i0" path="res://Assets/placeholder_spritesheets/placeholder8.png" id="2_feb5d"]
-[ext_resource type="PackedScene" uid="uid://db13gohluc1jr" path="res://GameObjects/Enemies/enemy.tscn" id="4_fc0e3"]
 [ext_resource type="PackedScene" uid="uid://dixgwampqxa75" path="res://UserInterface/reload_ui.tscn" id="6_i6g32"]
 [ext_resource type="PackedScene" uid="uid://bsbxqj8q66ay0" path="res://GameObjects/Managers/enemy_spawner_manager.tscn" id="7_1l0tm"]
 [ext_resource type="PackedScene" uid="uid://d1of2np7t8ajc" path="res://UserInterface/HUD/health_bar.tscn" id="7_v158k"]
+[ext_resource type="PackedScene" uid="uid://cikxjss50ywqa" path="res://GameObjects/Portal/portal.tscn" id="8_v158k"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_wowpa")
@@ -15,15 +15,6 @@ script = ExtResource("1_wowpa")
 [node name="Player" parent="." instance=ExtResource("1_wrm1d")]
 unique_name_in_owner = true
 position = Vector2(2011, 1360)
-move_speed = null
-acceleration = null
-friction = null
-max_health = null
-fire_delay = null
-knockback_resistance = null
-recoil_strength = null
-magazine_size = null
-explosion_particles = null
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 unique_name_in_owner = true
@@ -33,10 +24,6 @@ script = ExtResource("2_3dryh")
 position = Vector2(2128, 1342)
 texture = ExtResource("2_feb5d")
 
-[node name="Enemy" parent="." instance=ExtResource("4_fc0e3")]
-position = Vector2(1953, 1523)
-collision_mask = 2
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="reloadUI" parent="CanvasLayer" instance=ExtResource("6_i6g32")]
@@ -44,6 +31,9 @@ collision_mask = 2
 [node name="HealthBar" parent="CanvasLayer" instance=ExtResource("7_v158k")]
 
 [node name="EnemySpawnerManager" parent="." instance=ExtResource("7_1l0tm")]
+
+[node name="Portal" parent="." instance=ExtResource("8_v158k")]
+position = Vector2(1529, 1488)
 
 [connection signal="ammo_changed" from="Player" to="CanvasLayer/reloadUI" method="_on_player_ammo_changed"]
 [connection signal="health_changed" from="Player" to="CanvasLayer/HealthBar" method="_on_player_health_changed"]

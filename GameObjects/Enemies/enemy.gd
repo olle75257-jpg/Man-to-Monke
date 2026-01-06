@@ -47,7 +47,7 @@ func apply_enemy_data(data: enemy_type):
 	if data.sprite:
 		sprite.texture = data.sprite
 		
-	print("Enemy initialized as: ", data.era)
+	#print("Enemy initialized as: ", data.era)
 
 func _physics_process(delta: float) -> void:
 	attack_timer -= delta
