@@ -177,9 +177,10 @@ func apply_hit(hit_dir: Vector2, damage: int, force: float) -> void:
 		die()
 
 func disable_hitbox():
-	collision_shape_2d.disabled = true
-	await get_tree().create_timer(0.8).timeout
-	collision_shape_2d.disabled = false
+	#collision_shape_2d.disabled = true
+	#await get_tree().create_timer(0.8).timeout
+	#collision_shape_2d.disabled = false
+	pass
 
 func reload():
 	if is_reloading: 

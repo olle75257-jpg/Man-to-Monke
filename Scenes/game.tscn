@@ -12,6 +12,8 @@
 [node name="Game" type="Node2D"]
 script = ExtResource("1_wowpa")
 
+[node name="Tilemap" type="Node2D" parent="."]
+
 [node name="Player" parent="." instance=ExtResource("1_wrm1d")]
 unique_name_in_owner = true
 position = Vector2(2011, 1360)
