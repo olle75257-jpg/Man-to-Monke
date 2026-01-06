@@ -15,6 +15,7 @@ class_name player_era
 @export var projectile_damage = 1
 @export var projectile_speed: float = 600.0
 @export var projectile_knockback_force: float = 300.0
+@export var projectile_inaccuracy: float = 10.0
 @export var fire_delay: float = 0.25
 @export var bullet_scene: PackedScene
 @export var recoil_strength: float = 900.0

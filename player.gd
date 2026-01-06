@@ -142,6 +142,7 @@ func shoot() -> void:
 	bullet.global_position = marker_2d.global_position
 	bullet.damage = era_data.projectile_damage
 	bullet.speed = era_data.projectile_speed
+	bullet.spread_degrees = era_data.projectile_inaccuracy
 	bullet.knockback_force = era_data.projectile_knockback_force
 	
 	get_parent().add_child(bullet)
