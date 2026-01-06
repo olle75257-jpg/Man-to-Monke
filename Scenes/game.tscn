@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://jj83a527keb2"]
+[gd_scene load_steps=9 format=3 uid="uid://jj83a527keb2"]
 
 [ext_resource type="Script" uid="uid://bghram6j48erd" path="res://Scenes/game.gd" id="1_wowpa"]
 [ext_resource type="PackedScene" uid="uid://doxim378b31eq" path="res://GameObjects/Player/player.tscn" id="1_wrm1d"]
@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://bsbxqj8q66ay0" path="res://GameObjects/Managers/enemy_spawner_manager.tscn" id="7_1l0tm"]
 [ext_resource type="PackedScene" uid="uid://kfwcg11khwtl" path="res://UserInterface/HUD/kill_count.tscn" id="7_h4fw4"]
 [ext_resource type="PackedScene" uid="uid://d1of2np7t8ajc" path="res://UserInterface/HUD/health_bar.tscn" id="7_v158k"]
-[ext_resource type="PackedScene" uid="uid://cikxjss50ywqa" path="res://GameObjects/Portal/portal.tscn" id="8_v158k"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_wowpa")
@@ -37,8 +36,8 @@ texture = ExtResource("2_feb5d")
 
 [node name="EnemySpawnerManager" parent="." instance=ExtResource("7_1l0tm")]
 
-[node name="Portal" parent="." instance=ExtResource("8_v158k")]
-position = Vector2(1529, 1488)
+[node name="PortalSpawnPosition" type="Marker2D" parent="."]
+position = Vector2(1854, 1329)
 
 [connection signal="ammo_changed" from="Player" to="CanvasLayer/reloadUI" method="_on_player_ammo_changed"]
 [connection signal="health_changed" from="Player" to="CanvasLayer/HealthBar" method="_on_player_health_changed"]

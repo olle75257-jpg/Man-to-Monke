@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=4 uid="uid://dwsty3t5lxd7u"]
+[gd_scene load_steps=10 format=4 uid="uid://dwsty3t5lxd7u"]
 
 [ext_resource type="PackedScene" uid="uid://jj83a527keb2" path="res://Scenes/game.tscn" id="1_vr2is"]
+[ext_resource type="Script" uid="uid://dccm2cadf7gw7" path="res://Scenes/medieval.gd" id="2_ccic0"]
 [ext_resource type="TileSet" uid="uid://d3f0a5ln3g6fa" path="res://Assets/tilemap/tilemap.tres" id="2_tagns"]
 [ext_resource type="Shader" uid="uid://blvp4ek6i8s8e" path="res://Shaders/water.gdshader" id="3_av45q"]
 
@@ -25,6 +26,7 @@ shader_parameter/offset2 = Vector2(0.1, 0.1)
 shader_parameter/distortion_strength = 0.007000047832500078
 
 [node name="Medieval" instance=ExtResource("1_vr2is")]
+script = ExtResource("2_ccic0")
 
 [node name="water" type="TileMapLayer" parent="Tilemap" index="0"]
 scale = Vector2(3, 3)
@@ -91,5 +93,5 @@ position = Vector2(3002, 1961)
 [node name="Sprite2D" parent="." index="3"]
 visible = false
 
-[node name="Portal" parent="." index="6"]
-position = Vector2(2226, 1688)
+[node name="PortalSpawnPosition" parent="." index="6"]
+position = Vector2(2716, 1934)
