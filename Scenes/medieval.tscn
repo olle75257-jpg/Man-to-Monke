@@ -24,7 +24,7 @@ shader_parameter/offset1 = Vector2(0.1, 0.1)
 shader_parameter/offset2 = Vector2(0.1, 0.1)
 shader_parameter/distortion_strength = 0.007000047832500078
 
-[node name="Game" instance=ExtResource("1_vr2is")]
+[node name="Medieval" instance=ExtResource("1_vr2is")]
 
 [node name="water" type="TileMapLayer" parent="Tilemap" index="0"]
 scale = Vector2(3, 3)

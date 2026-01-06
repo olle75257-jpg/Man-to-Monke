@@ -71,6 +71,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
+
 func apply_hit(hit_dir: Vector2, damage: int, force: float) -> void:
 	health -= damage
 	var damage_text = DAMAGE_NUMBERS.instantiate() as Node2D
@@ -79,6 +80,8 @@ func apply_hit(hit_dir: Vector2, damage: int, force: float) -> void:
 	damage_text.start(str(damage))
 	
 	if health <= 0:
+		Globals.kills += 1
+		Signals.kills_changed.emit()
 		die()
 	else:
 		animation_player.play("hitFlash")
