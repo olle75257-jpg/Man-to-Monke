@@ -1,6 +1,9 @@
 extends CharacterBody2D
 class_name Enemy
 
+@export var era_data: enemy_type 
+
+@export_group("Stats")
 @export var max_health: int = 3
 @export var move_speed: float = 80.0
 @export var knockback_resistance: float = 0.2
@@ -20,12 +23,31 @@ var player_in_range: Node = null
 
 const DAMAGE_NUMBERS = preload("uid://dsvh4p886swh6")
 
+
 func _ready() -> void:
-	health = max_health
+	if era_data:
+		apply_enemy_data(era_data)
+	else:
+		health = max_health
 	
 	if sprite.material:
 		sprite.material = sprite.material.duplicate()
 
+func apply_enemy_data(data: enemy_type):
+	max_health = data.max_health
+	health = max_health 
+	
+	move_speed = data.move_speed
+	knockback_resistance = data.knockback_resistance
+	
+	contact_damage = data.contact_damage
+	contact_knockback = data.contact_knockback
+	attack_cooldown = data.attack_cooldown
+	
+	if data.sprite:
+		sprite.texture = data.sprite
+		
+	print("Enemy initialized as: ", data.era)
 
 func _physics_process(delta: float) -> void:
 	attack_timer -= delta

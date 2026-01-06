@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="enemy_type" load_steps=4 format=3 uid="uid://8uth4077pu53"]
+
+[ext_resource type="Script" uid="uid://bx24qdk0v7frn" path="res://Resources/enemy_type.gd" id="1_4w1kj"]
+
+[sub_resource type="Gradient" id="Gradient_4w1kj"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_x6ttw"]
+gradient = SubResource("Gradient_4w1kj")
+width = 5
+
+[resource]
+script = ExtResource("1_4w1kj")
+sprite = SubResource("GradientTexture1D_x6ttw")
+metadata/_custom_type_script = "uid://bx24qdk0v7frn"

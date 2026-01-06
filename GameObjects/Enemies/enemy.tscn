@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://db13gohluc1jr"]
+[gd_scene load_steps=11 format=3 uid="uid://db13gohluc1jr"]
 
 [ext_resource type="Script" uid="uid://dld8y81fldu2o" path="res://GameObjects/Enemies/enemy.gd" id="1_7k104"]
+[ext_resource type="Resource" uid="uid://8uth4077pu53" path="res://Resources/enemy_types/Modern/modern_enemy.tres" id="2_84pld"]
 [ext_resource type="Shader" uid="uid://cde276nijeq3g" path="res://Shaders/hitFlash.gdshader" id="2_yeha8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qi2p4"]
@@ -56,6 +57,7 @@ _data = {
 collision_layer = 2
 collision_mask = 7
 script = ExtResource("1_7k104")
+era_data = ExtResource("2_84pld")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_qi2p4")
