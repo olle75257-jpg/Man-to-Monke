@@ -15,6 +15,15 @@ script = ExtResource("1_wowpa")
 [node name="Player" parent="." instance=ExtResource("1_wrm1d")]
 unique_name_in_owner = true
 position = Vector2(2011, 1360)
+move_speed = null
+acceleration = null
+friction = null
+max_health = null
+fire_delay = null
+knockback_resistance = null
+recoil_strength = null
+magazine_size = null
+explosion_particles = null
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 unique_name_in_owner = true

@@ -35,6 +35,10 @@ signal ammo_changed
 
 @export var explosion_particles: PackedScene = preload("uid://61wtmbq585ep")
 
+@onready var camera: Camera2D = %Camera2D
+@export_group("Camera Look Ahead")
+@export var look_ahead_factor: float = 0.2 
+@export var max_offset: float = 150.0
 
 func _ready() -> void:
 	if era_data:
@@ -75,6 +79,16 @@ func apply_era_stats(data: player_era):
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("reload"):
 		reload()
+
+func _process(delta: float) -> void:
+	update_camera_offset()
+
+func update_camera_offset():
+	var mouse_pos = get_local_mouse_position()
+	var target_offset = mouse_pos * look_ahead_factor
+	
+	target_offset = target_offset.limit_length(max_offset)
+	camera.offset = target_offset
 
 func _physics_process(delta: float) -> void:
 	# Movement
