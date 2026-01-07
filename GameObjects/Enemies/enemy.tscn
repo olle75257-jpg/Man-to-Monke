@@ -3,21 +3,22 @@
 [ext_resource type="Script" uid="uid://dld8y81fldu2o" path="res://GameObjects/Enemies/enemy.gd" id="1_7k104"]
 [ext_resource type="Script" uid="uid://bx24qdk0v7frn" path="res://Resources/enemy_type.gd" id="2_84pld"]
 [ext_resource type="Shader" uid="uid://cde276nijeq3g" path="res://Shaders/hitFlash.gdshader" id="2_yeha8"]
-
-[sub_resource type="Gradient" id="Gradient_4w1kj"]
-colors = PackedColorArray(0, 0, 1, 1, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_x6ttw"]
-gradient = SubResource("Gradient_4w1kj")
-width = 2
-height = 2
-fill = 1
-fill_to = Vector2(1, 1)
+[ext_resource type="Texture2D" uid="uid://cw1oxlwhh38g0" path="res://icon.svg" id="4_ejxh0"]
 
 [sub_resource type="Resource" id="Resource_lutms"]
 script = ExtResource("2_84pld")
-sprite = SubResource("GradientTexture2D_x6ttw")
+sprite = ExtResource("4_ejxh0")
 metadata/_custom_type_script = "uid://bx24qdk0v7frn"
+
+[sub_resource type="Gradient" id="Gradient_ejxh0"]
+offsets = PackedFloat32Array(0, 0.26635513, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0.7256638, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xar4c"]
+gradient = SubResource("Gradient_ejxh0")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.21367522, 0.1923077)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qi2p4"]
 
@@ -25,8 +26,6 @@ metadata/_custom_type_script = "uid://bx24qdk0v7frn"
 shader = ExtResource("2_yeha8")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 shader_parameter/flash_value = 0.0
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_4gyqm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7k104"]
 size = Vector2(24, 24)
@@ -69,10 +68,20 @@ _data = {
 }
 
 [node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
+scale = Vector2(0.5, 0.5)
 collision_layer = 2
 collision_mask = 7
 script = ExtResource("1_7k104")
 era_data = SubResource("Resource_lutms")
+
+[node name="Shadow" type="TextureRect" parent="."]
+offset_left = -32.0
+offset_top = 2.0
+offset_right = 32.0
+offset_bottom = 66.0
+scale = Vector2(1.665, 0.999)
+pivot_offset = Vector2(32, 0)
+texture = SubResource("GradientTexture2D_xar4c")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_qi2p4")
@@ -80,8 +89,7 @@ shape = SubResource("RectangleShape2D_qi2p4")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_84pld")
 position = Vector2(-1.1920929e-07, -0.50000024)
-scale = Vector2(20, 21)
-texture = SubResource("PlaceholderTexture2D_4gyqm")
+texture = ExtResource("4_ejxh0")
 
 [node name="Area2D" type="Area2D" parent="."]
 

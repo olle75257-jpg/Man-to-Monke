@@ -22,7 +22,7 @@ var player_in_range: Node = null
 @onready var sprite: Sprite2D = $Sprite2D
 
 const DAMAGE_NUMBERS = preload("uid://dsvh4p886swh6")
-
+var in_cutscene = false
 
 func _ready() -> void:
 	if era_data:
@@ -32,6 +32,8 @@ func _ready() -> void:
 	
 	if sprite.material:
 		sprite.material = sprite.material.duplicate()
+	
+	drop_in(randf_range(0, 0.5))
 
 func apply_enemy_data(data: enemy_type):
 	max_health = data.max_health
@@ -50,6 +52,11 @@ func apply_enemy_data(data: enemy_type):
 	#print("Enemy initialized as: ", data.era)
 
 func _physics_process(delta: float) -> void:
+	if in_cutscene:
+		velocity = Vector2.ZERO
+		#move_and_slide()
+		return
+	
 	attack_timer -= delta
 	if player_in_range != null and attack_timer <= 0.0:
 		var dir = (player_in_range.global_position - global_position).normalized()
@@ -69,7 +76,46 @@ func _physics_process(delta: float) -> void:
 	knockback_velocity = knockback_velocity.lerp(Vector2.ZERO, knockback_resistance)
 
 	move_and_slide()
+	
+@onready var shadow: TextureRect = $Shadow
+@onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 
+func drop_in(delay: float = 0):
+	in_cutscene = true
+	
+	var shadow_base_scale = shadow.scale
+	
+	sprite.position.y = -2800
+	sprite.modulate.a = 0 
+	shadow.scale = shadow_base_scale * 0.2
+	shadow.modulate.a = 0.1
+	shadow.pivot_offset = shadow.size / 2
+	
+	set_collision_layer_value(1, false)
+	set_collision_mask_value(1, false)
+	collision_shape_2d.disabled = true
+	
+	var tween = create_tween().set_parallel(true)
+	tween.tween_property(sprite, "position:y", 0, 2.5).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_IN).set_delay(delay)
+	tween.tween_property(sprite, "modulate:a", 1.0, 0.2).set_delay(delay)
+	
+	tween.tween_property(sprite, "scale", Vector2(0.7, 1.4), 0.4).set_delay(delay)
+	
+	tween.tween_property(shadow, "scale", shadow_base_scale, 2.5).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_IN).set_delay(delay)
+	tween.tween_property(shadow, "modulate:a", 1.0, 2.5).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_IN).set_delay(delay)
+	
+	await tween.finished
+	
+	var impact_tween = create_tween()
+	impact_tween.tween_property(sprite, "scale", Vector2(1.4, 0.6), 0.1)
+	impact_tween.tween_property(sprite, "scale", Vector2(1.0, 1.0), 0.1)
+	
+	await impact_tween.finished
+	
+	set_collision_layer_value(1, true)
+	set_collision_mask_value(1, true)
+	collision_shape_2d.disabled = false
+	in_cutscene = false
 
 
 func apply_hit(hit_dir: Vector2, damage: int, force: float) -> void:
