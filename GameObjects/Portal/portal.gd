@@ -20,11 +20,5 @@ func _on_body_entered(body: Node2D) -> void:
 		
 
 func change_era_scene():
-		match Globals.era:
-			"Modern":
-				get_tree().change_scene_to_file("res://Scenes/medieval.tscn")
-			"Medieval":
-				get_tree().change_scene_to_file("uid://c4h4y5ns058j3")
-			"StoneAge":
-				print("Monke Era not built yet")
-			
+		get_tree().change_scene_to_file("res://UserInterface/year_transition.tscn")
+		

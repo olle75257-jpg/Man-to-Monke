@@ -1,7 +1,22 @@
 [gd_scene load_steps=7 format=3 uid="uid://cnsgca75mwb8s"]
 
 [ext_resource type="Script" uid="uid://c23dbbntbogbj" path="res://Particles/death_component.gd" id="1_676ok"]
-[ext_resource type="Texture2D" uid="uid://bujy4rh2hwvs" path="res://Assets/character/modern/Character-Modern.png" id="2_f0u3v"]
+[ext_resource type="Texture2D" uid="uid://cw1oxlwhh38g0" path="res://icon.svg" id="2_676ok"]
+
+[sub_resource type="Animation" id="Animation_f0u3v"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CPUParticles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_676ok"]
 resource_name = "default"
@@ -32,21 +47,6 @@ tracks/1/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_f0u3v"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CPUParticles2D:emitting")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_f0u3v"]
 _data = {
 &"RESET": SubResource("Animation_f0u3v"),
@@ -68,14 +68,14 @@ libraries = {
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 emitting = false
 amount = 1
-texture = ExtResource("2_f0u3v")
+texture = ExtResource("2_676ok")
 lifetime = 0.5
 one_shot = true
 direction = Vector2(0, -1)
 spread = 30.0
-gravity = Vector2(0, 800)
-initial_velocity_min = 175.0
-initial_velocity_max = 250.0
-angular_velocity_min = -1440.0
-angular_velocity_max = 1440.0
+gravity = Vector2(0, 1500)
+initial_velocity_min = 400.0
+initial_velocity_max = 500.0
+angular_velocity_min = -900.0
+angular_velocity_max = 900.0
 scale_amount_curve = SubResource("Curve_wqq1k")
