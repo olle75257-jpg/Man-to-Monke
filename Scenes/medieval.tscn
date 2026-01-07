@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://jj83a527keb2" path="res://Scenes/game.tscn" id="1_vr2is"]
 [ext_resource type="Script" uid="uid://dccm2cadf7gw7" path="res://Scenes/medieval.gd" id="2_ccic0"]
-[ext_resource type="TileSet" uid="uid://d3f0a5ln3g6fa" path="res://Assets/tilemap/tilemap.tres" id="2_tagns"]
+[ext_resource type="TileSet" uid="uid://d3f0a5ln3g6fa" path="res://Assets/tilemap/medieval/medieval_tilemap.tres" id="2_tagns"]
 [ext_resource type="Shader" uid="uid://blvp4ek6i8s8e" path="res://Shaders/water.gdshader" id="3_av45q"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_av45q"]
@@ -23,7 +23,7 @@ shader_parameter/noise_texture1 = SubResource("NoiseTexture2D_ccic0")
 shader_parameter/noise_texture2 = SubResource("NoiseTexture2D_rjwkn")
 shader_parameter/offset1 = Vector2(0.1, 0.1)
 shader_parameter/offset2 = Vector2(0.1, 0.1)
-shader_parameter/distortion_strength = 0.007000047832500078
+shader_parameter/distortion_strength = 0.00700004783250007
 
 [node name="Medieval" instance=ExtResource("1_vr2is")]
 script = ExtResource("2_ccic0")

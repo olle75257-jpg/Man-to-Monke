@@ -1,9 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://jj83a527keb2"]
+[gd_scene load_steps=8 format=3 uid="uid://jj83a527keb2"]
 
 [ext_resource type="Script" uid="uid://bghram6j48erd" path="res://Scenes/game.gd" id="1_wowpa"]
 [ext_resource type="PackedScene" uid="uid://doxim378b31eq" path="res://GameObjects/Player/player.tscn" id="1_wrm1d"]
 [ext_resource type="Script" uid="uid://bp3nkf2vpfqqw" path="res://Scenes/camera_2d.gd" id="2_3dryh"]
-[ext_resource type="Texture2D" uid="uid://p4ibcnu606i0" path="res://Assets/placeholder_spritesheets/placeholder8.png" id="2_feb5d"]
 [ext_resource type="PackedScene" uid="uid://dixgwampqxa75" path="res://UserInterface/reload_ui.tscn" id="6_i6g32"]
 [ext_resource type="PackedScene" uid="uid://bsbxqj8q66ay0" path="res://GameObjects/Managers/enemy_spawner_manager.tscn" id="7_1l0tm"]
 [ext_resource type="PackedScene" uid="uid://kfwcg11khwtl" path="res://UserInterface/HUD/kill_count.tscn" id="7_h4fw4"]
@@ -14,17 +13,17 @@ script = ExtResource("1_wowpa")
 
 [node name="Tilemap" type="Node2D" parent="."]
 
-[node name="Player" parent="." instance=ExtResource("1_wrm1d")]
+[node name="y-sortObjects" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Player" parent="y-sortObjects" instance=ExtResource("1_wrm1d")]
 unique_name_in_owner = true
+y_sort_enabled = true
 position = Vector2(2011, 1360)
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
+[node name="Camera2D" type="Camera2D" parent="y-sortObjects/Player"]
 unique_name_in_owner = true
 script = ExtResource("2_3dryh")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(2128, 1342)
-texture = ExtResource("2_feb5d")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -39,5 +38,5 @@ texture = ExtResource("2_feb5d")
 [node name="PortalSpawnPosition" type="Marker2D" parent="."]
 position = Vector2(1854, 1329)
 
-[connection signal="ammo_changed" from="Player" to="CanvasLayer/reloadUI" method="_on_player_ammo_changed"]
-[connection signal="health_changed" from="Player" to="CanvasLayer/HealthBar" method="_on_player_health_changed"]
+[connection signal="ammo_changed" from="y-sortObjects/Player" to="CanvasLayer/reloadUI" method="_on_player_ammo_changed"]
+[connection signal="health_changed" from="y-sortObjects/Player" to="CanvasLayer/HealthBar" method="_on_player_health_changed"]

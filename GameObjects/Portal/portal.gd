@@ -20,4 +20,6 @@ func change_era_scene():
 			"Modern":
 				get_tree().change_scene_to_file("res://Scenes/medieval.tscn")
 			"Medieval":
-				print("Stone Age scene not built yet")
+				get_tree().change_scene_to_file("uid://c4h4y5ns058j3")
+
+			
