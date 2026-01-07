@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://doxim378b31eq"]
+[gd_scene load_steps=17 format=3 uid="uid://doxim378b31eq"]
 
 [ext_resource type="Script" uid="uid://bdehlio6b4gwn" path="res://player.gd" id="1_ch4xb"]
 [ext_resource type="Resource" uid="uid://bueln2kq24j2i" path="res://Resources/player_resources/modern_guy.tres" id="2_r6y0m"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://baoedj6q1wxcu" path="res://GameObjects/reloadAnimation/reload_animation.tscn" id="4_ud8ye"]
 [ext_resource type="Texture2D" uid="uid://b7375pcx5vc8r" path="res://Assets/weapons/9.png" id="5_6oavc"]
 [ext_resource type="Shader" uid="uid://dqccoji1v6ihg" path="res://Shaders/vignette.gdshader" id="7_ctmp1"]
+[ext_resource type="PackedScene" uid="uid://cnsgca75mwb8s" path="res://Particles/death_component.tscn" id="8_euhdf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fc0e3"]
 size = Vector2(28, 36)
@@ -252,3 +253,8 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_filter = 2
+
+[node name="DeathComponent" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("8_euhdf")]
+sprite = NodePath("../Gun")
+
+[connection signal="player_died" from="." to="DeathComponent" method="_on_player_player_died"]

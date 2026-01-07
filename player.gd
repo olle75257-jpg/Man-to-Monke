@@ -210,8 +210,11 @@ func reload():
 	ammo_changed.emit()
 	is_reloading = false
 
+signal player_died
+
 func die() -> void:
 	print("Player died")
+	player_died.emit()
 	await get_tree().create_timer(1.0).timeout
 	queue_free()
 

@@ -9,6 +9,11 @@ func _ready() -> void:
 
 
 func _on_enemy_enemy_killed() -> void:
+	spawn_death_animation()
+
+
+
+func spawn_death_animation():
 	if owner == null || not owner is Node2D:
 		return
 
@@ -20,3 +25,4 @@ func _on_enemy_enemy_killed() -> void:
 	
 	global_position = spawn_position
 	animation_player.play("default")
+	
