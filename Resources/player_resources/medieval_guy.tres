@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="player_era" load_steps=5 format=3 uid="uid://dy81f7jnes2m1"]
+
+[ext_resource type="Script" uid="uid://cef7t0nnwxr88" path="res://Resources/player_stats.gd" id="1_8jh5i"]
+[ext_resource type="PackedScene" uid="uid://cbqslgq647uvs" path="res://GameObjects/Bullet/bullet.tscn" id="1_polbu"]
+[ext_resource type="Texture2D" uid="uid://dlr701btfb51k" path="res://Assets/character/medieval/Character-Archer.png" id="3_fggpd"]
+[ext_resource type="Texture2D" uid="uid://b7375pcx5vc8r" path="res://Assets/weapons/9.png" id="4_l87im"]
+
+[resource]
+script = ExtResource("1_8jh5i")
+era = "Medieval"
+move_speed = 300.0
+projectile_damage = 5
+projectile_speed = 700.0
+projectile_knockback_force = 500.0
+projectile_inaccuracy = 2.0
+bullet_scene = ExtResource("1_polbu")
+recoil_strength = 0.0
+magazine_size = 1
+reload_speed = 0.5
+weapon = ExtResource("4_l87im")
+sprite = ExtResource("3_fggpd")
+metadata/_custom_type_script = "uid://cef7t0nnwxr88"

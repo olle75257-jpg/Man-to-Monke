@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=4 uid="uid://c4h4y5ns058j3"]
+[gd_scene load_steps=5 format=4 uid="uid://c4h4y5ns058j3"]
 
 [ext_resource type="PackedScene" uid="uid://jj83a527keb2" path="res://Scenes/game.tscn" id="1_nqidj"]
 [ext_resource type="TileSet" uid="uid://s6ql8hy353u4" path="res://Assets/tilemap/stone_age/stone_age_tilemap.tres" id="2_6whch"]
 [ext_resource type="Script" uid="uid://cvikh7d5dvpts" path="res://Scenes/stone_age.gd" id="2_jmc85"]
+[ext_resource type="Resource" uid="uid://dycyh7ydj6lxv" path="res://Resources/player_resources/cave_guy.tres" id="4_gwfei"]
 
 [node name="StoneAge" instance=ExtResource("1_nqidj")]
 y_sort_enabled = true
@@ -59,6 +60,7 @@ tile_set = ExtResource("2_6whch")
 
 [node name="Player" parent="y-sortObjects" index="0"]
 position = Vector2(3706, 2409)
+era_data = ExtResource("4_gwfei")
 
 [node name="Vegetation" type="TileMapLayer" parent="." index="2"]
 y_sort_enabled = true

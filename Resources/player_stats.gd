@@ -1,7 +1,7 @@
 extends Resource
 class_name player_era
 
-@export_enum("Modern", "Medieval", "Caveman", "Monkey") var era: String = "Modern"
+@export_enum("Modern", "Medieval", "StoneAge", "Monke") var era: String = "Modern"
 
 @export_group("Movement")
 @export var move_speed: float = 200.0

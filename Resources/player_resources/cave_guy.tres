@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="player_era" load_steps=5 format=3 uid="uid://dycyh7ydj6lxv"]
+
+[ext_resource type="Script" uid="uid://cef7t0nnwxr88" path="res://Resources/player_stats.gd" id="1_i53al"]
+[ext_resource type="PackedScene" uid="uid://cbqslgq647uvs" path="res://GameObjects/Bullet/bullet.tscn" id="1_r7rd3"]
+[ext_resource type="Texture2D" uid="uid://b2xp4j4utu3o2" path="res://Assets/character/stoneage/Character-CaveMan.png" id="2_tluvh"]
+[ext_resource type="Texture2D" uid="uid://b7375pcx5vc8r" path="res://Assets/weapons/9.png" id="4_6xii6"]
+
+[resource]
+script = ExtResource("1_i53al")
+era = "StoneAge"
+move_speed = 150.0
+projectile_speed = 500.0
+projectile_knockback_force = 3000.0
+projectile_inaccuracy = 15.0
+bullet_scene = ExtResource("1_r7rd3")
+recoil_strength = 0.0
+magazine_size = 1
+reload_speed = 2.5
+weapon = ExtResource("4_6xii6")
+sprite = ExtResource("2_tluvh")
+metadata/_custom_type_script = "uid://cef7t0nnwxr88"

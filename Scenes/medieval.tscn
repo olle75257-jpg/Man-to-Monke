@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=4 uid="uid://dwsty3t5lxd7u"]
+[gd_scene load_steps=11 format=4 uid="uid://dwsty3t5lxd7u"]
 
 [ext_resource type="PackedScene" uid="uid://jj83a527keb2" path="res://Scenes/game.tscn" id="1_vr2is"]
 [ext_resource type="Script" uid="uid://dccm2cadf7gw7" path="res://Scenes/medieval.gd" id="2_ccic0"]
 [ext_resource type="TileSet" uid="uid://d3f0a5ln3g6fa" path="res://Assets/tilemap/medieval/medieval_tilemap.tres" id="2_tagns"]
 [ext_resource type="Shader" uid="uid://blvp4ek6i8s8e" path="res://Shaders/water.gdshader" id="3_av45q"]
+[ext_resource type="Resource" uid="uid://dy81f7jnes2m1" path="res://Resources/player_resources/medieval_guy.tres" id="5_d6553"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_av45q"]
 
@@ -89,6 +90,7 @@ polygon = PackedVector2Array(1879, 1360, 1916, 1386, 3510, 1386, 3510, 2448, 191
 
 [node name="Player" parent="y-sortObjects" index="0"]
 position = Vector2(2713, 1899)
+era_data = ExtResource("5_d6553")
 
 [node name="PortalSpawnPosition" parent="." index="5"]
 position = Vector2(2716, 1934)
