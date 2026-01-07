@@ -41,7 +41,9 @@ signal ammo_changed
 @export var max_offset: float = 150.0
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var red_vignette_flash: AnimationPlayer = $Red_VignetteFlash
 @onready var red_screen_flash: ColorRect = $CanvasLayer/redScreenFlash
+@onready var shadow: TextureRect = $Shadow
 
 func _ready() -> void:
 	red_screen_flash.visible = false
@@ -96,22 +98,25 @@ func update_camera_offset():
 	camera.offset = camera.offset.lerp(target_offset, 0.1)
 
 func _physics_process(delta: float) -> void:
-	# Movement
+	
 	var mouse_pos = get_global_mouse_position()
 	
 	gun.look_at(get_global_mouse_position())
 	if mouse_pos.x > global_position.x:
 		# Mouse is to the right
-		sprite.scale.x = abs(sprite.scale.x)
+		sprite.flip_h = false
+		#sprite.scale.x = abs(sprite.scale.x)
 		gun.scale.x = abs(gun.scale.x)
 		gun.scale.y = abs(gun.scale.y)
-		#character_shadow.scale.x = abs(character_shadow.scale.x)
+		shadow.scale.x = abs(shadow.scale.x)
 	else:
 		# Mouse is to the left
 		gun.scale.y = -abs(gun.scale.y)
-		sprite.scale.x = -abs(sprite.scale.x)
-		#character_shadow.scale.x = -abs(character_shadow.scale.x)
+		#sprite.scale.x = -abs(sprite.scale.x)
+		sprite.flip_h = true
+		shadow.scale.x = -abs(shadow.scale.x)
 	
+	# Movement
 	var input_vector := Vector2.ZERO
 
 	input_vector.x = (
@@ -123,13 +128,16 @@ func _physics_process(delta: float) -> void:
 		Input.get_action_strength("move_down")
 		- Input.get_action_strength("move_up")
 	)
+	
 
 	if input_vector.length() > 0:
 		input_vector = input_vector.normalized()
 	
 	if input_vector != Vector2.ZERO:
+		animation_player.play("walk")
 		velocity = velocity.lerp(input_vector * move_speed, acceleration * delta)
 	else:
+		animation_player.play("RESET")
 		velocity = velocity.lerp(Vector2.ZERO, friction * delta)
 	
 	velocity += knockback_velocity
@@ -171,7 +179,7 @@ func shoot() -> void:
 
 func apply_hit(hit_dir: Vector2, damage: int, force: float) -> void:
 	Globals.camera.shake(0.25, 25, 15)
-	animation_player.play("red_vignette_flash")
+	red_vignette_flash.play("red_vignette_flash")
 	spawn_particles(explosion_particles, self.position, Vector2.ZERO)
 	health -= damage
 	health_changed.emit()
@@ -183,7 +191,9 @@ func apply_hit(hit_dir: Vector2, damage: int, force: float) -> void:
 
 func disable_hitbox():
 	#collision_shape_2d.disabled = true
-	#await get_tree().create_timer(0.8).timeout
+	set_collision_layer_value(1, false)
+	await get_tree().create_timer(0.8).timeout
+	set_collision_layer_value(1, true)
 	#collision_shape_2d.disabled = false
 	pass
 

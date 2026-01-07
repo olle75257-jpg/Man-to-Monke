@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cef7t0nnwxr88" path="res://Resources/player_stats.gd" id="1_56ac8"]
 [ext_resource type="PackedScene" uid="uid://cbqslgq647uvs" path="res://GameObjects/Bullet/bullet.tscn" id="1_bs4p3"]
-[ext_resource type="Texture2D" uid="uid://5tsbs17h8lmg" path="res://Assets/UI/bullet-icon.png" id="3_dtl3w"]
+[ext_resource type="Texture2D" uid="uid://bujy4rh2hwvs" path="res://Assets/character/modern/Character-Modern.png" id="3_dtl3w"]
 [ext_resource type="Texture2D" uid="uid://b7375pcx5vc8r" path="res://Assets/weapons/9.png" id="4_64jgx"]
 
 [resource]

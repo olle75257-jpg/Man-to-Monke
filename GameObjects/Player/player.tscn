@@ -1,15 +1,25 @@
-[gd_scene load_steps=13 format=3 uid="uid://doxim378b31eq"]
+[gd_scene load_steps=16 format=3 uid="uid://doxim378b31eq"]
 
 [ext_resource type="Script" uid="uid://bdehlio6b4gwn" path="res://player.gd" id="1_ch4xb"]
 [ext_resource type="Resource" uid="uid://bueln2kq24j2i" path="res://Resources/player_resources/modern_guy.tres" id="2_r6y0m"]
 [ext_resource type="PackedScene" uid="uid://cbqslgq647uvs" path="res://GameObjects/Bullet/bullet.tscn" id="2_ud8ye"]
-[ext_resource type="Texture2D" uid="uid://p4ibcnu606i0" path="res://Assets/placeholder_spritesheets/placeholder8.png" id="3_6oavc"]
+[ext_resource type="Texture2D" uid="uid://bujy4rh2hwvs" path="res://Assets/character/modern/Character-Modern.png" id="4_ctmp1"]
 [ext_resource type="PackedScene" uid="uid://baoedj6q1wxcu" path="res://GameObjects/reloadAnimation/reload_animation.tscn" id="4_ud8ye"]
 [ext_resource type="Texture2D" uid="uid://b7375pcx5vc8r" path="res://Assets/weapons/9.png" id="5_6oavc"]
 [ext_resource type="Shader" uid="uid://dqccoji1v6ihg" path="res://Shaders/vignette.gdshader" id="7_ctmp1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fc0e3"]
-size = Vector2(13, 18)
+size = Vector2(28, 36)
+
+[sub_resource type="Gradient" id="Gradient_ejxh0"]
+offsets = PackedFloat32Array(0, 0.26635513, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0.7256638, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ctmp1"]
+gradient = SubResource("Gradient_ejxh0")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.21367522, 0.1923077)
 
 [sub_resource type="Animation" id="Animation_ctmp1"]
 resource_name = "red_vignette_flash"
@@ -90,11 +100,90 @@ tracks/2/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprite:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2, 2)]
+}
+
+[sub_resource type="Animation" id="Animation_cn3ss"]
+resource_name = "walk"
+length = 0.4
+loop_mode = 1
+step = 0.02
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -10.79), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.2617993877991494, 0.2617993877991494, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.4),
+"transitions": PackedFloat32Array(0.73204285, 2.0705278, 1, 1),
+"update": 0,
+"values": [Vector2(2, 2), Vector2(1.6, 2.2), Vector2(3, 1.4), Vector2(2, 2)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cn3ss"]
 _data = {
 &"RESET": SubResource("Animation_euhdf"),
-&"red_vignette_flash": SubResource("Animation_ctmp1")
+&"red_vignette_flash": SubResource("Animation_ctmp1"),
+&"walk": SubResource("Animation_cn3ss")
 }
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_euhdf"]
@@ -104,33 +193,49 @@ shader_parameter/vignette_opacity = 0.0
 shader_parameter/vignette_rgb = Color(1, 0, 0, 1)
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
+collision_layer = 9
 collision_mask = 3
 script = ExtResource("1_ch4xb")
 era_data = ExtResource("2_r6y0m")
 bullet_scene = ExtResource("2_ud8ye")
 
-[node name="Sprite" type="Sprite2D" parent="."]
-position = Vector2(2.9999962, -1.0000076)
-scale = Vector2(0.15384616, 0.25892857)
-texture = ExtResource("3_6oavc")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(3.5, 1)
+visible = false
+position = Vector2(-1, 0)
 shape = SubResource("RectangleShape2D_fc0e3")
 
+[node name="Shadow" type="TextureRect" parent="."]
+offset_left = -37.31227
+offset_top = -1.0
+offset_right = 31.342514
+offset_bottom = 63.0
+scale = Vector2(0.7115852, 0.4257835)
+pivot_offset = Vector2(35.755, 0)
+texture = SubResource("GradientTexture2D_ctmp1")
+flip_h = true
+
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("4_ctmp1")
+
 [node name="reloadAnimation" parent="." instance=ExtResource("4_ud8ye")]
-position = Vector2(3, -22)
+position = Vector2(-1, -25)
 scale = Vector2(2, 2)
 
 [node name="Gun" type="Sprite2D" parent="."]
-position = Vector2(4, 2)
+position = Vector2(0, 1)
 texture = ExtResource("5_6oavc")
-offset = Vector2(23, -2)
+offset = Vector2(28, -1)
 
 [node name="Marker2D" type="Marker2D" parent="Gun"]
-position = Vector2(37, -4)
+position = Vector2(40, -4)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_cn3ss")
+}
+
+[node name="Red_VignetteFlash" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_cn3ss")
 }
