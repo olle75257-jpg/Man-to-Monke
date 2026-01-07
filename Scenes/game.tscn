@@ -116,5 +116,7 @@ libraries = {
 [node name="Portal" parent="." instance=ExtResource("9_h4fw4")]
 position = Vector2(-13701, -3589)
 
+[node name="Entities" type="Node2D" parent="." groups=["entities_layer"]]
+
 [connection signal="ammo_changed" from="y-sortObjects/Player" to="UserInterface/reloadUI" method="_on_player_ammo_changed"]
 [connection signal="health_changed" from="y-sortObjects/Player" to="UserInterface/HealthBar" method="_on_player_health_changed"]

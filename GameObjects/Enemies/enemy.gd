@@ -24,6 +24,8 @@ var player_in_range: Node = null
 const DAMAGE_NUMBERS = preload("uid://dsvh4p886swh6")
 var in_cutscene = false
 
+signal enemy_killed
+
 func _ready() -> void:
 	if era_data:
 		apply_enemy_data(era_data)
@@ -161,6 +163,7 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 
 func die():
 	spawn_particles(explosion_particles, self.position, Vector2.ZERO)
+	enemy_killed.emit()
 	queue_free()
 
 func spawn_particles(SCENE: PackedScene, pos: Vector2, normal: Vector2) -> void:
