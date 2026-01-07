@@ -87,11 +87,8 @@ collision_mask = 7
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ArenaWalls" index="0"]
 polygon = PackedVector2Array(1879, 1360, 1916, 1386, 3510, 1386, 3510, 2448, 1914, 2445, 1913, 1386, 1809, 1309, 1876, 2675, 3730, 2693, 3761, 1222, 1992, 1210)
 
-[node name="Player" parent="." index="2"]
-position = Vector2(3002, 1961)
-
-[node name="Sprite2D" parent="." index="3"]
-visible = false
-
-[node name="PortalSpawnPosition" parent="." index="6"]
+[node name="PortalSpawnPosition" parent="." index="5"]
 position = Vector2(2716, 1934)
+
+[node name="Portal" parent="." index="7"]
+position = Vector2(-472, -176)

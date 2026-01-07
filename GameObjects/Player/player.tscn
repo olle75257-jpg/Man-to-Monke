@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://doxim378b31eq"]
+[gd_scene load_steps=13 format=3 uid="uid://doxim378b31eq"]
 
 [ext_resource type="Script" uid="uid://bdehlio6b4gwn" path="res://player.gd" id="1_ch4xb"]
 [ext_resource type="Resource" uid="uid://bueln2kq24j2i" path="res://Resources/player_resources/modern_guy.tres" id="2_r6y0m"]
@@ -6,9 +6,102 @@
 [ext_resource type="Texture2D" uid="uid://p4ibcnu606i0" path="res://Assets/placeholder_spritesheets/placeholder8.png" id="3_6oavc"]
 [ext_resource type="PackedScene" uid="uid://baoedj6q1wxcu" path="res://GameObjects/reloadAnimation/reload_animation.tscn" id="4_ud8ye"]
 [ext_resource type="Texture2D" uid="uid://b7375pcx5vc8r" path="res://Assets/weapons/9.png" id="5_6oavc"]
+[ext_resource type="Shader" uid="uid://dqccoji1v6ihg" path="res://Shaders/vignette.gdshader" id="7_ctmp1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fc0e3"]
 size = Vector2(13, 18)
+
+[sub_resource type="Animation" id="Animation_ctmp1"]
+resource_name = "red_vignette_flash"
+length = 0.4
+step = 0.02
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/redScreenFlash:material:shader_parameter/vignette_intensity")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.39999998),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.4, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/redScreenFlash:material:shader_parameter/vignette_opacity")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.04, 0.36, 0.39999998),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.50000002375, 0.50000002375, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/redScreenFlash:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.39999998),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_euhdf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/redScreenFlash:material:shader_parameter/vignette_intensity")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.4]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/redScreenFlash:material:shader_parameter/vignette_opacity")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/redScreenFlash:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cn3ss"]
+_data = {
+&"RESET": SubResource("Animation_euhdf"),
+&"red_vignette_flash": SubResource("Animation_ctmp1")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_euhdf"]
+shader = ExtResource("7_ctmp1")
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/vignette_opacity = 0.0
+shader_parameter/vignette_rgb = Color(1, 0, 0, 1)
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_mask = 3
@@ -38,3 +131,19 @@ offset = Vector2(23, -2)
 position = Vector2(37, -4)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_cn3ss")
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="redScreenFlash" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_euhdf")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://jj83a527keb2"]
+[gd_scene load_steps=14 format=3 uid="uid://jj83a527keb2"]
 
 [ext_resource type="Script" uid="uid://bghram6j48erd" path="res://Scenes/game.gd" id="1_wowpa"]
 [ext_resource type="PackedScene" uid="uid://doxim378b31eq" path="res://GameObjects/Player/player.tscn" id="1_wrm1d"]
@@ -6,7 +6,67 @@
 [ext_resource type="PackedScene" uid="uid://dixgwampqxa75" path="res://UserInterface/reload_ui.tscn" id="6_i6g32"]
 [ext_resource type="PackedScene" uid="uid://bsbxqj8q66ay0" path="res://GameObjects/Managers/enemy_spawner_manager.tscn" id="7_1l0tm"]
 [ext_resource type="PackedScene" uid="uid://kfwcg11khwtl" path="res://UserInterface/HUD/kill_count.tscn" id="7_h4fw4"]
+[ext_resource type="Shader" uid="uid://bqhccpqdvcp5q" path="res://Shaders/screen_transition.gdshader" id="7_ldgsr"]
 [ext_resource type="PackedScene" uid="uid://d1of2np7t8ajc" path="res://UserInterface/HUD/health_bar.tscn" id="7_v158k"]
+[ext_resource type="PackedScene" uid="uid://cikxjss50ywqa" path="res://GameObjects/Portal/portal.tscn" id="9_h4fw4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o5yvi"]
+shader = ExtResource("7_ldgsr")
+shader_parameter/use_sprite_alpha = true
+shader_parameter/use_transition_texture = false
+shader_parameter/transition_type = 2
+shader_parameter/position = Vector2(0.5, 0.5)
+shader_parameter/invert = false
+shader_parameter/grid_size = Vector2(1, 1)
+shader_parameter/rotation_angle = 0.0
+shader_parameter/stagger = Vector2(0, 0)
+shader_parameter/stagger_frequency = Vector2i(2, 2)
+shader_parameter/flip_frequency = Vector2i(1, 1)
+shader_parameter/basic_feather = 0.0
+shader_parameter/use_mask_size = false
+shader_parameter/mask_size = Vector2(100, 100)
+shader_parameter/edges = 64
+shader_parameter/shape_feather = 0.1
+shader_parameter/sectors = 1
+shader_parameter/clock_feather = 0.0
+shader_parameter/progress = 0.0
+shader_parameter/progress_bias = Vector2(0, 0)
+
+[sub_resource type="Animation" id="Animation_v158k"]
+resource_name = "transition_iris"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UserInterface/ScreenTransitionRect:material:shader_parameter/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 3.15]
+}
+
+[sub_resource type="Animation" id="Animation_h4fw4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UserInterface/ScreenTransitionRect:material:shader_parameter/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ldgsr"]
+_data = {
+&"RESET": SubResource("Animation_h4fw4"),
+&"transition_iris": SubResource("Animation_v158k")
+}
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_wowpa")
@@ -25,18 +85,36 @@ position = Vector2(2011, 1360)
 unique_name_in_owner = true
 script = ExtResource("2_3dryh")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="UserInterface" type="CanvasLayer" parent="."]
 
-[node name="reloadUI" parent="CanvasLayer" instance=ExtResource("6_i6g32")]
+[node name="reloadUI" parent="UserInterface" instance=ExtResource("6_i6g32")]
 
-[node name="HealthBar" parent="CanvasLayer" instance=ExtResource("7_v158k")]
+[node name="HealthBar" parent="UserInterface" instance=ExtResource("7_v158k")]
 
-[node name="KillCount" parent="CanvasLayer" instance=ExtResource("7_h4fw4")]
+[node name="KillCount" parent="UserInterface" instance=ExtResource("7_h4fw4")]
+
+[node name="ScreenTransitionRect" type="ColorRect" parent="UserInterface"]
+material = SubResource("ShaderMaterial_o5yvi")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.24609375, 0.1733576, 0.1028595, 1)
 
 [node name="EnemySpawnerManager" parent="." instance=ExtResource("7_1l0tm")]
 
 [node name="PortalSpawnPosition" type="Marker2D" parent="."]
 position = Vector2(1854, 1329)
 
-[connection signal="ammo_changed" from="y-sortObjects/Player" to="CanvasLayer/reloadUI" method="_on_player_ammo_changed"]
-[connection signal="health_changed" from="y-sortObjects/Player" to="CanvasLayer/HealthBar" method="_on_player_health_changed"]
+[node name="TransitionAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ldgsr")
+}
+
+[node name="Portal" parent="." instance=ExtResource("9_h4fw4")]
+position = Vector2(-13701, -3589)
+
+[connection signal="ammo_changed" from="y-sortObjects/Player" to="UserInterface/reloadUI" method="_on_player_ammo_changed"]
+[connection signal="health_changed" from="y-sortObjects/Player" to="UserInterface/HealthBar" method="_on_player_health_changed"]

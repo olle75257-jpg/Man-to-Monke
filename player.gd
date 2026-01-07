@@ -40,7 +40,11 @@ signal ammo_changed
 @export var look_ahead_factor: float = 0.2 
 @export var max_offset: float = 150.0
 
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var red_screen_flash: ColorRect = $CanvasLayer/redScreenFlash
+
 func _ready() -> void:
+	red_screen_flash.visible = false
 	explosion_particles = preload("uid://61wtmbq585ep")
 	if era_data:
 		apply_era_stats(era_data)
@@ -167,6 +171,7 @@ func shoot() -> void:
 
 func apply_hit(hit_dir: Vector2, damage: int, force: float) -> void:
 	Globals.camera.shake(0.25, 25, 15)
+	animation_player.play("red_vignette_flash")
 	spawn_particles(explosion_particles, self.position, Vector2.ZERO)
 	health -= damage
 	health_changed.emit()
