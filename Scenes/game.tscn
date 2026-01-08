@@ -94,16 +94,6 @@ script = ExtResource("2_3dryh")
 
 [node name="KillCount" parent="UserInterface" instance=ExtResource("7_h4fw4")]
 
-[node name="ScreenTransitionRect" type="ColorRect" parent="UserInterface"]
-material = SubResource("ShaderMaterial_o5yvi")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0.24609375, 0.1733576, 0.1028595, 1)
-
 [node name="Ability" parent="UserInterface" instance=ExtResource("8_ldgsr")]
 anchors_preset = 2
 anchor_top = 1.0
@@ -113,6 +103,16 @@ offset_top = -167.0
 offset_right = 167.0
 offset_bottom = -39.0
 grow_vertical = 0
+
+[node name="ScreenTransitionRect" type="ColorRect" parent="UserInterface"]
+material = SubResource("ShaderMaterial_o5yvi")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.24609375, 0.1733576, 0.1028595, 1)
 
 [node name="EnemySpawnerManager" parent="." instance=ExtResource("7_1l0tm")]
 

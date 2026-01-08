@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://nk66llrndgcj"]
+[gd_scene load_steps=8 format=3 uid="uid://nk66llrndgcj"]
 
 [ext_resource type="Script" uid="uid://d33pe6eyy2mta" path="res://UserInterface/HUD/ability.gd" id="1_ouuc4"]
 [ext_resource type="Theme" uid="uid://17x2rvi1h60b" path="res://UserInterface/theme.tres" id="2_m6a4g"]
+[ext_resource type="Texture2D" uid="uid://corwafyo3dksy" path="res://Assets/UI/Controls/RightClick-Red.png" id="3_m6a4g"]
 
 [sub_resource type="Gradient" id="Gradient_ppypr"]
 
@@ -54,5 +55,13 @@ grow_horizontal = 0
 grow_vertical = 0
 theme = ExtResource("2_m6a4g")
 theme_override_font_sizes/font_size = 24
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -48.0
+offset_top = 64.0
+offset_right = 48.0
+offset_bottom = 160.0
+texture = ExtResource("3_m6a4g")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
