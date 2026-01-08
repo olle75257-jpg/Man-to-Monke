@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="player_era" load_steps=5 format=3 uid="uid://dy81f7jnes2m1"]
 
 [ext_resource type="Script" uid="uid://cef7t0nnwxr88" path="res://Resources/player_stats.gd" id="1_8jh5i"]
-[ext_resource type="PackedScene" uid="uid://cbqslgq647uvs" path="res://GameObjects/Bullet/bullet.tscn" id="1_polbu"]
+[ext_resource type="PackedScene" uid="uid://u3ldf12iufy3" path="res://GameObjects/Bullet/arrow.tscn" id="1_polbu"]
 [ext_resource type="Texture2D" uid="uid://dlr701btfb51k" path="res://Assets/character/medieval/Character-Archer.png" id="3_fggpd"]
 [ext_resource type="Texture2D" uid="uid://b7375pcx5vc8r" path="res://Assets/weapons/9.png" id="4_l87im"]
 
