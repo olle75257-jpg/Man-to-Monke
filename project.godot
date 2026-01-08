@@ -32,6 +32,7 @@ mouse_cursor/custom_image_hotspot=Vector2(16, 16)
 [file_customization]
 
 folder_colors={
+"res://Assets/tilemap/": "teal",
 "res://Audio/": "orange",
 "res://Autoloads/": "purple",
 "res://UserInterface/": "blue"
@@ -96,3 +97,4 @@ reload={
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0.4453125, 0.3622395, 0.28353882, 1)

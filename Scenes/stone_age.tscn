@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=4 uid="uid://c4h4y5ns058j3"]
+[gd_scene load_steps=8 format=4 uid="uid://c4h4y5ns058j3"]
 
 [ext_resource type="PackedScene" uid="uid://jj83a527keb2" path="res://Scenes/game.tscn" id="1_nqidj"]
 [ext_resource type="TileSet" uid="uid://s6ql8hy353u4" path="res://Assets/tilemap/stone_age/stone_age_tilemap.tres" id="2_6whch"]
 [ext_resource type="Script" uid="uid://cvikh7d5dvpts" path="res://Scenes/stone_age.gd" id="2_jmc85"]
 [ext_resource type="Resource" uid="uid://dycyh7ydj6lxv" path="res://Resources/player_resources/cave_guy.tres" id="4_gwfei"]
+[ext_resource type="Texture2D" uid="uid://cfuvrxi862g3d" path="res://Assets/Projectiles/stoneAge/rock.png" id="5_htndq"]
 [ext_resource type="PackedScene" uid="uid://n0kjpkomys1o" path="res://GameObjects/ShockwaveAbility/shockwave.tscn" id="5_pllul"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pllul"]
@@ -90,6 +91,7 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 grow_horizontal = 1
 grow_vertical = 1
+sprite = ExtResource("5_htndq")
 
 [node name="HealthBar" parent="UserInterface" index="1"]
 anchors_preset = 0
