@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cef7t0nnwxr88" path="res://Resources/player_stats.gd" id="1_8jh5i"]
 [ext_resource type="PackedScene" uid="uid://u3ldf12iufy3" path="res://GameObjects/Bullet/arrow.tscn" id="1_polbu"]
 [ext_resource type="Texture2D" uid="uid://dlr701btfb51k" path="res://Assets/character/medieval/Character-Archer.png" id="3_fggpd"]
-[ext_resource type="Texture2D" uid="uid://b7375pcx5vc8r" path="res://Assets/weapons/9.png" id="4_l87im"]
+[ext_resource type="Texture2D" uid="uid://ck2a1it4hbh8s" path="res://Assets/weapons/bow.png" id="4_polbu"]
 
 [resource]
 script = ExtResource("1_8jh5i")
@@ -18,6 +18,6 @@ recoil_strength = 0.0
 magazine_size = 1
 pierce_value = 3
 reload_speed = 0.5
-weapon = ExtResource("4_l87im")
+weapon = ExtResource("4_polbu")
 sprite = ExtResource("3_fggpd")
 metadata/_custom_type_script = "uid://cef7t0nnwxr88"
