@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://df4gg80oh3mtf"]
+
+[ext_resource type="Texture2D" uid="uid://b0ifu3gul18r3" path="res://Assets/Particles/Explosion_Sheet.png" id="1_bckoa"]
+[ext_resource type="Script" uid="uid://c1n8yfg8uv8yd" path="res://Particles/grenade_explosion.gd" id="2_mfjg3"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_bckoa"]
+particles_animation = true
+particles_anim_h_frames = 5
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_bckoa"]
+offsets = PackedFloat32Array(0, 0.25714287, 0.30952382, 0.45714286, 0.5190476, 0.6666667, 0.74761903, 1)
+colors = PackedColorArray(1, 0.984375, 0, 1, 1, 0.984375, 0, 1, 1, 0.5390625, 0, 1, 1, 0.5390625, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+
+[node name="GrenadeExplosion" type="CPUParticles2D"]
+material = SubResource("CanvasItemMaterial_bckoa")
+emitting = false
+amount = 32
+texture = ExtResource("1_bckoa")
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.5
+fixed_fps = 30
+draw_order = 1
+emission_shape = 1
+emission_sphere_radius = 128.0
+spread = 180.0
+gravity = Vector2(0, 0)
+angle_max = 139.6
+scale_amount_min = 0.4
+scale_amount_max = 7.0
+color_ramp = SubResource("Gradient_bckoa")
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+script = ExtResource("2_mfjg3")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

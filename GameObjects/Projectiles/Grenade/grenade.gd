@@ -4,19 +4,20 @@ extends Area2D
 
 @export_group("Horizontal Movement")
 @export var initial_speed: float = 600.0
-@export var friction: float = 600.0 # Slows down horizontal movement
+@export var friction: float = 600.0
 
 @export_group("Vertical Arc (Fake Z)")
 @export var arc_gravity: float = 1500.0
-@export var jump_force: float = -600.0 # Initial "upward" push
+@export var jump_force: float = -600.0 
 
 var velocity: Vector2 = Vector2.ZERO
-var z_velocity: float = 0.0 # Vertical speed for the arc
-var height: float = 0.0     # The current "fake height"
+var z_velocity: float = 0.0 
+var height: float = 0.0     
 var is_on_ground: bool = false
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 
-@onready var sprite: Sprite2D = $Sprite2D # Ensure you have a Sprite2D child
+@onready var sprite: Sprite2D = $Sprite2D 
+@export var grenade_explosion_tscn: PackedScene = preload("uid://df4gg80oh3mtf")
 
 func _ready() -> void:
 	set_collision_mask_value(1, true)
@@ -64,7 +65,7 @@ func land():
 func explode():
 	if Globals.camera:
 		Globals.camera.shake(0.3, 20, 15)
-	
+	spawn_particles(grenade_explosion_tscn, self.position, Vector2.ZERO)
 	collision_shape_2d.disabled = false
 	
 	await get_tree().create_timer(0.3).timeout
@@ -73,3 +74,9 @@ func explode():
 func _on_body_entered(body: Node) -> void:
 	if body is Enemy:
 		body.apply_hit( (body.global_position - global_position).normalized() , 10, 3000)
+
+func spawn_particles(SCENE: PackedScene, pos: Vector2, normal: Vector2) -> void:
+	var instance = SCENE.instantiate()
+	get_tree().get_current_scene().add_child(instance)
+	instance.global_position = pos
+	instance.rotation = normal.angle()
