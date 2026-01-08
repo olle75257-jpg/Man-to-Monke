@@ -50,7 +50,13 @@ signal ability_used
 var ability_cd_finished = true
 @onready var ability_cooldown_timer: Timer = $AbilityCooldownTimer
 
+@onready var shockwave: ColorRect = %Shockwave
+@onready var shockwave_area: Area2D = $ShockwaveArea
+@onready var shockwave_collision: CollisionShape2D = $ShockwaveArea/ShockwaveCollision
+
+
 func _ready() -> void:
+	shockwave_area.set_collision_mask_value(1, false)
 	red_screen_flash.visible = false
 	explosion_particles = preload("uid://61wtmbq585ep")
 	if era_data:
@@ -107,6 +113,13 @@ func _input(event: InputEvent) -> void:
 						for j in range(5):
 							shoot_volley_arrows()
 						await get_tree().create_timer(0.3).timeout
+				"StoneAge":
+					shockwave_area.set_collision_mask_value(1, true)
+					shockwave.material.set_shader_parameter("global_position", Vector2(1910/2.0, 1080/2))
+					if shockwave.has_node("AnimationPlayer"):
+						shockwave.get_node("AnimationPlayer").play("shockwave")
+					await get_tree().create_timer(0.2).timeout
+					shockwave_area.set_collision_mask_value(1, false)
 
 func _process(delta: float) -> void:
 	update_camera_offset()
@@ -265,3 +278,8 @@ func spawn_particles(SCENE: PackedScene, pos: Vector2, normal: Vector2) -> void:
 
 func _on_ability_cooldown_timer_timeout() -> void:
 	ability_cd_finished = true
+
+
+func _on_shockwave_area_body_entered(body: Node2D) -> void:
+	if body is Enemy and body.has_method("apply_hit"):
+		body.apply_hit((body.global_position - self.global_position).normalized(), 1, 4500)

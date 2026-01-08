@@ -15,10 +15,10 @@ script = ExtResource("1_h6gcj")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 1090.0
-offset_top = 615.0
-offset_right = 1246.0
-offset_bottom = 693.775
+offset_left = 1699.0
+offset_top = 955.0
+offset_right = 1855.0
+offset_bottom = 1033.775
 
 [node name="Label" type="Label" parent="HBoxContainer"]
 layout_mode = 2

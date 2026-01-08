@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://csfv3rovb5v4o"]
+
+[ext_resource type="Script" uid="uid://dwn1uekv5s62k" path="res://GameObjects/ShockwaveAbility/shockwave_ability.gd" id="1_gemxk"]
+[ext_resource type="PackedScene" uid="uid://n0kjpkomys1o" path="res://GameObjects/ShockwaveAbility/shockwave.tscn" id="2_gemxk"]
+
+[node name="ShockwaveAbility" type="Node2D"]
+script = ExtResource("1_gemxk")
+
+[node name="Shockwave" parent="." instance=ExtResource("2_gemxk")]

@@ -17,9 +17,9 @@ script = ExtResource("1_otsay")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 858.0
+offset_left = 1489.0
 offset_top = 30.0
-offset_right = 1247.0
+offset_right = 1878.0
 offset_bottom = 94.0
 theme_override_constants/separation = 30
 alignment = 2

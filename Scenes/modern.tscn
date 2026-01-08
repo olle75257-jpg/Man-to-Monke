@@ -1,5 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://36ypeorcd30y"]
+[gd_scene load_steps=3 format=3 uid="uid://36ypeorcd30y"]
 
 [ext_resource type="PackedScene" uid="uid://jj83a527keb2" path="res://Scenes/game.tscn" id="1_a77c7"]
+[ext_resource type="Resource" uid="uid://bueln2kq24j2i" path="res://Resources/player_resources/modern_guy.tres" id="2_4020w"]
 
 [node name="Modern" instance=ExtResource("1_a77c7")]
+
+[node name="Ability" parent="UserInterface" index="3"]
+era_data = ExtResource("2_4020w")

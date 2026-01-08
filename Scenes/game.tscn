@@ -84,6 +84,7 @@ position = Vector2(2011, 1360)
 
 [node name="Camera2D" type="Camera2D" parent="y-sortObjects/Player"]
 unique_name_in_owner = true
+zoom = Vector2(1.5, 1.5)
 script = ExtResource("2_3dryh")
 
 [node name="UserInterface" type="CanvasLayer" parent="."]

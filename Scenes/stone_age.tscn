@@ -1,9 +1,13 @@
-[gd_scene load_steps=5 format=4 uid="uid://c4h4y5ns058j3"]
+[gd_scene load_steps=7 format=4 uid="uid://c4h4y5ns058j3"]
 
 [ext_resource type="PackedScene" uid="uid://jj83a527keb2" path="res://Scenes/game.tscn" id="1_nqidj"]
 [ext_resource type="TileSet" uid="uid://s6ql8hy353u4" path="res://Assets/tilemap/stone_age/stone_age_tilemap.tres" id="2_6whch"]
 [ext_resource type="Script" uid="uid://cvikh7d5dvpts" path="res://Scenes/stone_age.gd" id="2_jmc85"]
 [ext_resource type="Resource" uid="uid://dycyh7ydj6lxv" path="res://Resources/player_resources/cave_guy.tres" id="4_gwfei"]
+[ext_resource type="PackedScene" uid="uid://n0kjpkomys1o" path="res://GameObjects/ShockwaveAbility/shockwave.tscn" id="5_pllul"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pllul"]
+radius = 317.40353
 
 [node name="StoneAge" instance=ExtResource("1_nqidj")]
 y_sort_enabled = true
@@ -62,6 +66,12 @@ tile_set = ExtResource("2_6whch")
 position = Vector2(3706, 2409)
 era_data = ExtResource("4_gwfei")
 
+[node name="ShockwaveArea" type="Area2D" parent="y-sortObjects/Player" index="11"]
+
+[node name="ShockwaveCollision" type="CollisionShape2D" parent="y-sortObjects/Player/ShockwaveArea" index="0"]
+shape = SubResource("CircleShape2D_pllul")
+debug_color = Color(0.70196074, 0.36194852, 0, 0.41960785)
+
 [node name="Vegetation" type="TileMapLayer" parent="." index="2"]
 y_sort_enabled = true
 scale = Vector2(3, 3)
@@ -73,6 +83,33 @@ y_sort_enabled = true
 scale = Vector2(6, 6)
 tile_map_data = PackedByteArray("AAAjABEABgAAAAAAAAAXAA8ABAAAAAAAABAUABMAAwAGAAAAAAAQABgAAwAGAAAAAAARAB0AAwAGAAAAABARACIAAwAGAAQAAAAOABsAAwAGAAQAAAATABYAAwAGAAQAAAAPABQAAwAGAAQAAAASABEAAwAGAAQAAAAVAA4AAwAGAAQAAAASAB8AAwACAAQAAAAQABAAAwACAAQAAAATABoABAAAAAAAAAAOAB4ABAAAAAAAAAAMABYABAAAAAAAABASACUABAAAAAAAAAANACQABAAAAAAAAAATACsABAADAAAAAAAcAC8ABAADAAAAAAArAC4ABAADAAAAAAA1ACcABAADAAAAAAA1AB0ABAADAAAAAAA1ABIABAADAAAAAAA2ABYABAADAAAAABA3ABsABAADAAYAAAAzAA0ABAAAAAAAAAAxAAwABAADAAYAAAA1AA0ABAADAAYAAAAXAAoABAADAAYAAAAUAAsABAADAAYAAAARAA0ABAADAAYAAAAMAA0ABAADAAYAAAAOAA0ABAADAAYAAAAPAAwABAAAAAAAAAASAAwABAAAAAAAAAAVAAsABAAAAAAAAAAOABAABAAAAAAAAAA2AA4ABAAAAAAAAAA6ABQABAADAAAAAAA4ABMABAADAAAAAAAsABgAAwAJAAIAAAAuAB0AAwAKAAEAABAcABUAAwAKAAEAAAAqABcAAwAJAAIAABAXABcAAwAJAAIAABAZAB8ABAAGAAAAAAApACEABAAGAAAAABAgACMAAwAKAAEAAAAoACIAAwAJAAIAAAAiAC4AAwACAAAAAAAgACwAAwAGAAAAAAAYACwAAwAGAAQAAAAlAC4AAwAGAAQAABAvACgAAwAGAAQAABA=")
 tile_set = ExtResource("2_6whch")
+
+[node name="reloadUI" parent="UserInterface" index="0"]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="HealthBar" parent="UserInterface" index="1"]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="KillCount" parent="UserInterface" index="2"]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="Ability" parent="UserInterface" index="3"]
+era_data = ExtResource("4_gwfei")
+
+[node name="Shockwave" parent="UserInterface" index="5" instance=ExtResource("5_pllul")]
+unique_name_in_owner = true
 
 [node name="PortalSpawnPosition" parent="." index="6"]
 position = Vector2(3395, 2695)
@@ -86,3 +123,5 @@ polygon = PackedVector2Array(2122, 2250, 2129, 3137, 1975, 3130, 1985, 2238, 279
 
 [node name="Portal" parent="." index="9"]
 position = Vector2(-764, -556)
+
+[connection signal="body_entered" from="y-sortObjects/Player/ShockwaveArea" to="y-sortObjects/Player" method="_on_shockwave_area_body_entered"]

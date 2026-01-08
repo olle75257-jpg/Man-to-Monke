@@ -18,4 +18,5 @@ magazine_size = 1
 reload_speed = 2.5
 weapon = ExtResource("4_6xii6")
 sprite = ExtResource("2_tluvh")
+ability_cooldown = 3.0
 metadata/_custom_type_script = "uid://cef7t0nnwxr88"
