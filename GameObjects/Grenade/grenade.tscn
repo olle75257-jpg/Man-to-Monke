@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bgeh0hn242ylo"]
+
+[ext_resource type="Texture2D" uid="uid://ch7ujwdj0n4i6" path="res://Assets/placeholder_spritesheets/placeholder16.png" id="1_7xs06"]
+
+[node name="Grenade" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_7xs06")

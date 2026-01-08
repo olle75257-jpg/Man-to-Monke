@@ -50,12 +50,14 @@ signal ability_used
 var ability_cd_finished = true
 @onready var ability_cooldown_timer: Timer = $AbilityCooldownTimer
 
-@onready var shockwave: ColorRect = %Shockwave
-@onready var shockwave_area: Area2D = $ShockwaveArea
-@onready var shockwave_collision: CollisionShape2D = $ShockwaveArea/ShockwaveCollision
+var shockwave: ColorRect 
+@onready var shockwave_area: Area2D = get_node_or_null("ShockwaveArea")
+@onready var shockwave_collision: CollisionShape2D = get_node_or_null("ShockwaveArea/ShockwaveCollision")
 
 
 func _ready() -> void:
+	shockwave = get_node_or_null("%Shockwave")
+	
 	if shockwave_area:
 		shockwave_area.set_collision_mask_value(1, false)
 	red_screen_flash.visible = false
@@ -115,13 +117,14 @@ func _input(event: InputEvent) -> void:
 							shoot_volley_arrows()
 						await get_tree().create_timer(0.3).timeout
 				"StoneAge":
-					SoundManager.play_ShockwaveRoar()
-					shockwave_area.set_collision_mask_value(1, true)
-					shockwave.material.set_shader_parameter("global_position", Vector2(1910/2.0, 1080/2))
-					if shockwave.has_node("AnimationPlayer"):
-						shockwave.get_node("AnimationPlayer").play("shockwave")
-					await get_tree().create_timer(0.2).timeout
-					shockwave_area.set_collision_mask_value(1, false)
+					if shockwave && shockwave_area:
+						SoundManager.play_ShockwaveRoar()
+						shockwave_area.set_collision_mask_value(1, true)
+						shockwave.material.set_shader_parameter("global_position", Vector2(1910/2.0, 1080/2))
+						if shockwave.has_node("AnimationPlayer"):
+							shockwave.get_node("AnimationPlayer").play("shockwave")
+						await get_tree().create_timer(0.2).timeout
+						shockwave_area.set_collision_mask_value(1, false)
 
 func _process(delta: float) -> void:
 	update_camera_offset()
