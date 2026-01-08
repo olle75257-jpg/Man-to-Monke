@@ -257,4 +257,8 @@ mouse_filter = 2
 [node name="DeathComponent" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("8_euhdf")]
 sprite = NodePath("../Gun")
 
+[node name="AbilityCooldownTimer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="player_died" from="." to="DeathComponent" method="_on_player_player_died"]
+[connection signal="timeout" from="AbilityCooldownTimer" to="." method="_on_ability_cooldown_timer_timeout"]

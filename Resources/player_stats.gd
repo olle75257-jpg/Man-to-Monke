@@ -27,3 +27,7 @@ class_name player_era
 @export_group("Visuals")
 @export var weapon: Texture2D
 @export var sprite: Texture2D
+
+@export_group("Ability Stats")
+@export var ability_cooldown := 5.0
+@export var ability_icon: Texture2D

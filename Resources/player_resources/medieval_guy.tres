@@ -20,4 +20,5 @@ pierce_value = 3
 reload_speed = 0.5
 weapon = ExtResource("4_polbu")
 sprite = ExtResource("3_fggpd")
+ability_cooldown = 8.0
 metadata/_custom_type_script = "uid://cef7t0nnwxr88"

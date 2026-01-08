@@ -46,6 +46,10 @@ signal ammo_changed
 @onready var red_screen_flash: ColorRect = $CanvasLayer/redScreenFlash
 @onready var shadow: TextureRect = $Shadow
 
+signal ability_used
+var ability_cd_finished = true
+@onready var ability_cooldown_timer: Timer = $AbilityCooldownTimer
+
 func _ready() -> void:
 	red_screen_flash.visible = false
 	explosion_particles = preload("uid://61wtmbq585ep")
@@ -80,6 +84,9 @@ func apply_era_stats(data: player_era):
 	if data.sprite:
 		sprite.texture = data.sprite
 	
+	# Abilities
+	ability_cooldown_timer.wait_time = data.ability_cooldown
+	
 	health_changed.emit.call_deferred()
 	ammo_changed.emit.call_deferred()
 	
@@ -90,12 +97,16 @@ func _input(event: InputEvent) -> void:
 		reload()
 	
 	if event.is_action_pressed("ability"):
-		match era_data.era:
-			"Medieval":
-				for i in range(3):
-					for j in range(5):
-						shoot_volley_arrows()
-					await get_tree().create_timer(0.3).timeout
+		if ability_cd_finished:
+			ability_used.emit()
+			ability_cd_finished = false
+			ability_cooldown_timer.start()
+			match era_data.era:
+				"Medieval":
+					for i in range(3):
+						for j in range(5):
+							shoot_volley_arrows()
+						await get_tree().create_timer(0.3).timeout
 
 func _process(delta: float) -> void:
 	update_camera_offset()
@@ -250,3 +261,7 @@ func spawn_particles(SCENE: PackedScene, pos: Vector2, normal: Vector2) -> void:
 	get_tree().get_current_scene().add_child(instance)
 	instance.global_position = pos
 	instance.rotation = normal.angle()
+
+
+func _on_ability_cooldown_timer_timeout() -> void:
+	ability_cd_finished = true
