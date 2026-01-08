@@ -2,9 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://cqp40nn1jlxo7" path="res://Assets/UI/SkillIcons/shockwaveSkill.png" id="1_6xii6"]
 [ext_resource type="Script" uid="uid://cef7t0nnwxr88" path="res://Resources/player_stats.gd" id="1_i53al"]
-[ext_resource type="PackedScene" uid="uid://cbqslgq647uvs" path="res://GameObjects/Projectiles/bullet.tscn" id="2_d772e"]
+[ext_resource type="PackedScene" uid="uid://dqugd2gjguxm1" path="res://GameObjects/Projectiles/rock.tscn" id="2_6xii6"]
 [ext_resource type="Texture2D" uid="uid://b2xp4j4utu3o2" path="res://Assets/character/stoneage/Character-CaveMan.png" id="2_tluvh"]
-[ext_resource type="Texture2D" uid="uid://b7375pcx5vc8r" path="res://Assets/weapons/9.png" id="4_6xii6"]
+[ext_resource type="Texture2D" uid="uid://cfuvrxi862g3d" path="res://Assets/Projectiles/stoneAge/rock.png" id="5_6xii6"]
 
 [resource]
 script = ExtResource("1_i53al")
@@ -12,12 +12,13 @@ era = "StoneAge"
 move_speed = 150.0
 projectile_speed = 500.0
 projectile_knockback_force = 3000.0
-projectile_inaccuracy = 15.0
-bullet_scene = ExtResource("2_d772e")
+projectile_inaccuracy = 20.0
+bullet_scene = ExtResource("2_6xii6")
 recoil_strength = 0.0
 magazine_size = 1
-reload_speed = 2.5
-weapon = ExtResource("4_6xii6")
+pierce_value = 2
+reload_speed = 1.8
+weapon = ExtResource("5_6xii6")
 sprite = ExtResource("2_tluvh")
 ability_cooldown = 3.0
 ability_icon = ExtResource("1_6xii6")

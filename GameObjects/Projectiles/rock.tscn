@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://dqugd2gjguxm1"]
+
+[ext_resource type="PackedScene" uid="uid://cbqslgq647uvs" path="res://GameObjects/Projectiles/bullet.tscn" id="1_0n124"]
+[ext_resource type="Texture2D" uid="uid://cfuvrxi862g3d" path="res://Assets/Projectiles/stoneAge/rock.png" id="2_dnlto"]
+[ext_resource type="Script" uid="uid://t3jc1ohjvyyl" path="res://GameObjects/Projectiles/rock.gd" id="2_h1u62"]
+
+[node name="Rock" instance=ExtResource("1_0n124")]
+script = ExtResource("2_h1u62")
+
+[node name="Sprite2D" parent="." index="0"]
+position = Vector2(0, 9.536743e-07)
+scale = Vector2(2, 2)
+texture = ExtResource("2_dnlto")
+
+[node name="CollisionShape2D" parent="." index="2"]
+position = Vector2(0, 0)

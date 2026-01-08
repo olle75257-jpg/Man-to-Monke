@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://bcs1skpe5d76l" path="res://sprite_2d.gd" id="2_t4vbm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8emeo"]
-size = Vector2(26, 24)
+size = Vector2(46, 44)
 
 [node name="Bullet" type="Area2D"]
 collision_layer = 4
