@@ -7,6 +7,7 @@ class_name Projecitle
 
 var direction: Vector2 = Vector2.ZERO
 @export var spread_degrees: float = 10.0
+var pierce_value = 1
 
 func _ready() -> void:
 	direction = (get_global_mouse_position() - global_position).normalized()
@@ -23,6 +24,9 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_body_entered(body: Node) -> void:
-	if body is CharacterBody2D and body.has_method("apply_hit"):
-		body.apply_hit(direction, damage, knockback_force)
-	queue_free()
+	if body is Enemy and body.has_method("apply_hit"):
+		if pierce_value > 0:
+			pierce_value -= 1
+			body.apply_hit(direction, damage, knockback_force)
+			if pierce_value == 0:
+				queue_free()

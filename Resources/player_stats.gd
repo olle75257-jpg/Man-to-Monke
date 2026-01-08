@@ -20,6 +20,7 @@ class_name player_era
 @export var bullet_scene: PackedScene
 @export var recoil_strength: float = 900.0
 @export var magazine_size = 6
+@export var pierce_value = 1
 ## Base reload length is 2 seconds, so change this value if you want reload to be longer
 @export var reload_speed = 1.0 
 

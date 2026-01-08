@@ -26,6 +26,7 @@ const reload_length = 2.0
 var reload_speed = 1.0
 var is_reloading: bool = false
 signal ammo_changed
+@export var pierce_value = 1
 
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 
@@ -70,6 +71,7 @@ func apply_era_stats(data: player_era):
 	recoil_strength = data.recoil_strength
 	magazine_size = data.magazine_size
 	ammo_in_mag = magazine_size 
+	pierce_value = data.pierce_value
 	reload_speed = data.reload_speed
 	
 	#Visuals 
@@ -169,6 +171,7 @@ func shoot() -> void:
 	bullet.global_position = marker_2d.global_position
 	bullet.damage = era_data.projectile_damage
 	bullet.speed = era_data.projectile_speed
+	bullet.pierce_value = pierce_value
 	bullet.spread_degrees = era_data.projectile_inaccuracy
 	bullet.knockback_force = era_data.projectile_knockback_force
 	

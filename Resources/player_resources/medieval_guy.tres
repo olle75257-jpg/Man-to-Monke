@@ -16,6 +16,7 @@ projectile_inaccuracy = 2.0
 bullet_scene = ExtResource("1_polbu")
 recoil_strength = 0.0
 magazine_size = 1
+pierce_value = 3
 reload_speed = 0.5
 weapon = ExtResource("4_l87im")
 sprite = ExtResource("3_fggpd")
