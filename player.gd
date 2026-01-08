@@ -88,6 +88,14 @@ func apply_era_stats(data: player_era):
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("reload"):
 		reload()
+	
+	if event.is_action_pressed("ability"):
+		match era_data.era:
+			"Medieval":
+				for i in range(3):
+					for j in range(5):
+						shoot_volley_arrows()
+					await get_tree().create_timer(0.3).timeout
 
 func _process(delta: float) -> void:
 	update_camera_offset()
@@ -179,6 +187,22 @@ func shoot() -> void:
 	#var mouse_pos = get_global_mouse_position()
 	#bullet.direction = (mouse_pos - global_position).normalized()
 
+func shoot_volley_arrows():
+	if bullet_scene == null:
+		return
+	
+	Globals.camera.shake(0.25, 10, 15)
+	SoundManager.play_gunShot()
+	var bullet = bullet_scene.instantiate() as Projecitle
+	
+	bullet.global_position = marker_2d.global_position
+	bullet.damage = era_data.projectile_damage
+	bullet.speed = era_data.projectile_speed
+	bullet.pierce_value = 1
+	bullet.spread_degrees = 30
+	bullet.knockback_force = era_data.projectile_knockback_force
+	
+	get_parent().add_child(bullet)
 
 func apply_hit(hit_dir: Vector2, damage: int, force: float) -> void:
 	Globals.camera.shake(0.25, 25, 15)

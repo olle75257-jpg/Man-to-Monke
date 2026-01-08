@@ -220,8 +220,8 @@ scale = Vector2(2, 2)
 texture = ExtResource("4_ctmp1")
 
 [node name="reloadAnimation" parent="." instance=ExtResource("4_ud8ye")]
-position = Vector2(-1, -31)
-scale = Vector2(2, 2)
+position = Vector2(-1, -46)
+scale = Vector2(3, 2.5)
 
 [node name="Gun" type="Sprite2D" parent="."]
 position = Vector2(0, 1)
