@@ -97,6 +97,10 @@ era_data = ExtResource("5_d6553")
 sprite = ExtResource("6_rjwkn")
 
 [node name="Ability" parent="UserInterface" index="3"]
+offset_left = 77.0
+offset_top = -184.0
+offset_right = 205.0
+offset_bottom = -56.0
 era_data = ExtResource("5_d6553")
 
 [node name="PortalSpawnPosition" parent="." index="5"]
