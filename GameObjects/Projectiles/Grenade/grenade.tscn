@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://wsj0dhepl8ie"]
+
+[ext_resource type="Script" uid="uid://dyq3lfq8icml6" path="res://GameObjects/Projectiles/Grenade/grenade.gd" id="1_pqnho"]
+[ext_resource type="Texture2D" uid="uid://cc4o02gdrewg6" path="res://Assets/Particles/blast_particle.png" id="2_pqnho"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pqnho"]
+radius = 186.60385
+
+[node name="Grenade" type="Area2D"]
+collision_layer = 4
+collision_mask = 11
+script = ExtResource("1_pqnho")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_pqnho")
+debug_color = Color(0.6142157, 0, 0.70196074, 0.41960785)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_pqnho")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

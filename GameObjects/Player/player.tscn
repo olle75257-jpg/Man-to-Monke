@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bdehlio6b4gwn" path="res://player.gd" id="1_ch4xb"]
 [ext_resource type="Resource" uid="uid://bueln2kq24j2i" path="res://Resources/player_resources/modern_guy.tres" id="2_r6y0m"]
-[ext_resource type="PackedScene" uid="uid://cbqslgq647uvs" path="res://GameObjects/Bullet/bullet.tscn" id="2_ud8ye"]
+[ext_resource type="PackedScene" uid="uid://cbqslgq647uvs" path="res://GameObjects/Projectiles/bullet.tscn" id="2_ud8ye"]
 [ext_resource type="Texture2D" uid="uid://bujy4rh2hwvs" path="res://Assets/character/modern/Character-Modern.png" id="4_ctmp1"]
 [ext_resource type="PackedScene" uid="uid://baoedj6q1wxcu" path="res://GameObjects/reloadAnimation/reload_animation.tscn" id="4_ud8ye"]
 [ext_resource type="Texture2D" uid="uid://b7375pcx5vc8r" path="res://Assets/weapons/9.png" id="5_6oavc"]

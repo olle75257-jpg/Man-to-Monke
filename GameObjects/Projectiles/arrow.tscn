@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://u3ldf12iufy3"]
 
-[ext_resource type="PackedScene" uid="uid://cbqslgq647uvs" path="res://GameObjects/Bullet/bullet.tscn" id="1_b7dm0"]
+[ext_resource type="PackedScene" uid="uid://cbqslgq647uvs" path="res://GameObjects/Projectiles/bullet.tscn" id="1_b7dm0"]
 [ext_resource type="Texture2D" uid="uid://deyiyg1nbw4oo" path="res://Assets/Projectiles/arrows/arrow.png" id="2_3qmh3"]
 
 [node name="Arrow" instance=ExtResource("1_b7dm0")]

@@ -54,6 +54,7 @@ var shockwave: ColorRect
 @onready var shockwave_area: Area2D = get_node_or_null("ShockwaveArea")
 @onready var shockwave_collision: CollisionShape2D = get_node_or_null("ShockwaveArea/ShockwaveCollision")
 
+@export var grenade_tscn: PackedScene = preload("uid://wsj0dhepl8ie")
 
 func _ready() -> void:
 	shockwave = get_node_or_null("%Shockwave")
@@ -111,6 +112,8 @@ func _input(event: InputEvent) -> void:
 			ability_cd_finished = false
 			ability_cooldown_timer.start()
 			match era_data.era:
+				"Modern":
+					shoot_grenade()
 				"Medieval":
 					for i in range(3):
 						for j in range(5):
@@ -125,6 +128,7 @@ func _input(event: InputEvent) -> void:
 							shockwave.get_node("AnimationPlayer").play("shockwave")
 						await get_tree().create_timer(0.2).timeout
 						shockwave_area.set_collision_mask_value(1, false)
+
 
 func _process(delta: float) -> void:
 	update_camera_offset()
@@ -215,6 +219,19 @@ func shoot() -> void:
 	get_parent().add_child(bullet)
 	#var mouse_pos = get_global_mouse_position()
 	#bullet.direction = (mouse_pos - global_position).normalized()
+
+func shoot_grenade():
+	if grenade_tscn == null:
+		return 
+	var grenade = grenade_tscn.instantiate() as Node2D
+	
+	var mouse_pos = get_global_mouse_position()
+	var distance = global_position.distance_to(mouse_pos)
+	var calculated_speed = clamp(distance * 2.0, 300.0, 750)
+	grenade.initial_speed = calculated_speed
+	
+	grenade.global_position = marker_2d.global_position
+	get_parent().add_child(grenade)
 
 func shoot_volley_arrows():
 	if bullet_scene == null:
