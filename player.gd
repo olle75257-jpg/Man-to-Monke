@@ -56,7 +56,8 @@ var ability_cd_finished = true
 
 
 func _ready() -> void:
-	shockwave_area.set_collision_mask_value(1, false)
+	if shockwave_area:
+		shockwave_area.set_collision_mask_value(1, false)
 	red_screen_flash.visible = false
 	explosion_particles = preload("uid://61wtmbq585ep")
 	if era_data:
@@ -114,6 +115,7 @@ func _input(event: InputEvent) -> void:
 							shoot_volley_arrows()
 						await get_tree().create_timer(0.3).timeout
 				"StoneAge":
+					SoundManager.play_ShockwaveRoar()
 					shockwave_area.set_collision_mask_value(1, true)
 					shockwave.material.set_shader_parameter("global_position", Vector2(1910/2.0, 1080/2))
 					if shockwave.has_node("AnimationPlayer"):

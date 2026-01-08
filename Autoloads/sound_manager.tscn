@@ -1,8 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bq3iuwebjem4o"]
+[gd_scene load_steps=10 format=3 uid="uid://bq3iuwebjem4o"]
 
 [ext_resource type="Script" uid="uid://b6seibtksub8x" path="res://Autoloads/sound_manager.gd" id="1_jerlu"]
 [ext_resource type="AudioStream" uid="uid://csqg7r0ln03v7" path="res://Audio/GunAudio/Cannon shots 7.ogg" id="2_u5vrn"]
 [ext_resource type="AudioStream" uid="uid://bpkurmy4uqg6w" path="res://Audio/GunAudio/1911-reload-6248.mp3" id="3_0x1ep"]
+[ext_resource type="AudioStream" uid="uid://smy4qri3bkw6" path="res://Audio/Shockwave/fierce-human-roar-250239.mp3" id="4_uukhq"]
+[ext_resource type="AudioStream" uid="uid://dt8kl2v2a88ch" path="res://Audio/Shockwave/human-roar-1-39402.mp3" id="5_nh2do"]
+[ext_resource type="AudioStream" uid="uid://d2u6445qha6ay" path="res://Audio/Shockwave/human-roar-2-39403.mp3" id="6_es10o"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_0x1ep"]
 random_pitch = 1.2
@@ -13,6 +16,13 @@ stream_0/stream = ExtResource("2_u5vrn")
 random_pitch = 1.2
 streams_count = 1
 stream_0/stream = ExtResource("3_0x1ep")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_e1l7l"]
+random_pitch = 1.1
+streams_count = 3
+stream_0/stream = ExtResource("4_uukhq")
+stream_1/stream = ExtResource("5_nh2do")
+stream_2/stream = ExtResource("6_es10o")
 
 [node name="SoundManager" type="Node"]
 script = ExtResource("1_jerlu")
@@ -30,3 +40,9 @@ bus = &"SFX"
 [node name="Reload" type="AudioStreamPlayer" parent="Game/Gun"]
 stream = SubResource("AudioStreamRandomizer_7v15h")
 bus = &"SFX"
+
+[node name="Shockwave" type="Node" parent="Game"]
+
+[node name="ShockwaveRoar" type="AudioStreamPlayer" parent="Game/Shockwave"]
+stream = SubResource("AudioStreamRandomizer_e1l7l")
+bus = &"ShockwaveRoar"
