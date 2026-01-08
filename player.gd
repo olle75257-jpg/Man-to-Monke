@@ -242,7 +242,7 @@ func shoot_volley_arrows():
 	var bullet = bullet_scene.instantiate() as Projecitle
 	
 	bullet.global_position = marker_2d.global_position
-	bullet.damage = era_data.projectile_damage
+	bullet.damage = 2
 	bullet.speed = era_data.projectile_speed
 	bullet.pierce_value = 1
 	bullet.spread_degrees = 30
