@@ -31,12 +31,12 @@ func _ready() -> void:
 	
 	z_velocity = jump_force
 	
-	rotation = velocity.angle()
 
 func _physics_process(delta: float) -> void:
 	if is_on_ground:
 		return
 
+	rotation += velocity.angle() 
 	var current_speed = velocity.length()
 	current_speed = max(0, current_speed - friction * delta)
 	velocity = velocity.normalized() * current_speed

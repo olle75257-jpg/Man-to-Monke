@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://wsj0dhepl8ie"]
 
 [ext_resource type="Script" uid="uid://dyq3lfq8icml6" path="res://GameObjects/Projectiles/Grenade/grenade.gd" id="1_pqnho"]
-[ext_resource type="Texture2D" uid="uid://cc4o02gdrewg6" path="res://Assets/Particles/blast_particle.png" id="2_pqnho"]
+[ext_resource type="Texture2D" uid="uid://s3sg17oqpsgn" path="res://Assets/Projectiles/grenade_projectile.png" id="2_pqnho"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pqnho"]
 radius = 186.60385
