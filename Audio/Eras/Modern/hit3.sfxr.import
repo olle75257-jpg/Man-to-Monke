@@ -1,0 +1,17 @@
+[remap]
+
+importer="com.timothyqiu.gdfxr.importer"
+type="AudioStreamWAV"
+uid="uid://6ililelgt1cf"
+path="res://.godot/imported/hit3.sfxr-d1cd058a5c34a3e0a01f8e2cf86a696c.sample"
+
+[deps]
+
+source_file="res://Audio/Eras/Modern/hit3.sfxr"
+dest_files=["res://.godot/imported/hit3.sfxr-d1cd058a5c34a3e0a01f8e2cf86a696c.sample"]
+
+[params]
+
+loop=false
+bit_depth=0
+sample_rate=0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://bq3iuwebjem4o"]
+[gd_scene load_steps=36 format=3 uid="uid://bq3iuwebjem4o"]
 
 [ext_resource type="Script" uid="uid://b6seibtksub8x" path="res://Autoloads/sound_manager.gd" id="1_jerlu"]
 [ext_resource type="AudioStream" uid="uid://csqg7r0ln03v7" path="res://Audio/GunAudio/Cannon shots 7.ogg" id="2_u5vrn"]
@@ -17,7 +17,10 @@
 [ext_resource type="AudioStream" uid="uid://dem41u8tyaltj" path="res://Audio/Eras/Modern/sharp-punch-soundbible.mp3" id="11_u7lpo"]
 [ext_resource type="AudioStream" uid="uid://wv56pelsh5od" path="res://Audio/Eras/Medieval/KnightHit/clink3.wav" id="11_yndwn"]
 [ext_resource type="AudioStream" uid="uid://cwnek4kav6e22" path="res://Audio/Eras/Medieval/KnightHit/high-clank-86142.mp3" id="12_4hpuk"]
+[ext_resource type="AudioStream" uid="uid://jqwpfdeminbn" path="res://Audio/Eras/Modern/hit1.sfxr" id="12_u7lpo"]
+[ext_resource type="AudioStream" uid="uid://v521g13befqm" path="res://Audio/Eras/Modern/hit2.sfxr" id="13_8dgw6"]
 [ext_resource type="AudioStream" uid="uid://cesljxksgmhmd" path="res://Audio/Eras/Medieval/KnightHit/thud2.wav" id="13_jviym"]
+[ext_resource type="AudioStream" uid="uid://6ililelgt1cf" path="res://Audio/Eras/Modern/hit3.sfxr" id="14_4c5u6"]
 [ext_resource type="AudioStream" uid="uid://w3qim0v0rud6" path="res://Audio/Eras/Medieval/KnightHit/thud3.wav" id="14_iqgph"]
 [ext_resource type="AudioStream" uid="uid://bhug1r5g70bom" path="res://Audio/Eras/StoneAge/CaveManHit/ouch-oof-hurt-sound-effect-262616.mp3" id="15_4hpuk"]
 [ext_resource type="AudioStream" uid="uid://cbfok8wbxwm75" path="res://Audio/Eras/StoneAge/424911-impactshort78.wav" id="15_jviym"]
@@ -45,7 +48,7 @@ stream_2/stream = ExtResource("6_es10o")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_u7lpo"]
 random_pitch = 1.3
-streams_count = 5
+streams_count = 8
 stream_0/stream = ExtResource("7_rjude")
 stream_0/weight = 0.2
 stream_1/stream = ExtResource("8_101qo")
@@ -56,6 +59,9 @@ stream_3/stream = ExtResource("10_4p55r")
 stream_3/weight = 0.1
 stream_4/stream = ExtResource("11_u7lpo")
 stream_4/weight = 0.6
+stream_5/stream = ExtResource("12_u7lpo")
+stream_6/stream = ExtResource("13_8dgw6")
+stream_7/stream = ExtResource("14_4c5u6")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_mywe5"]
 random_pitch = 1.1
