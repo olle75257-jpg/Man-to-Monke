@@ -20,13 +20,16 @@ var player_in_range: Node = null
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var sprite: Sprite2D = $Sprite2D
+@onready var enemy_animation_player: AnimationPlayer = $EnemyAnimationPlayer
 
 const DAMAGE_NUMBERS = preload("uid://dsvh4p886swh6")
 var in_cutscene = false
 
 signal enemy_killed
+var player
 
 func _ready() -> void:
+	player = get_tree().get_first_node_in_group("player")
 	if era_data:
 		apply_enemy_data(era_data)
 	else:
@@ -65,11 +68,15 @@ func _physics_process(delta: float) -> void:
 		player_in_range.apply_hit(dir, contact_damage, contact_knockback)
 		attack_timer = attack_cooldown
 
-	var player = get_tree().get_first_node_in_group("player")
 
 	if player != null:
+		enemy_animation_player.play("walk")
 		var dir = (player.global_position - global_position).normalized()
 		velocity = dir * move_speed
+		if velocity.x > 0:
+			sprite.flip_h = false 
+		elif velocity.x < 0:
+			sprite.flip_h = true  
 	else:
 		velocity = Vector2.ZERO
 
@@ -167,7 +174,8 @@ func die():
 	queue_free()
 
 func spawn_particles(SCENE: PackedScene, pos: Vector2, normal: Vector2) -> void:
-	var instance = SCENE.instantiate()
-	get_tree().get_current_scene().add_child(instance)
-	instance.global_position = pos
-	instance.rotation = normal.angle()
+	if SCENE != null:
+		var instance = SCENE.instantiate()
+		get_tree().get_current_scene().add_child(instance)
+		instance.global_position = pos
+		instance.rotation = normal.angle()

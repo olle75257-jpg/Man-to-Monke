@@ -5,7 +5,7 @@
 [ext_resource type="TileSet" uid="uid://duli60k1tchtm" path="res://Assets/tilemap/modern/modern.tres" id="2_l3707"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6a0e3"]
-size = Vector2(52, 129)
+size = Vector2(40, 106)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_l3707"]
 radius = 20.09975
@@ -154,7 +154,7 @@ shape = SubResource("RectangleShape2D_6a0e3")
 debug_color = Color(0.021936273, 0.70196074, 0, 0.41960785)
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="ChairShapes" index="4"]
-position = Vector2(4709, 3559)
+position = Vector2(4713, 3568)
 shape = SubResource("RectangleShape2D_6a0e3")
 debug_color = Color(0.021936273, 0.70196074, 0, 0.41960785)
 
@@ -181,27 +181,37 @@ position = Vector2(3751, 3270)
 shape = SubResource("CircleShape2D_l3707")
 debug_color = Color(0.70196074, 0, 0.31259188, 0.41960785)
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="LampShapes" index="2"]
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="LampShapes" index="2"]
+position = Vector2(3369, 3390)
+shape = SubResource("CircleShape2D_l3707")
+debug_color = Color(0.70196074, 0, 0.31259188, 0.41960785)
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="LampShapes" index="3"]
+position = Vector2(3369, 3772)
+shape = SubResource("CircleShape2D_l3707")
+debug_color = Color(0.70196074, 0, 0.31259188, 0.41960785)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="LampShapes" index="4"]
 position = Vector2(3371, 2234)
 shape = SubResource("CircleShape2D_l3707")
 debug_color = Color(0.70196074, 0, 0.31259188, 0.41960785)
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="LampShapes" index="3"]
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="LampShapes" index="5"]
 position = Vector2(4648, 2303)
 shape = SubResource("CircleShape2D_l3707")
 debug_color = Color(0.70196074, 0, 0.31259188, 0.41960785)
 
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="LampShapes" index="4"]
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="LampShapes" index="6"]
 position = Vector2(4648, 2742)
 shape = SubResource("CircleShape2D_l3707")
 debug_color = Color(0.70196074, 0, 0.31259188, 0.41960785)
 
-[node name="CollisionShape2D5" type="CollisionShape2D" parent="LampShapes" index="5"]
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="LampShapes" index="7"]
 position = Vector2(4653, 3330)
 shape = SubResource("CircleShape2D_l3707")
 debug_color = Color(0.70196074, 0, 0.31259188, 0.41960785)
 
-[node name="CollisionShape2D6" type="CollisionShape2D" parent="LampShapes" index="6"]
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="LampShapes" index="8"]
 position = Vector2(4648, 3840)
 shape = SubResource("CircleShape2D_l3707")
 debug_color = Color(0.70196074, 0, 0.31259188, 0.41960785)

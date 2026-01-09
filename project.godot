@@ -32,6 +32,7 @@ mouse_cursor/custom_image_hotspot=Vector2(16, 16)
 [file_customization]
 
 folder_colors={
+"res://Assets/enemy/": "red",
 "res://Assets/tilemap/": "teal",
 "res://Audio/": "orange",
 "res://Autoloads/": "purple",
