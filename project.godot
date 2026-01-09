@@ -11,8 +11,9 @@ config_version=5
 [application]
 
 config/name="Return to Monke"
-run/main_scene="uid://36ypeorcd30y"
+run/main_scene="uid://cyqi3cnihp1by"
 config/features=PackedStringArray("4.5", "GL Compatibility")
+boot_splash/image="uid://bumpu30yihpvw"
 config/icon="uid://d1l67d88j86uw"
 
 [autoload]

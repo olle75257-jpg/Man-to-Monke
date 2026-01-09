@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://bq3iuwebjem4o"]
+[gd_scene load_steps=44 format=3 uid="uid://bq3iuwebjem4o"]
 
 [ext_resource type="Script" uid="uid://b6seibtksub8x" path="res://Autoloads/sound_manager.gd" id="1_jerlu"]
 [ext_resource type="AudioStream" uid="uid://csqg7r0ln03v7" path="res://Audio/GunAudio/Cannon shots 7.ogg" id="2_u5vrn"]
@@ -101,6 +101,16 @@ random_pitch = 1.1
 streams_count = 1
 stream_0/stream = ExtResource("15_jviym")
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_8gj4l"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("11_u7lpo")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_v2bb7"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("8_101qo")
+
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_101qo"]
 random_pitch = 1.1
 streams_count = 5
@@ -184,8 +194,10 @@ bus = &"SFX"
 [node name="PlayerSfx" type="Node" parent="Game"]
 
 [node name="PlayerHitModern" type="AudioStreamPlayer" parent="Game/PlayerSfx"]
+stream = SubResource("AudioStreamRandomizer_8gj4l")
 
 [node name="PlayerHitMedieval" type="AudioStreamPlayer" parent="Game/PlayerSfx"]
+stream = SubResource("AudioStreamRandomizer_v2bb7")
 max_polyphony = 5
 
 [node name="PlayerHitStoneAge" type="AudioStreamPlayer" parent="Game/PlayerSfx"]

@@ -255,6 +255,7 @@ func shoot_volley_arrows():
 
 func apply_hit(hit_dir: Vector2, damage: int, force: float) -> void:
 	Globals.camera.shake(0.25, 25, 15)
+	SoundManager.play_playerHit()
 	red_vignette_flash.play("red_vignette_flash")
 	spawn_particles(explosion_particles, self.position, Vector2.ZERO)
 	health -= damage
