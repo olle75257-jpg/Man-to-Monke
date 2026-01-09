@@ -78,4 +78,6 @@ initial_velocity_min = 400.0
 initial_velocity_max = 500.0
 angular_velocity_min = -900.0
 angular_velocity_max = 900.0
+scale_amount_min = 3.0
+scale_amount_max = 3.0
 scale_amount_curve = SubResource("Curve_wqq1k")
