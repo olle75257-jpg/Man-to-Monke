@@ -1,15 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://db13gohluc1jr"]
+[gd_scene load_steps=17 format=3 uid="uid://db13gohluc1jr"]
 
 [ext_resource type="Script" uid="uid://dld8y81fldu2o" path="res://GameObjects/Enemies/enemy.gd" id="1_7k104"]
-[ext_resource type="Script" uid="uid://bx24qdk0v7frn" path="res://Resources/enemy_type.gd" id="2_84pld"]
+[ext_resource type="Resource" uid="uid://8uth4077pu53" path="res://Resources/enemy_types/Modern/modern_enemy.tres" id="2_xar4c"]
 [ext_resource type="Shader" uid="uid://cde276nijeq3g" path="res://Shaders/hitFlash.gdshader" id="2_yeha8"]
 [ext_resource type="Texture2D" uid="uid://qpmwddky7fsh" path="res://Assets/enemy/Enemy-Modern.png" id="3_xar4c"]
 [ext_resource type="PackedScene" uid="uid://cnsgca75mwb8s" path="res://Particles/death_component.tscn" id="5_xar4c"]
-
-[sub_resource type="Resource" id="Resource_lutms"]
-script = ExtResource("2_84pld")
-sprite = ExtResource("3_xar4c")
-metadata/_custom_type_script = "uid://bx24qdk0v7frn"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7k104"]
 size = Vector2(16, 22)
@@ -69,6 +64,45 @@ shader = ExtResource("2_yeha8")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 shader_parameter/flash_value = 0.0
 
+[sub_resource type="Animation" id="Animation_kyf7x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 8.333334)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_xar4c"]
 resource_name = "walk"
 length = 0.4
@@ -111,45 +145,6 @@ tracks/2/keys = {
 "values": [Vector2(1, 1), Vector2(1, 1), Vector2(1.5, 0.8), Vector2(0.9, 1.1)]
 }
 
-[sub_resource type="Animation" id="Animation_kyf7x"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 8.333334)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kyf7x"]
 _data = {
 &"RESET": SubResource("Animation_kyf7x"),
@@ -161,7 +156,7 @@ scale = Vector2(3, 3)
 collision_layer = 2
 collision_mask = 7
 script = ExtResource("1_7k104")
-era_data = SubResource("Resource_lutms")
+era_data = ExtResource("2_xar4c")
 
 [node name="Area2D" type="Area2D" parent="."]
 

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="enemy_type" load_steps=3 format=3 uid="uid://cn54rsmg5yxun"]
+
+[ext_resource type="Script" uid="uid://bx24qdk0v7frn" path="res://Resources/enemy_type.gd" id="1_p507u"]
+[ext_resource type="Texture2D" uid="uid://bgv352cffo13d" path="res://Assets/enemy/Enemy-Medieval.png" id="2_8ldf8"]
+
+[resource]
+script = ExtResource("1_p507u")
+era = "Medieval"
+sprite = ExtResource("2_8ldf8")
+metadata/_custom_type_script = "uid://bx24qdk0v7frn"

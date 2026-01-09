@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=4 uid="uid://36ypeorcd30y"]
+[gd_scene load_steps=13 format=4 uid="uid://36ypeorcd30y"]
 
 [ext_resource type="PackedScene" uid="uid://jj83a527keb2" path="res://Scenes/game.tscn" id="1_a77c7"]
 [ext_resource type="Resource" uid="uid://bueln2kq24j2i" path="res://Resources/player_resources/modern_guy.tres" id="2_4020w"]
 [ext_resource type="TileSet" uid="uid://duli60k1tchtm" path="res://Assets/tilemap/modern/modern.tres" id="2_l3707"]
+[ext_resource type="Texture2D" uid="uid://5tsbs17h8lmg" path="res://Assets/UI/AmmoIcons/bullet-icon.png" id="3_3x3he"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6a0e3"]
 size = Vector2(40, 106)
@@ -123,6 +124,9 @@ scale = Vector2(2, 2)
 tile_map_data = PackedByteArray("AAAfAAIACQAFAAYAAAAZAAMACQAEAAcAAAALAAMACQAEAAgAAAAQAAQACQABAAIAAAAdAAQACQABAAIAAAAiAAMACQABAAIAAAANAA0ACQABAAIAABAYAA8ACQABAAIAAAAYABgACQABAAIAAAAiAB0ACQABAAIAABANACIACQABAAIAAAAjAAgACQABAAIAABAOAAMACQAFAAAAAAAVAAMACQAEAAAAAAAcAAMACQAGAAAAAAAjAAMACQAEAAAAAAAmAAQACQAFAAAAAAAJABgACQADAAIAAAAJAAsACQADAAIAABAJACkACQADAAIAAAAZACcACQACAAIAAAAiACAACgALAAYAAAAiABgACgALAAYAAAAiAA8ACgALAAYAAAAiAAgACgALAAYAAAAOAAcACgAIAAYAAAAOABEACgAIAAYAAAAOABkACgAIAAYAAAAOAB8ACgAIAAYAAAAPABgACgAJAAYAAAAPAB4ACgAJAAYAAAAPABAACgAJAAYAAAAPAAYACgAJAAYAAAAhAAcACgAKAAYAAAAhAA4ACgAKAAYAAAAhABcACgAKAAYAAAAhAB8ACgAKAAYAAAAjABQACgAKAAoAAAAjAAsACgAKAAoAAAAjAB0ACgAKAAoAAAAMAB0ACgAJAAoAAAAMABUACgAJAAoAAAAMAA0ACgAJAAoAAAAMAAgACgAJAAoAAAAgAB4ACgACAAQAAAAUABgACgAGAAoAAAAUABYACgADAAsAAAA=")
 tile_set = ExtResource("2_l3707")
 metadata/_edit_lock_ = true
+
+[node name="reloadUI" parent="UserInterface" index="0"]
+sprite = ExtResource("3_3x3he")
 
 [node name="Ability" parent="UserInterface" index="3"]
 era_data = ExtResource("2_4020w")
@@ -270,3 +274,5 @@ shape = SubResource("RectangleShape2D_g4pq5")
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="ArenaWalls" index="3"]
 position = Vector2(3950.75, 4110)
 shape = SubResource("RectangleShape2D_vgryb")
+
+[connection signal="summon_portal" from="EnemySpawnerManager" to="." method="_on_enemy_spawner_manager_summon_portal"]

@@ -28,6 +28,8 @@ var in_cutscene = false
 signal enemy_killed
 var player
 
+var is_dead: bool = false
+
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player")
 	if era_data:
@@ -100,9 +102,9 @@ func drop_in(delay: float = 0):
 	shadow.modulate.a = 0.1
 	shadow.pivot_offset = shadow.size / 2
 	
-	set_collision_layer_value(1, false)
-	set_collision_mask_value(1, false)
-	collision_shape_2d.disabled = true
+	call_deferred("set_collision_layer_value", 1, false)
+	call_deferred("set_collision_mask_value", 1, false)
+	collision_shape_2d.set_deferred("disabled", true)
 	
 	var tween = create_tween().set_parallel(true)
 	tween.tween_property(sprite, "position:y", 0, 2.5).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_IN).set_delay(delay)
@@ -128,6 +130,9 @@ func drop_in(delay: float = 0):
 
 
 func apply_hit(hit_dir: Vector2, damage: int, force: float) -> void:
+	if is_dead:
+		return
+	
 	health -= damage
 	var damage_text = DAMAGE_NUMBERS.instantiate() as Node2D
 	get_tree().current_scene.add_child(damage_text)
@@ -169,8 +174,13 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 		player_in_range = null
 
 func die():
+	if is_dead:
+		return
+	is_dead = true
+	collision_shape_2d.set_deferred("disabled", true)
 	spawn_particles(explosion_particles, self.position, Vector2.ZERO)
 	enemy_killed.emit()
+	Signals.enemy_died.emit()
 	queue_free()
 
 func spawn_particles(SCENE: PackedScene, pos: Vector2, normal: Vector2) -> void:

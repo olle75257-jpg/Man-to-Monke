@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://cgcm1cgpswbhu"]
+
+[ext_resource type="PackedScene" uid="uid://db13gohluc1jr" path="res://GameObjects/Enemies/enemy.tscn" id="1_yd3ke"]
+[ext_resource type="Resource" uid="uid://cn54rsmg5yxun" path="res://Resources/enemy_types/Medieval_Enemy.tres" id="2_cdlrd"]
+[ext_resource type="Texture2D" uid="uid://bgv352cffo13d" path="res://Assets/enemy/Enemy-Medieval.png" id="2_qwq8j"]
+
+[node name="EnemyMedieval" instance=ExtResource("1_yd3ke")]
+era_data = ExtResource("2_cdlrd")
+
+[node name="Sprite2D" parent="." index="5"]
+texture = ExtResource("2_qwq8j")

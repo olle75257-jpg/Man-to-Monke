@@ -36,6 +36,7 @@ folder_colors={
 "res://Assets/tilemap/": "teal",
 "res://Audio/": "orange",
 "res://Autoloads/": "purple",
+"res://Resources/enemy_types/": "red",
 "res://UserInterface/": "blue"
 }
 
