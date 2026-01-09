@@ -1,6 +1,6 @@
 extends Node
 
-const SPAWN_RADIUS = 400
+const SPAWN_RADIUS = 700
 
 @export var basic_enemy_scene: PackedScene 
 

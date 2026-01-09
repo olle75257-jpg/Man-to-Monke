@@ -30,3 +30,5 @@ func _on_body_entered(body: Node) -> void:
 			body.apply_hit(direction, damage, knockback_force)
 			if pierce_value == 0:
 				queue_free()
+	if body is StaticBody2D:
+		queue_free()
