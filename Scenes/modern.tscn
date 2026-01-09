@@ -12,11 +12,11 @@ radius = 20.09975
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6a0e3"]
 radius = 29.0
-height = 120.0
+height = 100.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g2yje"]
 radius = 29.0
-height = 120.0
+height = 106.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l3707"]
 size = Vector2(245, 2583)
