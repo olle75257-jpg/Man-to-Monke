@@ -7,13 +7,17 @@ extends Node
 @onready var player_hit_stone_age: AudioStreamPlayer = $Game/PlayerSfx/PlayerHitStoneAge
 @onready var rock_reload: AudioStreamPlayer = $Game/Era/StoneAge/RockReload
 @onready var business_guy_hit: AudioStreamPlayer = $Game/Era/Modern/BusinessGuyHit
+@onready var grenade_explode: AudioStreamPlayer = $Game/Era/Modern/GrenadeExplode
+@onready var grenade_fire: AudioStreamPlayer = $Game/Era/Modern/GrenadeFire
+@onready var arrow_shoot: AudioStreamPlayer = $Game/Era/Medieval/ArrowShoot
+@onready var bow_reload: AudioStreamPlayer = $Game/Era/Medieval/BowReload
 
 func play_shootProjectile():
 	match Globals.era:
 		"Modern":
 			gun_shot.play()
 		"Medieval":
-			pass
+			arrow_shoot.play()
 		"StoneAge":
 			pass
 		_:
@@ -24,7 +28,7 @@ func play_reload():
 		"Modern":
 			reload.play()
 		"Medieval":
-			pass
+			bow_reload.play()
 		"StoneAge":
 			rock_reload.play()
 		_:
@@ -33,6 +37,12 @@ func play_reload():
 
 func play_ShockwaveRoar():
 	shockwave_roar.play()
+
+func play_fireGrenade():
+	grenade_fire.play()
+
+func play_grenadeExplode():
+	grenade_explode.play()
 
 func play_enemyDamage():
 	match Globals.era:

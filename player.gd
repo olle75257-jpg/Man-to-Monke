@@ -223,6 +223,8 @@ func shoot() -> void:
 func shoot_grenade():
 	if grenade_tscn == null:
 		return 
+	
+	SoundManager.play_fireGrenade()
 	var grenade = grenade_tscn.instantiate() as Node2D
 	
 	var mouse_pos = get_global_mouse_position()

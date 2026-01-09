@@ -63,6 +63,7 @@ func land():
 		explode()
 
 func explode():
+	SoundManager.play_grenadeExplode()
 	if Globals.camera:
 		Globals.camera.shake(0.3, 20, 15)
 	spawn_particles(grenade_explosion_tscn, self.position, Vector2.ZERO)
