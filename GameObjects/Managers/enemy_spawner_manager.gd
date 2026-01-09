@@ -5,9 +5,11 @@ const SPAWN_RADIUS = 500
 @export var basic_enemy_scene: PackedScene 
 
 var enemy_count = 0
+var spawn_interval = 0.5
 var wave = 1
 
 func _ready() -> void:
+	print("Current era: ", Globals.era)
 	Signals.enemy_died.connect(decrease_enemy_count)
 	spawn_next_wave()
 
@@ -30,18 +32,43 @@ func check_enemy_count():
 			spawn_next_wave()
 
 func spawn_next_wave():
-	match wave:
-		1, 2:
-			enemy_count = 5
-		3:
-			enemy_count = 10
-		4, 5:
-			enemy_count = 15
-	spawn_enemies(enemy_count)
+	#print("Current era", Globals.era)
+	match Globals.era:
+		"Modern":
+			match wave:
+				1, 2:
+					enemy_count = 5
+				3:
+					enemy_count = 10
+				4, 5:
+					enemy_count = 15
+		"Medieval":
+			match wave:
+				1:
+					enemy_count = 12
+					spawn_interval = 1.0
+				2:
+					enemy_count = 15
+					spawn_interval = 0.01
+				3:
+					enemy_count = 15
+					spawn_interval = 2
+				4, 5:
+					enemy_count = 15
+					spawn_interval = 1.5
+		_:
+			match wave:
+				1, 2:
+					enemy_count = 5
+				3:
+					enemy_count = 10
+				4, 5:
+					enemy_count = 15
+	spawn_enemies(enemy_count, spawn_interval)
 
 
 
-func spawn_enemies(enemy_amount: int):
+func spawn_enemies(enemy_amount: int, spawn_interval: float):
 	for i in range(enemy_amount):
 		var player = get_tree().get_first_node_in_group("player") as Node2D
 		if player == null:

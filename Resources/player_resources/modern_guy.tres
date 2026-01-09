@@ -8,7 +8,7 @@
 
 [resource]
 script = ExtResource("1_56ac8")
-projectile_damage = 5
+projectile_damage = 70
 bullet_scene = ExtResource("1_dtl3w")
 weapon = ExtResource("4_64jgx")
 sprite = ExtResource("3_dtl3w")

@@ -74,7 +74,7 @@ func explode():
 
 func _on_body_entered(body: Node) -> void:
 	if body is Enemy:
-		body.apply_hit( (body.global_position - global_position).normalized() , 10, 3000)
+		body.apply_hit( (body.global_position - global_position).normalized() , 100, 3000)
 
 func spawn_particles(SCENE: PackedScene, pos: Vector2, normal: Vector2) -> void:
 	var instance = SCENE.instantiate()

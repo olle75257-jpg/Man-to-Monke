@@ -5,5 +5,8 @@
 
 [resource]
 script = ExtResource("1_b0j24")
+era = "Caveman"
+max_health = 100
+move_speed = 155.0
 sprite = ExtResource("2_n41px")
 metadata/_custom_type_script = "uid://bx24qdk0v7frn"

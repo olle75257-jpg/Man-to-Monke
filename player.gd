@@ -57,6 +57,7 @@ var shockwave: ColorRect
 @export var grenade_tscn: PackedScene = preload("uid://wsj0dhepl8ie")
 
 func _ready() -> void:
+	Globals.era = era_data.era
 	shockwave = get_node_or_null("%Shockwave")
 	
 	if shockwave_area:
@@ -244,9 +245,9 @@ func shoot_volley_arrows():
 	var bullet = bullet_scene.instantiate() as Projecitle
 	
 	bullet.global_position = marker_2d.global_position
-	bullet.damage = 2
+	bullet.damage = 40
 	bullet.speed = era_data.projectile_speed
-	bullet.pierce_value = 1
+	bullet.pierce_value = 2
 	bullet.spread_degrees = 30
 	bullet.knockback_force = era_data.projectile_knockback_force
 	
@@ -306,4 +307,4 @@ func _on_ability_cooldown_timer_timeout() -> void:
 
 func _on_shockwave_area_body_entered(body: Node2D) -> void:
 	if body is Enemy and body.has_method("apply_hit"):
-		body.apply_hit((body.global_position - self.global_position).normalized(), 1, 4500)
+		body.apply_hit((body.global_position - self.global_position).normalized(), 40, 4500)

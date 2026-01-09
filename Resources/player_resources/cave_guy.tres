@@ -10,6 +10,7 @@
 script = ExtResource("1_i53al")
 era = "StoneAge"
 move_speed = 150.0
+projectile_damage = 20
 projectile_speed = 500.0
 projectile_knockback_force = 3000.0
 projectile_inaccuracy = 20.0

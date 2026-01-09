@@ -5,5 +5,7 @@
 
 [resource]
 script = ExtResource("1_4w1kj")
+max_health = 100
+move_speed = 150.0
 sprite = ExtResource("2_x6ttw")
 metadata/_custom_type_script = "uid://bx24qdk0v7frn"

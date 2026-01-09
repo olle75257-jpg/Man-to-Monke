@@ -107,7 +107,7 @@ func drop_in(delay: float = 0):
 	collision_shape_2d.set_deferred("disabled", true)
 	
 	var tween = create_tween().set_parallel(true)
-	tween.tween_property(sprite, "position:y", 0, 2.5).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_IN).set_delay(delay)
+	tween.tween_property(sprite, "position:y", 8.333, 2.5).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_IN).set_delay(delay)
 	tween.tween_property(sprite, "modulate:a", 1.0, 0.2).set_delay(delay)
 	
 	tween.tween_property(sprite, "scale", Vector2(0.7, 1.4), 0.4).set_delay(delay)
@@ -133,11 +133,22 @@ func apply_hit(hit_dir: Vector2, damage: int, force: float) -> void:
 	if is_dead:
 		return
 	
-	health -= damage
+	var is_crit: bool = randf() <= 0.20
+	var final_damage: int = damage
+	
+	if is_crit:
+		final_damage = damage * 2
+	
+	health -= final_damage
 	var damage_text = DAMAGE_NUMBERS.instantiate() as Node2D
 	get_tree().current_scene.add_child(damage_text)
 	damage_text.global_position = global_position + Vector2(randi_range(-20, 20), randi_range(-90, -100))
-	damage_text.start(str(damage))
+	var text_to_show = str(final_damage)
+	if is_crit:
+		text_to_show += "!"
+		damage_text.font_color = Color(1.0, 0.68, 0.0, 1.0)
+	
+	damage_text.start(text_to_show)
 	SoundManager.play_enemyDamage()
 	Globals.camera.shake(0.25, 10, 15)
 	
