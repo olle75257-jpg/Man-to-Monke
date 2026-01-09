@@ -139,6 +139,7 @@ func apply_hit(hit_dir: Vector2, damage: int, force: float) -> void:
 	damage_text.global_position = global_position + Vector2(randi_range(-20, 20), randi_range(-90, -100))
 	damage_text.start(str(damage))
 	SoundManager.play_enemyDamage()
+	Globals.camera.shake(0.25, 10, 15)
 	
 	if health <= 0:
 		Globals.kills += 1
