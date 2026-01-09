@@ -206,7 +206,7 @@ func shoot() -> void:
 	Globals.camera.shake(0.25, 10, 15)
 	ammo_in_mag -= 1
 	ammo_changed.emit()
-	SoundManager.play_gunShot()
+	SoundManager.play_shootProjectile()
 	var bullet = bullet_scene.instantiate() as Projecitle
 	
 	bullet.global_position = marker_2d.global_position
@@ -238,7 +238,7 @@ func shoot_volley_arrows():
 		return
 	
 	Globals.camera.shake(0.25, 10, 15)
-	SoundManager.play_gunShot()
+	SoundManager.play_shootProjectile()
 	var bullet = bullet_scene.instantiate() as Projecitle
 	
 	bullet.global_position = marker_2d.global_position

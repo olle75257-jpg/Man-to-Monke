@@ -138,6 +138,7 @@ func apply_hit(hit_dir: Vector2, damage: int, force: float) -> void:
 	get_tree().current_scene.add_child(damage_text)
 	damage_text.global_position = global_position + Vector2(randi_range(-20, 20), randi_range(-90, -100))
 	damage_text.start(str(damage))
+	SoundManager.play_enemyDamage()
 	
 	if health <= 0:
 		Globals.kills += 1

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://c4h4y5ns058j3"]
+[gd_scene load_steps=9 format=4 uid="uid://c4h4y5ns058j3"]
 
 [ext_resource type="PackedScene" uid="uid://jj83a527keb2" path="res://Scenes/game.tscn" id="1_nqidj"]
 [ext_resource type="TileSet" uid="uid://s6ql8hy353u4" path="res://Assets/tilemap/stone_age/stone_age_tilemap.tres" id="2_6whch"]
@@ -6,6 +6,7 @@
 [ext_resource type="Resource" uid="uid://dycyh7ydj6lxv" path="res://Resources/player_resources/cave_guy.tres" id="4_gwfei"]
 [ext_resource type="Texture2D" uid="uid://cfuvrxi862g3d" path="res://Assets/Projectiles/stoneAge/rock.png" id="5_htndq"]
 [ext_resource type="PackedScene" uid="uid://n0kjpkomys1o" path="res://GameObjects/ShockwaveAbility/shockwave.tscn" id="5_pllul"]
+[ext_resource type="PackedScene" uid="uid://b2tmukj5vts2v" path="res://GameObjects/Enemies/enemy_cave_guy.tscn" id="7_l4veh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pllul"]
 radius = 317.40353
@@ -112,6 +113,9 @@ era_data = ExtResource("4_gwfei")
 
 [node name="Shockwave" parent="UserInterface" index="5" instance=ExtResource("5_pllul")]
 unique_name_in_owner = true
+
+[node name="EnemySpawnerManager" parent="." index="5"]
+basic_enemy_scene = ExtResource("7_l4veh")
 
 [node name="PortalSpawnPosition" parent="." index="6"]
 position = Vector2(3395, 2695)

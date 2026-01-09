@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bq3iuwebjem4o"]
+[gd_scene load_steps=33 format=3 uid="uid://bq3iuwebjem4o"]
 
 [ext_resource type="Script" uid="uid://b6seibtksub8x" path="res://Autoloads/sound_manager.gd" id="1_jerlu"]
 [ext_resource type="AudioStream" uid="uid://csqg7r0ln03v7" path="res://Audio/GunAudio/Cannon shots 7.ogg" id="2_u5vrn"]
@@ -6,6 +6,25 @@
 [ext_resource type="AudioStream" uid="uid://smy4qri3bkw6" path="res://Audio/Shockwave/fierce-human-roar-250239.mp3" id="4_uukhq"]
 [ext_resource type="AudioStream" uid="uid://dt8kl2v2a88ch" path="res://Audio/Shockwave/human-roar-1-39402.mp3" id="5_nh2do"]
 [ext_resource type="AudioStream" uid="uid://d2u6445qha6ay" path="res://Audio/Shockwave/human-roar-2-39403.mp3" id="6_es10o"]
+[ext_resource type="AudioStream" uid="uid://de0acnpyndjvn" path="res://Audio/Eras/Medieval/war-horn-sfx-319881.mp3" id="7_mwueb"]
+[ext_resource type="AudioStream" uid="uid://bpinclyy8nbrc" path="res://Audio/Eras/Modern/ouch-online-audio-converter.mp3" id="7_rjude"]
+[ext_resource type="AudioStream" uid="uid://bacxrxeene76a" path="res://Audio/Eras/Medieval/KnightHit/bing1.wav" id="8_7op8c"]
+[ext_resource type="AudioStream" uid="uid://sldalgqysdun" path="res://Audio/Eras/Modern/ow2.mp3" id="8_101qo"]
+[ext_resource type="AudioStream" uid="uid://c7c4p5xp72t3p" path="res://Audio/Eras/Modern/ow_GLxM2lJ.mp3" id="9_4p55r"]
+[ext_resource type="AudioStream" uid="uid://bhipus1hvtbg3" path="res://Audio/Eras/Medieval/KnightHit/clink1.wav" id="9_hl8ko"]
+[ext_resource type="AudioStream" uid="uid://c2wt76h5osidy" path="res://Audio/Eras/Modern/my-back-hurts-2.mp3" id="10_4p55r"]
+[ext_resource type="AudioStream" uid="uid://o4je15kkghr5" path="res://Audio/Eras/Medieval/KnightHit/clink2.wav" id="10_hhkfp"]
+[ext_resource type="AudioStream" uid="uid://dem41u8tyaltj" path="res://Audio/Eras/Modern/sharp-punch-soundbible.mp3" id="11_u7lpo"]
+[ext_resource type="AudioStream" uid="uid://wv56pelsh5od" path="res://Audio/Eras/Medieval/KnightHit/clink3.wav" id="11_yndwn"]
+[ext_resource type="AudioStream" uid="uid://cwnek4kav6e22" path="res://Audio/Eras/Medieval/KnightHit/high-clank-86142.mp3" id="12_4hpuk"]
+[ext_resource type="AudioStream" uid="uid://cesljxksgmhmd" path="res://Audio/Eras/Medieval/KnightHit/thud2.wav" id="13_jviym"]
+[ext_resource type="AudioStream" uid="uid://w3qim0v0rud6" path="res://Audio/Eras/Medieval/KnightHit/thud3.wav" id="14_iqgph"]
+[ext_resource type="AudioStream" uid="uid://bhug1r5g70bom" path="res://Audio/Eras/StoneAge/CaveManHit/ouch-oof-hurt-sound-effect-262616.mp3" id="15_4hpuk"]
+[ext_resource type="AudioStream" uid="uid://cbfok8wbxwm75" path="res://Audio/Eras/StoneAge/424911-impactshort78.wav" id="15_jviym"]
+[ext_resource type="AudioStream" uid="uid://b8axx82sx600t" path="res://Audio/Eras/StoneAge/CaveManHit/ouch-oof-hurt-sound-effect-262616_1.mp3" id="16_jviym"]
+[ext_resource type="AudioStream" uid="uid://dskjr6m5j50qh" path="res://Audio/Eras/StoneAge/CaveManHit/ouch-oof-hurt-sound-effect-262616_2.mp3" id="17_iqgph"]
+[ext_resource type="AudioStream" uid="uid://djf1qf3sesyas" path="res://Audio/Eras/StoneAge/CaveManHit/ouch-oof-hurt-sound-effect-262616_3.mp3" id="18_mywe5"]
+[ext_resource type="AudioStream" uid="uid://cqea3e4fl1r3a" path="res://Audio/Eras/StoneAge/CaveManHit/ouch-oof-hurt-sound-effect-262616_4.mp3" id="19_rjude"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_0x1ep"]
 random_pitch = 1.2
@@ -23,6 +42,45 @@ streams_count = 3
 stream_0/stream = ExtResource("4_uukhq")
 stream_1/stream = ExtResource("5_nh2do")
 stream_2/stream = ExtResource("6_es10o")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_u7lpo"]
+random_pitch = 1.3
+streams_count = 5
+stream_0/stream = ExtResource("7_rjude")
+stream_0/weight = 0.2
+stream_1/stream = ExtResource("8_101qo")
+stream_1/weight = 0.5
+stream_2/stream = ExtResource("9_4p55r")
+stream_2/weight = 0.5
+stream_3/stream = ExtResource("10_4p55r")
+stream_3/weight = 0.1
+stream_4/stream = ExtResource("11_u7lpo")
+stream_4/weight = 0.6
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_mywe5"]
+random_pitch = 1.1
+streams_count = 7
+stream_0/stream = ExtResource("8_7op8c")
+stream_1/stream = ExtResource("9_hl8ko")
+stream_2/stream = ExtResource("10_hhkfp")
+stream_3/stream = ExtResource("11_yndwn")
+stream_4/stream = ExtResource("12_4hpuk")
+stream_5/stream = ExtResource("13_jviym")
+stream_6/stream = ExtResource("14_iqgph")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_iqgph"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("15_jviym")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_101qo"]
+random_pitch = 1.1
+streams_count = 5
+stream_0/stream = ExtResource("15_4hpuk")
+stream_1/stream = ExtResource("16_jviym")
+stream_2/stream = ExtResource("17_iqgph")
+stream_3/stream = ExtResource("18_mywe5")
+stream_4/stream = ExtResource("19_rjude")
 
 [node name="SoundManager" type="Node"]
 script = ExtResource("1_jerlu")
@@ -46,3 +104,42 @@ bus = &"SFX"
 [node name="ShockwaveRoar" type="AudioStreamPlayer" parent="Game/Shockwave"]
 stream = SubResource("AudioStreamRandomizer_e1l7l")
 bus = &"ShockwaveRoar"
+
+[node name="Era" type="Node" parent="Game"]
+
+[node name="Modern" type="Node" parent="Game/Era"]
+
+[node name="BusinessGuyHit" type="AudioStreamPlayer" parent="Game/Era/Modern"]
+stream = SubResource("AudioStreamRandomizer_u7lpo")
+max_polyphony = 4
+
+[node name="Medieval" type="Node" parent="Game/Era"]
+
+[node name="WaveStart" type="AudioStreamPlayer" parent="Game/Era/Medieval"]
+stream = ExtResource("7_mwueb")
+bus = &"SFX"
+
+[node name="KnightHit" type="AudioStreamPlayer" parent="Game/Era/Medieval"]
+stream = SubResource("AudioStreamRandomizer_mywe5")
+bus = &"SFX"
+
+[node name="KnightDeath" type="AudioStreamPlayer" parent="Game/Era/Medieval"]
+
+[node name="StoneAge" type="Node" parent="Game/Era"]
+
+[node name="RockReload" type="AudioStreamPlayer" parent="Game/Era/StoneAge"]
+stream = SubResource("AudioStreamRandomizer_iqgph")
+volume_db = -14.637
+bus = &"SFX"
+
+[node name="PlayerSfx" type="Node" parent="Game"]
+
+[node name="PlayerHitModern" type="AudioStreamPlayer" parent="Game/PlayerSfx"]
+
+[node name="PlayerHitMedieval" type="AudioStreamPlayer" parent="Game/PlayerSfx"]
+max_polyphony = 5
+
+[node name="PlayerHitStoneAge" type="AudioStreamPlayer" parent="Game/PlayerSfx"]
+stream = SubResource("AudioStreamRandomizer_101qo")
+max_polyphony = 4
+bus = &"SFX"

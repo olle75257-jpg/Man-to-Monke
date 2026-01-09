@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2tmukj5vts2v"]
+
+[ext_resource type="PackedScene" uid="uid://db13gohluc1jr" path="res://GameObjects/Enemies/enemy.tscn" id="1_rgpyv"]
+[ext_resource type="Texture2D" uid="uid://3u3sbpqonc5h" path="res://Assets/enemy/Enemy-CaveMan.png" id="2_w63un"]
+
+[node name="EnemyCaveGuy" instance=ExtResource("1_rgpyv")]
+
+[node name="Sprite2D" parent="." index="5"]
+texture = ExtResource("2_w63un")

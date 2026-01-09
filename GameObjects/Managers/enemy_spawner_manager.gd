@@ -18,7 +18,7 @@ func decrease_enemy_count():
 	check_enemy_count()
 
 func check_enemy_count():
-	print("Enemy_count: ", enemy_count)
+	#print("Enemy_count: ", enemy_count)
 	
 	if enemy_count == 0:
 		wave += 1
