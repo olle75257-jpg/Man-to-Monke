@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://doxim378b31eq"]
+[gd_scene load_steps=18 format=3 uid="uid://doxim378b31eq"]
 
 [ext_resource type="Script" uid="uid://bdehlio6b4gwn" path="res://player.gd" id="1_ch4xb"]
 [ext_resource type="Resource" uid="uid://bueln2kq24j2i" path="res://Resources/player_resources/modern_guy.tres" id="2_r6y0m"]
@@ -180,10 +180,27 @@ tracks/2/keys = {
 "values": [Vector2(2, 2), Vector2(1.6, 2.2), Vector2(3, 1.4), Vector2(2, 2)]
 }
 
+[sub_resource type="Animation" id="Animation_rebso"]
+resource_name = "spin"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -6.283185307179586]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cn3ss"]
 _data = {
 &"RESET": SubResource("Animation_euhdf"),
 &"red_vignette_flash": SubResource("Animation_ctmp1"),
+&"spin": SubResource("Animation_rebso"),
 &"walk": SubResource("Animation_cn3ss")
 }
 
@@ -259,6 +276,9 @@ sprite = NodePath("../Gun")
 
 [node name="AbilityCooldownTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="SpeechBubblePos" type="Marker2D" parent="."]
+position = Vector2(23, -18)
 
 [connection signal="player_died" from="." to="DeathComponent" method="_on_player_player_died"]
 [connection signal="timeout" from="AbilityCooldownTimer" to="." method="_on_ability_cooldown_timer_timeout"]

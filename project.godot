@@ -26,9 +26,12 @@ Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 [dialogic]
 
 directories/dch_directory={
-"ModernBoss": "res://dialogue/styles/ModernBoss.dch"
+"ModernBoss": "res://dialogue/styles/ModernBoss.dch",
+"You": "res://dialogue/characters/You.dch",
+"narrator": "res://dialogue/characters/Portal.dch"
 }
 directories/dtl_directory={
+"EndModern": "res://dialogue/EndModern.dtl",
 "IntroCutscene": "res://dialogue/IntroCutscene.dtl",
 "ModernBoss": "res://dialogue/ModernBoss.dtl"
 }

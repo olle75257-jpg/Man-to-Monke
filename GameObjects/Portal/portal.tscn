@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cikxjss50ywqa"]
+[gd_scene load_steps=11 format=3 uid="uid://cikxjss50ywqa"]
 
 [ext_resource type="Script" uid="uid://dxdf56myornho" path="res://GameObjects/Portal/portal.gd" id="1_bp1lm"]
 [ext_resource type="Texture2D" uid="uid://cqstjpjsoug8l" path="res://Assets/Particles/portal.png" id="1_vrist"]
@@ -247,6 +247,9 @@ _data = {
 &"spawn": SubResource("Animation_yl6qa")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_bp1lm"]
+radius = 101.98039
+
 [node name="Portal" type="Area2D"]
 position = Vector2(434, 283)
 script = ExtResource("1_bp1lm")
@@ -288,6 +291,10 @@ vertical_alignment = 1
 libraries = {
 &"": SubResource("AnimationLibrary_bp1lm")
 }
+
+[node name="PortalDialogueSpace" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_bp1lm")
+debug_color = Color(0.70196074, 0.42775732, 0, 0.41960785)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

@@ -44,14 +44,14 @@ func spawn_next_wave():
 					SPAWN_RADIUS = 500
 					enemy_count = 1 # 5
 					enemy_table.add_item(0, 15)
-				6:
-					enemy_count = 5
-				3:
-					enemy_count = 10
-				4, 5:
-					enemy_count = 15
 				2:
-					SPAWN_RADIUS = 200
+					enemy_count = 1 # 5
+				3: 
+					enemy_count = 1 #10
+				4, 5:
+					enemy_count = 1  #15
+				6:
+					SPAWN_RADIUS = 100
 					enemy_count = 1
 					enemy_table.remove_item(0)
 					enemy_table.add_item(1, 15)
