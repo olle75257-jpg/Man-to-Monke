@@ -15,10 +15,11 @@ script = ExtResource("1_h6gcj")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 1564.0
+offset_left = 1424.0
 offset_top = 913.0
-offset_right = 1872.0
+offset_right = 1844.0
 offset_bottom = 1041.0
+alignment = 2
 
 [node name="Label" type="Label" parent="HBoxContainer"]
 layout_mode = 2
@@ -27,7 +28,7 @@ size_flags_vertical = 8
 theme = ExtResource("1_ionge")
 theme_override_constants/outline_size = 50
 theme_override_font_sizes/font_size = 64
-text = "6/6"
+text = "30/30"
 horizontal_alignment = 2
 
 [node name="ProjectileIcon" type="TextureRect" parent="HBoxContainer"]

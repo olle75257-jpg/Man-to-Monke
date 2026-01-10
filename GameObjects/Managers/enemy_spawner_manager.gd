@@ -28,7 +28,7 @@ func check_enemy_count():
 	
 	if enemy_count == 0:
 		wave += 1
-		if wave == 6:
+		if wave == 7:
 			Globals.finished_era = true
 			summon_portal.emit()
 		else:

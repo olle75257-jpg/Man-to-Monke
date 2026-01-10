@@ -27,3 +27,9 @@ func summon_portal():
 
 func _on_enemy_spawner_manager_summon_portal() -> void:
 	summon_portal()
+
+
+func _on_player_player_died() -> void:
+	animation_player.play_backwards("transition_iris")
+	await animation_player.animation_finished
+	get_tree().change_scene_to_file("res://UserInterface/death_screen.tscn")

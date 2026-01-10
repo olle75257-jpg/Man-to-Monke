@@ -135,4 +135,5 @@ position = Vector2(2716, 1934)
 [node name="Portal" parent="." index="7"]
 position = Vector2(-472, -176)
 
+[connection signal="player_died" from="y-sortObjects/Player" to="." method="_on_player_player_died"]
 [connection signal="summon_portal" from="EnemySpawnerManager" to="." method="_on_enemy_spawner_manager_summon_portal"]

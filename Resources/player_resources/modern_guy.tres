@@ -8,8 +8,11 @@
 
 [resource]
 script = ExtResource("1_56ac8")
-projectile_damage = 70
+projectile_damage = 25
+fire_delay = 0.15
 bullet_scene = ExtResource("1_dtl3w")
+recoil_strength = 400.0
+magazine_size = 30
 weapon = ExtResource("4_64jgx")
 sprite = ExtResource("3_dtl3w")
 ability_cooldown = 10.0

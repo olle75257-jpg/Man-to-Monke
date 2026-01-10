@@ -133,5 +133,6 @@ polygon = PackedVector2Array(2122, 2250, 2129, 3137, 1975, 3130, 1985, 2238, 279
 [node name="Portal" parent="." index="9"]
 position = Vector2(-764, -556)
 
+[connection signal="player_died" from="y-sortObjects/Player" to="." method="_on_player_player_died"]
 [connection signal="body_entered" from="y-sortObjects/Player/ShockwaveArea" to="y-sortObjects/Player" method="_on_shockwave_area_body_entered"]
 [connection signal="summon_portal" from="EnemySpawnerManager" to="." method="_on_enemy_spawner_manager_summon_portal"]

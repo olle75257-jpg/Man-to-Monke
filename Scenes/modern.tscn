@@ -281,4 +281,5 @@ shape = SubResource("RectangleShape2D_g4pq5")
 position = Vector2(3950.75, 4110)
 shape = SubResource("RectangleShape2D_vgryb")
 
+[connection signal="player_died" from="y-sortObjects/Player" to="." method="_on_player_player_died"]
 [connection signal="summon_portal" from="EnemySpawnerManager" to="." method="_on_enemy_spawner_manager_summon_portal"]
