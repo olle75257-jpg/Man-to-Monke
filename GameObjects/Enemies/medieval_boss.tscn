@@ -1,5 +1,25 @@
-[gd_scene load_steps=2 format=3 uid="uid://b244noqwwp6ys"]
+[gd_scene load_steps=4 format=3 uid="uid://b244noqwwp6ys"]
 
 [ext_resource type="PackedScene" uid="uid://db13gohluc1jr" path="res://GameObjects/Enemies/enemy.tscn" id="1_6bbyj"]
+[ext_resource type="Script" uid="uid://hiqpo54p0nbd" path="res://GameObjects/Enemies/medieval_boss.gd" id="2_srcfa"]
+[ext_resource type="Resource" uid="uid://uj4a5clcq56q" path="res://Resources/enemy_types/medieval_boss.tres" id="3_5sahx"]
 
 [node name="MedievalBoss" instance=ExtResource("1_6bbyj")]
+script = ExtResource("2_srcfa")
+era_data = ExtResource("3_5sahx")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="7"]
+
+[node name="BossHP" type="ProgressBar" parent="CanvasLayer" index="0"]
+custom_minimum_size = Vector2(500, 0)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = -140.0
+offset_right = 2.0
+offset_bottom = -113.0
+grow_horizontal = 2
+grow_vertical = 0

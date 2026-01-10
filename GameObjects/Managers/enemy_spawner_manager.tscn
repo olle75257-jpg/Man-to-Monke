@@ -6,3 +6,4 @@
 [node name="EnemySpawnerManager" type="Node"]
 script = ExtResource("1_830ka")
 basic_enemy_scene = ExtResource("2_ja4hp")
+enemy_types = Array[PackedScene]([null, null])

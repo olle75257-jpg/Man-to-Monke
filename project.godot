@@ -51,6 +51,7 @@ folder_colors={
 "res://Audio/": "orange",
 "res://Autoloads/": "purple",
 "res://GameObjects/Enemies/": "red",
+"res://Resources/": "gray",
 "res://Resources/enemy_types/": "red",
 "res://UserInterface/": "blue"
 }

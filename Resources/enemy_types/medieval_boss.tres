@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="enemy_type" load_steps=3 format=3 uid="uid://uj4a5clcq56q"]
+
+[ext_resource type="Script" uid="uid://bx24qdk0v7frn" path="res://Resources/enemy_type.gd" id="1_lgf7b"]
+[ext_resource type="Texture2D" uid="uid://kt1kdwqjxdks" path="res://Assets/enemy/Enemy-MedievalBoss.png" id="2_y67g8"]
+
+[resource]
+script = ExtResource("1_lgf7b")
+era = "Medieval"
+max_health = 5000
+move_speed = 200.0
+knockback_resistance = 0.4
+contact_knockback = 600.0
+sprite = ExtResource("2_y67g8")
+metadata/_custom_type_script = "uid://bx24qdk0v7frn"

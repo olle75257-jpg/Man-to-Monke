@@ -3,10 +3,14 @@ extends Node
 const SPAWN_RADIUS = 500
 
 @export var basic_enemy_scene: PackedScene 
+@export var boss_enemy_scene: PackedScene 
+@export var enemy_types: Array[PackedScene]
 
 var enemy_count = 0
 var spawn_interval = 0.5
 var wave = 1
+
+var enemy_table = WeightedTable.new()
 
 func _ready() -> void:
 	print("Current era: ", Globals.era)
@@ -36,18 +40,26 @@ func spawn_next_wave():
 	match Globals.era:
 		"Modern":
 			match wave:
-				1, 2:
+				1:
+					enemy_count = 5
+					enemy_table.add_item(0, 15)
+				2:
 					enemy_count = 5
 				3:
 					enemy_count = 10
 				4, 5:
 					enemy_count = 15
+				6:
+					enemy_count = 1
+					enemy_table.remove_item(0)
+					enemy_table.add_item(1, 15)
 		"Medieval":
 			match wave:
 				1:
-					enemy_count = 12
+					enemy_count = 2 #12
 					spawn_interval = 1.0
-				2:
+					enemy_table.add_item(0, 15)
+				6:
 					enemy_count = 15
 					spawn_interval = 0.01
 				3:
@@ -56,9 +68,16 @@ func spawn_next_wave():
 				4, 5:
 					enemy_count = 15
 					spawn_interval = 1.5
+				2:
+					enemy_count = 1
+					enemy_table.remove_item(0)
+					enemy_table.add_item(1, 15)
 		_:
 			match wave:
-				1, 2:
+				1:
+					enemy_count = 5
+					enemy_table.add_item(0, 15) 
+				2:
 					enemy_count = 5
 				3:
 					enemy_count = 10
@@ -69,12 +88,22 @@ func spawn_next_wave():
 
 
 func spawn_enemies(enemy_amount: int, spawn_interval: float):
+	var enemy_type_index = enemy_table.pick_item()
+	
 	for i in range(enemy_amount):
 		var player = get_tree().get_first_node_in_group("player") as Node2D
 		if player == null:
 			return
 		
-		var enemy = basic_enemy_scene.instantiate() as Node2D
+		var enemy_scene = basic_enemy_scene
+		if enemy_type_index == 1:
+			if boss_enemy_scene == null:
+				return
+			enemy_scene = boss_enemy_scene
+			
+			
+		var enemy = enemy_scene.instantiate() as Node2D
+			
 		var entities_layer = get_tree().get_first_node_in_group("entities_layer")
 		entities_layer.add_child.call_deferred(enemy)
 		enemy.global_position = get_spawn_position()
