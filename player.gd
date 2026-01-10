@@ -196,7 +196,7 @@ func _physics_process(delta: float) -> void:
 	# Shooting cooldown
 	fire_timer -= delta
 
-	if Input.is_action_pressed("shoot") and fire_timer <= 0.0 && (ammo_in_mag > 0):
+	if Input.is_action_pressed("shoot") and fire_timer <= 0.0 && (ammo_in_mag > 0) && !is_reloading:
 		shoot()
 		var recoil_dir = (global_position - get_global_mouse_position()).normalized()
 		velocity += recoil_dir * recoil_strength
@@ -207,6 +207,9 @@ func _physics_process(delta: float) -> void:
 
 func shoot() -> void:
 	if bullet_scene == null:
+		return
+		
+	if is_reloading: 
 		return
 	
 	Globals.camera.shake(0.25, 10, 15)
