@@ -1,0 +1,13 @@
+[gd_scene load_steps=5 format=3 uid="uid://3rjf54fqyncq"]
+
+[ext_resource type="PackedScene" uid="uid://db13gohluc1jr" path="res://GameObjects/Enemies/enemy.tscn" id="1_j06yu"]
+[ext_resource type="Script" uid="uid://c7ffbu8p80txt" path="res://GameObjects/Enemies/stone_age_boss.gd" id="2_50fc1"]
+[ext_resource type="PackedScene" uid="uid://c3477hpr37pvv" path="res://UserInterface/HUD/boss_health_bar.tscn" id="3_daa0g"]
+[ext_resource type="Resource" uid="uid://c7fgdttmfmoif" path="res://Resources/enemy_types/stone_age_boss.tres" id="3_y1mp6"]
+
+[node name="StoneAgeBoss" instance=ExtResource("1_j06yu")]
+scale = Vector2(5, 5)
+script = ExtResource("2_50fc1")
+era_data = ExtResource("3_y1mp6")
+
+[node name="BossHealthBar" parent="." index="7" instance=ExtResource("3_daa0g")]

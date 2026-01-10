@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="enemy_type" load_steps=3 format=3 uid="uid://c7fgdttmfmoif"]
+
+[ext_resource type="Script" uid="uid://bx24qdk0v7frn" path="res://Resources/enemy_type.gd" id="1_soyhk"]
+[ext_resource type="Texture2D" uid="uid://cdh2fwf20x3c5" path="res://Assets/enemy/Enemy-StoneAgeBoss.png" id="2_x734e"]
+
+[resource]
+script = ExtResource("1_soyhk")
+era = "Caveman"
+max_health = 750
+move_speed = 245.0
+knockback_resistance = 0.9
+contact_knockback = 1000.0
+sprite = ExtResource("2_x734e")
+metadata/_custom_type_script = "uid://bx24qdk0v7frn"

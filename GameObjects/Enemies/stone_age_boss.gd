@@ -2,7 +2,6 @@ extends Enemy
 
 @onready var boss_health_bar: Boss_health_bar_ui = $BossHealthBar
 
-
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player")
 	if era_data:

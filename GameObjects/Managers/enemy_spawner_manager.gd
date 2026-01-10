@@ -43,13 +43,13 @@ func spawn_next_wave():
 				1:
 					enemy_count = 1 # 5
 					enemy_table.add_item(0, 15)
-				6:
+				2:
 					enemy_count = 5
 				3:
 					enemy_count = 10
 				4, 5:
 					enemy_count = 15
-				2:
+				6:
 					enemy_count = 1
 					enemy_table.remove_item(0)
 					enemy_table.add_item(1, 15)
@@ -68,6 +68,21 @@ func spawn_next_wave():
 				4, 5:
 					enemy_count = 12
 					spawn_interval = 1.5
+				2:
+					enemy_count = 1
+					enemy_table.remove_item(0)
+					enemy_table.add_item(1, 15)
+		"StoneAge":
+			match wave:
+				1:
+					enemy_count = 1 # 5
+					enemy_table.add_item(0, 15)
+				6:
+					enemy_count = 5
+				3:
+					enemy_count = 10
+				4, 5:
+					enemy_count = 15
 				2:
 					enemy_count = 1
 					enemy_table.remove_item(0)

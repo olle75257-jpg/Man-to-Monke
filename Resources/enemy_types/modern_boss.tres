@@ -7,6 +7,7 @@
 script = ExtResource("1_s8kqc")
 max_health = 2500
 move_speed = 200.0
+knockback_resistance = 0.9
 contact_knockback = 1000.0
 sprite = ExtResource("2_bx0c5")
 metadata/_custom_type_script = "uid://bx24qdk0v7frn"
