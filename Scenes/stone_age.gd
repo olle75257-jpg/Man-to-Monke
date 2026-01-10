@@ -8,6 +8,7 @@ extends Node2D
 var portal_spawned: bool = false
 
 func _ready() -> void:
+	SoundManager.play_BGM()
 	transition_animation_player.play("transition_iris")
 	Globals.era = "StoneAge"
 	portal_spawned = false

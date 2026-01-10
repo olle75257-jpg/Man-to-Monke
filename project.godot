@@ -26,7 +26,9 @@ Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 [dialogic]
 
 directories/dch_directory={}
-directories/dtl_directory={}
+directories/dtl_directory={
+"IntroCutscene": "res://dialogue/IntroCutscene.dtl"
+}
 layout/style_directory={}
 
 [display]

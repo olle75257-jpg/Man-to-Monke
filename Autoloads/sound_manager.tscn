@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://bq3iuwebjem4o"]
+[gd_scene load_steps=46 format=3 uid="uid://bq3iuwebjem4o"]
 
 [ext_resource type="Script" uid="uid://b6seibtksub8x" path="res://Autoloads/sound_manager.gd" id="1_jerlu"]
 [ext_resource type="AudioStream" uid="uid://csqg7r0ln03v7" path="res://Audio/GunAudio/Cannon shots 7.ogg" id="2_u5vrn"]
@@ -30,6 +30,8 @@
 [ext_resource type="AudioStream" uid="uid://cp3l44qmj72nj" path="res://Audio/Eras/Medieval/bow-loading-38752.mp3" id="17_s0uvp"]
 [ext_resource type="AudioStream" uid="uid://djf1qf3sesyas" path="res://Audio/Eras/StoneAge/CaveManHit/ouch-oof-hurt-sound-effect-262616_3.mp3" id="18_mywe5"]
 [ext_resource type="AudioStream" uid="uid://cqea3e4fl1r3a" path="res://Audio/Eras/StoneAge/CaveManHit/ouch-oof-hurt-sound-effect-262616_4.mp3" id="19_rjude"]
+[ext_resource type="AudioStream" uid="uid://b2n8qx1sltp18" path="res://Audio/BGM/we never go too deep.ogg" id="31_c24x7"]
+[ext_resource type="AudioStream" uid="uid://hwqotqiiglp6" path="res://Audio/BGM/back to flag.ogg" id="32_v2bb7"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_0x1ep"]
 random_pitch = 1.2
@@ -204,3 +206,15 @@ max_polyphony = 5
 stream = SubResource("AudioStreamRandomizer_101qo")
 max_polyphony = 4
 bus = &"SFX"
+
+[node name="Music" type="Node" parent="Game"]
+
+[node name="ModernMusic" type="AudioStreamPlayer" parent="Game/Music"]
+stream = ExtResource("31_c24x7")
+bus = &"Music"
+
+[node name="MedievalMusic" type="AudioStreamPlayer" parent="Game/Music"]
+stream = ExtResource("32_v2bb7")
+bus = &"Music"
+
+[node name="StoneAgeMusic" type="AudioStreamPlayer" parent="Game/Music"]

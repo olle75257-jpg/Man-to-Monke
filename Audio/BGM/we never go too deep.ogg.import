@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://b2n8qx1sltp18"
+path="res://.godot/imported/we never go too deep.ogg-d49041153667894aa42b4ddadd3aff01.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/BGM/we never go too deep.ogg"
+dest_files=["res://.godot/imported/we never go too deep.ogg-d49041153667894aa42b4ddadd3aff01.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4
