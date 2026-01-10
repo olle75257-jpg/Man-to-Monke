@@ -9,6 +9,6 @@ era = "Medieval"
 max_health = 5000
 move_speed = 275.0
 knockback_resistance = 0.4
-contact_knockback = 600.0
+contact_knockback = 1500.0
 sprite = ExtResource("2_y67g8")
 metadata/_custom_type_script = "uid://bx24qdk0v7frn"

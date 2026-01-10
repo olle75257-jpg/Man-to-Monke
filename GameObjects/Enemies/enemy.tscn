@@ -6,9 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://qpmwddky7fsh" path="res://Assets/enemy/Enemy-Modern.png" id="3_xar4c"]
 [ext_resource type="PackedScene" uid="uid://cnsgca75mwb8s" path="res://Particles/death_component.tscn" id="5_xar4c"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7k104"]
-size = Vector2(16, 22)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qi2p4"]
 size = Vector2(14, 18)
 
@@ -151,18 +148,15 @@ _data = {
 &"walk": SubResource("Animation_xar4c")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7k104"]
+size = Vector2(18.400003, 21.200005)
+
 [node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
 scale = Vector2(3, 3)
 collision_layer = 2
 collision_mask = 7
 script = ExtResource("1_7k104")
 era_data = ExtResource("2_xar4c")
-
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, -1)
-shape = SubResource("RectangleShape2D_7k104")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_qi2p4")
@@ -195,6 +189,12 @@ offset = Vector2(-1.1920929e-07, -8.833334)
 libraries = {
 &"": SubResource("AnimationLibrary_kyf7x")
 }
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_7k104")
 
 [connection signal="enemy_killed" from="." to="DeathComponent" method="_on_enemy_enemy_killed"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

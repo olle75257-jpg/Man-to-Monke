@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="enemy_type" load_steps=3 format=3 uid="uid://c14ci864a6wx1"]
+
+[ext_resource type="Script" uid="uid://bx24qdk0v7frn" path="res://Resources/enemy_type.gd" id="1_s8kqc"]
+[ext_resource type="Texture2D" uid="uid://ehybyw3j24nx" path="res://Assets/enemy/Enemy-ModernBoss.png" id="2_bx0c5"]
+
+[resource]
+script = ExtResource("1_s8kqc")
+max_health = 2500
+move_speed = 200.0
+contact_knockback = 1000.0
+sprite = ExtResource("2_bx0c5")
+metadata/_custom_type_script = "uid://bx24qdk0v7frn"

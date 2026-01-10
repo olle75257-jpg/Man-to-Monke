@@ -18,7 +18,7 @@ var player_in_range: Node = null
 @export var blast_particles: PackedScene = preload("uid://by5v6txb30nmu")
 @export var explosion_particles: PackedScene = preload("uid://61wtmbq585ep")
 
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var animation_player: AnimationPlayer = $AnimationPlayer 
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var enemy_animation_player: AnimationPlayer = $EnemyAnimationPlayer
 

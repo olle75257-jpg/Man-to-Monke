@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://b244noqwwp6ys"]
+[gd_scene load_steps=6 format=3 uid="uid://b244noqwwp6ys"]
 
 [ext_resource type="PackedScene" uid="uid://db13gohluc1jr" path="res://GameObjects/Enemies/enemy.tscn" id="1_6bbyj"]
 [ext_resource type="Script" uid="uid://hiqpo54p0nbd" path="res://GameObjects/Enemies/medieval_boss.gd" id="2_srcfa"]
 [ext_resource type="Resource" uid="uid://uj4a5clcq56q" path="res://Resources/enemy_types/medieval_boss.tres" id="3_5sahx"]
-[ext_resource type="Theme" uid="uid://17x2rvi1h60b" path="res://UserInterface/theme.tres" id="4_rxngt"]
+[ext_resource type="PackedScene" uid="uid://c3477hpr37pvv" path="res://UserInterface/HUD/boss_health_bar.tscn" id="4_rxngt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rxngt"]
+size = Vector2(18.400003, 21.200005)
 
 [node name="MedievalBoss" instance=ExtResource("1_6bbyj")]
 scale = Vector2(5, 5)
@@ -14,51 +17,14 @@ dash_cooldown = 4.0
 max_dash_duration = 3.0
 era_data = ExtResource("3_5sahx")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." index="7"]
+[node name="CollisionShape2D" parent="." index="0"]
+scale = Vector2(0.99999994, 0.99999994)
 
-[node name="Label" type="Label" parent="CanvasLayer" index="0"]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -48.0
-offset_top = -138.0
-offset_right = 48.0
-offset_bottom = -112.0
-grow_horizontal = 2
-grow_vertical = 0
-theme = ExtResource("4_rxngt")
-text = "Boss HP:"
+[node name="CollisionShape2D" parent="Area2D" index="0"]
+position = Vector2(0, -0.99999976)
+scale = Vector2(0.99999976, 0.99999976)
+shape = SubResource("RectangleShape2D_rxngt")
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer" index="1"]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -363.0
-offset_top = -105.0
-offset_right = 363.0
-offset_bottom = -59.0
-grow_horizontal = 2
-grow_vertical = 0
-color = Color(0, 0, 0, 1)
-
-[node name="BossHP" type="ProgressBar" parent="CanvasLayer" index="2"]
-custom_minimum_size = Vector2(700, 0)
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -250.0
-offset_top = -96.0
-offset_right = 250.0
-offset_bottom = -66.0
-grow_horizontal = 2
-grow_vertical = 0
-theme = ExtResource("4_rxngt")
-value = 50.0
+[node name="BossHealthBar" parent="." index="7" instance=ExtResource("4_rxngt")]
 
 [node name="TelegraphLine" type="Line2D" parent="." index="8"]

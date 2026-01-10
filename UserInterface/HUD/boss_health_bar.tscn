@@ -1,0 +1,52 @@
+[gd_scene load_steps=3 format=3 uid="uid://c3477hpr37pvv"]
+
+[ext_resource type="Theme" uid="uid://17x2rvi1h60b" path="res://UserInterface/theme.tres" id="1_13th3"]
+[ext_resource type="Script" uid="uid://8xbdolq71v35" path="res://UserInterface/HUD/boss_health_bar.gd" id="1_vvk6d"]
+
+[node name="BossHealthBar" type="CanvasLayer"]
+script = ExtResource("1_vvk6d")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -48.0
+offset_top = -138.0
+offset_right = 48.0
+offset_bottom = -112.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_13th3")
+text = "Boss HP:"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -363.0
+offset_top = -105.0
+offset_right = 363.0
+offset_bottom = -59.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0, 0, 0, 1)
+
+[node name="BossHP" type="ProgressBar" parent="."]
+custom_minimum_size = Vector2(700, 0)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -250.0
+offset_top = -96.0
+offset_right = 250.0
+offset_bottom = -66.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_13th3")
+value = 50.0

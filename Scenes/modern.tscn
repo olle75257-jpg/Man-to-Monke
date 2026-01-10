@@ -1,9 +1,11 @@
-[gd_scene load_steps=13 format=4 uid="uid://36ypeorcd30y"]
+[gd_scene load_steps=15 format=4 uid="uid://36ypeorcd30y"]
 
 [ext_resource type="PackedScene" uid="uid://jj83a527keb2" path="res://Scenes/game.tscn" id="1_a77c7"]
 [ext_resource type="Resource" uid="uid://bueln2kq24j2i" path="res://Resources/player_resources/modern_guy.tres" id="2_4020w"]
 [ext_resource type="TileSet" uid="uid://duli60k1tchtm" path="res://Assets/tilemap/modern/modern.tres" id="2_l3707"]
 [ext_resource type="Texture2D" uid="uid://5tsbs17h8lmg" path="res://Assets/UI/AmmoIcons/bullet-icon.png" id="3_3x3he"]
+[ext_resource type="PackedScene" uid="uid://2d6sqn51xfpb" path="res://GameObjects/Enemies/modern_boss.tscn" id="5_vgryb"]
+[ext_resource type="PackedScene" uid="uid://db13gohluc1jr" path="res://GameObjects/Enemies/enemy.tscn" id="6_6a0e3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6a0e3"]
 size = Vector2(40, 106)
@@ -130,6 +132,10 @@ sprite = ExtResource("3_3x3he")
 
 [node name="Ability" parent="UserInterface" index="3"]
 era_data = ExtResource("2_4020w")
+
+[node name="EnemySpawnerManager" parent="." index="7"]
+boss_enemy_scene = ExtResource("5_vgryb")
+enemy_types = Array[PackedScene]([ExtResource("6_6a0e3"), ExtResource("5_vgryb")])
 
 [node name="PortalSpawnPosition" parent="." index="8"]
 position = Vector2(4005, 2969)
