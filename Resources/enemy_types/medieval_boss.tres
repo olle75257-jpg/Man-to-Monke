@@ -7,7 +7,7 @@
 script = ExtResource("1_lgf7b")
 era = "Medieval"
 max_health = 5000
-move_speed = 200.0
+move_speed = 275.0
 knockback_resistance = 0.4
 contact_knockback = 600.0
 sprite = ExtResource("2_y67g8")

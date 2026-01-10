@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://dwsty3t5lxd7u"]
+[gd_scene load_steps=16 format=4 uid="uid://dwsty3t5lxd7u"]
 
 [ext_resource type="PackedScene" uid="uid://jj83a527keb2" path="res://Scenes/game.tscn" id="1_vr2is"]
 [ext_resource type="Script" uid="uid://dccm2cadf7gw7" path="res://Scenes/medieval.gd" id="2_ccic0"]
@@ -28,6 +28,12 @@ shader_parameter/noise_texture2 = SubResource("NoiseTexture2D_rjwkn")
 shader_parameter/offset1 = Vector2(0.1, 0.1)
 shader_parameter/offset2 = Vector2(0.1, 0.1)
 shader_parameter/distortion_strength = 0.00700004783250007
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mjpol"]
+size = Vector2(1952, 160)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ynwmm"]
+size = Vector2(531, 1370)
 
 [node name="Medieval" instance=ExtResource("1_vr2is")]
 script = ExtResource("2_ccic0")
@@ -88,8 +94,21 @@ tile_set = ExtResource("2_tagns")
 collision_layer = 15
 collision_mask = 7
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ArenaWalls" index="0"]
-polygon = PackedVector2Array(1879, 1360, 1916, 1386, 3510, 1386, 3510, 2448, 1914, 2445, 1913, 1386, 1809, 1309, 1876, 2675, 3730, 2693, 3761, 1222, 1992, 1210)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ArenaWalls" index="0"]
+position = Vector2(2769, 1274)
+shape = SubResource("RectangleShape2D_mjpol")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="ArenaWalls" index="1"]
+position = Vector2(2769, 2527)
+shape = SubResource("RectangleShape2D_mjpol")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="ArenaWalls" index="2"]
+position = Vector2(1646, 1837)
+shape = SubResource("RectangleShape2D_ynwmm")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="ArenaWalls" index="3"]
+position = Vector2(3781, 1837)
+shape = SubResource("RectangleShape2D_ynwmm")
 
 [node name="Player" parent="y-sortObjects" index="1"]
 position = Vector2(2713, 1899)

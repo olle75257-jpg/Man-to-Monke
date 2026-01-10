@@ -56,7 +56,7 @@ func spawn_next_wave():
 		"Medieval":
 			match wave:
 				1:
-					enemy_count = 2 #12
+					enemy_count = 1 #12
 					spawn_interval = 1.0
 					enemy_table.add_item(0, 15)
 				6:

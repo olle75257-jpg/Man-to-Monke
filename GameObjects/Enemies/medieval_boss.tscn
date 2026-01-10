@@ -5,7 +5,12 @@
 [ext_resource type="Resource" uid="uid://uj4a5clcq56q" path="res://Resources/enemy_types/medieval_boss.tres" id="3_5sahx"]
 
 [node name="MedievalBoss" instance=ExtResource("1_6bbyj")]
+scale = Vector2(5, 5)
 script = ExtResource("2_srcfa")
+dash_speed = 600.0
+charge_time = 1.2
+dash_cooldown = 4.0
+max_dash_duration = 3.0
 era_data = ExtResource("3_5sahx")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." index="7"]
@@ -23,3 +28,5 @@ offset_right = 2.0
 offset_bottom = -113.0
 grow_horizontal = 2
 grow_vertical = 0
+
+[node name="TelegraphLine" type="Line2D" parent="." index="8"]
