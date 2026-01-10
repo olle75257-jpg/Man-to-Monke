@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=4 format=3 uid="uid://17x2rvi1h60b"]
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://17x2rvi1h60b"]
 
 [ext_resource type="FontFile" uid="uid://bq3swqs1ofndy" path="res://Assets/Fonts/PixulBrush.ttf" id="1_d862y"]
 
@@ -25,6 +25,30 @@ expand_margin_bottom = 2.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2pmuj"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d862y"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2pmuj"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(1, 0, 0, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 6
+
 [resource]
 Label/colors/font_color = Color(1, 1, 1, 1)
 Label/colors/font_outline_color = Color(0, 0, 0, 1)
@@ -38,3 +62,10 @@ Label/font_sizes/font_size = 16
 Label/fonts/font = ExtResource("1_d862y")
 Label/styles/focus = SubResource("StyleBoxFlat_l6njq")
 Label/styles/normal = SubResource("StyleBoxEmpty_2pmuj")
+ProgressBar/colors/font_color = Color(0.95, 0.95, 0.95, 1)
+ProgressBar/colors/font_outline_color = Color(0, 0, 0, 1)
+ProgressBar/constants/outline_size = 0
+ProgressBar/font_sizes/font_size = 16
+ProgressBar/fonts/font = ExtResource("1_d862y")
+ProgressBar/styles/background = SubResource("StyleBoxFlat_d862y")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_2pmuj")
