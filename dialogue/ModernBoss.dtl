@@ -1,0 +1,9 @@
+join ModernBoss center
+[style name="textbox"]
+[signal arg="in_cutscene"]
+ModernBoss: !!!
+ModernBoss: I did not think firing you would cause all this...
+ModernBoss: No matter...
+ModernBoss: You have killed my Men in Black.
+ModernBoss: Prepare to die!!!
+[signal arg="end_cutscene"]

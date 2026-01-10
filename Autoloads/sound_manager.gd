@@ -15,6 +15,7 @@ extends Node
 @onready var player_hit_medieval: AudioStreamPlayer = $Game/PlayerSfx/PlayerHitMedieval
 @onready var modern_music: AudioStreamPlayer = $Game/Music/ModernMusic
 @onready var medieval_music: AudioStreamPlayer = $Game/Music/MedievalMusic
+@onready var stone_age_music: AudioStreamPlayer = $Game/Music/StoneAgeMusic
 
 
 var current_bgm: AudioStreamPlayer = modern_music 
@@ -29,7 +30,7 @@ func play_BGM():
 		"Medieval":
 			target_music = medieval_music
 		"StoneAge":
-			target_music = null 
+			target_music = stone_age_music
 			
 	if target_music != current_bgm:
 		fade_to_music(target_music)

@@ -29,8 +29,10 @@ signal enemy_killed
 var player
 
 var is_dead: bool = false
+var can_move: bool = true
 
 func _ready() -> void:
+	can_move = true
 	player = get_tree().get_first_node_in_group("player")
 	if era_data:
 		apply_enemy_data(era_data)
@@ -59,7 +61,7 @@ func apply_enemy_data(data: enemy_type):
 	#print("Enemy initialized as: ", data.era)
 
 func _physics_process(delta: float) -> void:
-	if in_cutscene:
+	if in_cutscene || !can_move:
 		velocity = Vector2.ZERO
 		#move_and_slide()
 		return

@@ -56,8 +56,11 @@ var shockwave: ColorRect
 
 @export var grenade_tscn: PackedScene = preload("uid://wsj0dhepl8ie")
 var is_dead: bool = false
+var in_cutscene: bool = false
 
 func _ready() -> void:
+	in_cutscene = false
+	Dialogic.signal_event.connect(DialogicSignal)
 	Globals.era = era_data.era
 	shockwave = get_node_or_null("%Shockwave")
 	
@@ -70,6 +73,14 @@ func _ready() -> void:
 	else:
 		ammo_in_mag = magazine_size
 		health = max_health
+
+func DialogicSignal(arg: String):
+	match arg:
+		"in_cutscene":
+			in_cutscene = true
+		"end_cutscene":
+			in_cutscene = false
+	
 
 func apply_era_stats(data: player_era):
 	#Movement 
@@ -105,7 +116,7 @@ func apply_era_stats(data: player_era):
 	print("Swapped to Era: ", data.era)
 
 func _input(event: InputEvent) -> void:
-	if is_dead:
+	if is_dead || in_cutscene:
 		return
 	if event.is_action_pressed("reload"):
 		reload()
@@ -145,7 +156,8 @@ func update_camera_offset():
 	camera.offset = camera.offset.lerp(target_offset, 0.1)
 
 func _physics_process(delta: float) -> void:
-	if is_dead:
+	if is_dead || in_cutscene:
+		animation_player.play("RESET")
 		return
 	
 	var mouse_pos = get_global_mouse_position()

@@ -11,3 +11,7 @@ script = ExtResource("2_3rvo4")
 era_data = ExtResource("2_vrqo7")
 
 [node name="BossHealthBar" parent="." index="7" instance=ExtResource("3_3rvo4")]
+
+[node name="SpeechBubblePos" type="Marker2D" parent="." index="8"]
+unique_name_in_owner = true
+position = Vector2(15.799999, -12.799999)

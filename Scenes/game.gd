@@ -8,6 +8,7 @@ extends Node2D
 var portal_spawned: bool = false
 
 func _ready() -> void:
+	Dialogic.signal_event.connect(DialogicSignal)
 	SoundManager.play_BGM()
 	animation_player.play("transition_iris")
 	Globals.era = "Modern"
@@ -33,3 +34,8 @@ func _on_player_player_died() -> void:
 	animation_player.play_backwards("transition_iris")
 	await animation_player.animation_finished
 	get_tree().change_scene_to_file("res://UserInterface/death_screen.tscn")
+
+func DialogicSignal(arg: String):
+	if arg == "IntroCutscene":
+		pass
+	

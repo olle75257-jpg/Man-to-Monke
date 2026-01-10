@@ -1,6 +1,6 @@
 extends Node
 
-const SPAWN_RADIUS = 500
+var SPAWN_RADIUS = 500
 
 @export var basic_enemy_scene: PackedScene 
 @export var boss_enemy_scene: PackedScene 
@@ -41,15 +41,17 @@ func spawn_next_wave():
 		"Modern":
 			match wave:
 				1:
-					enemy_count = 5 # 5
+					SPAWN_RADIUS = 500
+					enemy_count = 1 # 5
 					enemy_table.add_item(0, 15)
-				2:
+				6:
 					enemy_count = 5
 				3:
 					enemy_count = 10
 				4, 5:
 					enemy_count = 15
-				6:
+				2:
+					SPAWN_RADIUS = 200
 					enemy_count = 1
 					enemy_table.remove_item(0)
 					enemy_table.add_item(1, 15)
