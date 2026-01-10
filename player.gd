@@ -55,6 +55,7 @@ var shockwave: ColorRect
 @onready var shockwave_collision: CollisionShape2D = get_node_or_null("ShockwaveArea/ShockwaveCollision")
 
 @export var grenade_tscn: PackedScene = preload("uid://wsj0dhepl8ie")
+var is_dead: bool = false
 
 func _ready() -> void:
 	Globals.era = era_data.era
@@ -104,6 +105,8 @@ func apply_era_stats(data: player_era):
 	print("Swapped to Era: ", data.era)
 
 func _input(event: InputEvent) -> void:
+	if is_dead:
+		return
 	if event.is_action_pressed("reload"):
 		reload()
 	
@@ -142,6 +145,8 @@ func update_camera_offset():
 	camera.offset = camera.offset.lerp(target_offset, 0.1)
 
 func _physics_process(delta: float) -> void:
+	if is_dead:
+		return
 	
 	var mouse_pos = get_global_mouse_position()
 	
@@ -254,6 +259,8 @@ func shoot_volley_arrows():
 	get_parent().add_child(bullet)
 
 func apply_hit(hit_dir: Vector2, damage: int, force: float) -> void:
+	if is_dead: 
+		return
 	Globals.camera.shake(0.25, 25, 15)
 	SoundManager.play_playerHit()
 	red_vignette_flash.play("red_vignette_flash")
@@ -264,6 +271,7 @@ func apply_hit(hit_dir: Vector2, damage: int, force: float) -> void:
 	disable_hitbox()
 	
 	if health <= 0:
+		is_dead = true
 		die()
 
 func disable_hitbox():
