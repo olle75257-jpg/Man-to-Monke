@@ -40,6 +40,8 @@ func _ready() -> void:
 	telegraph_line.visible = false
 	telegraph_line.points = [Vector2.ZERO, Vector2.ZERO]
 	Dialogic.signal_event.connect(DialogicSignal)
+	
+	await get_tree().create_timer(1.5).timeout
 	run_dialogue("MedievalBoss")
 
 func run_dialogue(dialogue):

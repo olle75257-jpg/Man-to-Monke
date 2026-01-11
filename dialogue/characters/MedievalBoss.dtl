@@ -3,5 +3,5 @@ join GoldenKnight center
 [signal arg="in_cutscene"]
 GoldenKnight: I shal sle thee, for alle the knyghtes thou hast slayn.
 GoldenKnight: A trewe heroe never turneth abak, and an undyinge wille hath a knyght!”
-GoldenKnight: Thou shalth be vanquished!
+GoldenKnight: Thou shalt be vanquished!
 [signal arg="end_cutscene"]
