@@ -10,6 +10,7 @@
 script = ExtResource("1_8jh5i")
 era = "Medieval"
 move_speed = 300.0
+max_health = 10
 projectile_damage = 80
 projectile_speed = 700.0
 projectile_knockback_force = 500.0

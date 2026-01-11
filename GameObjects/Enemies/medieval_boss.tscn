@@ -28,3 +28,6 @@ shape = SubResource("RectangleShape2D_rxngt")
 [node name="BossHealthBar" parent="." index="7" instance=ExtResource("4_rxngt")]
 
 [node name="TelegraphLine" type="Line2D" parent="." index="8"]
+
+[node name="Marker2D" type="Marker2D" parent="." index="9"]
+position = Vector2(15.999999, -12.599999)

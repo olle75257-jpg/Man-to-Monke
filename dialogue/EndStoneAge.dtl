@@ -1,0 +1,11 @@
+join You center
+join Portal center
+[style name="textbox"]
+[signal arg="in_cutscene"]
+You: oooga.
+You: boooga.
+Portal: One last time.
+Portal: Enter me...
+Portal: [speed = 10]Return to Monke.
+[signal arg="end_cutscene"]
+[signal arg="allow_portal"]

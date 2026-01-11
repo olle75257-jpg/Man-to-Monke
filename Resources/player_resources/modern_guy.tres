@@ -8,6 +8,7 @@
 
 [resource]
 script = ExtResource("1_56ac8")
+max_health = 10
 projectile_damage = 25
 fire_delay = 0.15
 bullet_scene = ExtResource("1_dtl3w")

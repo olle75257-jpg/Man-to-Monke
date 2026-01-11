@@ -1,0 +1,10 @@
+join You center
+join Portal center
+[style name="textbox"]
+[signal arg="in_cutscene"]
+Portal: The knyghtes thou hast slayn.
+Portal: Enter me...
+Portal: [speed=5]Return thou to Monke...
+You: Monke!
+[signal arg="end_cutscene"]
+[signal arg="allow_portal"]

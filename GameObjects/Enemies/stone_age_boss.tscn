@@ -11,3 +11,6 @@ script = ExtResource("2_50fc1")
 era_data = ExtResource("3_y1mp6")
 
 [node name="BossHealthBar" parent="." index="7" instance=ExtResource("3_daa0g")]
+
+[node name="Marker2D" type="Marker2D" parent="." index="8"]
+position = Vector2(16.4, -10.799999)

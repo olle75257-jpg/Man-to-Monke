@@ -26,14 +26,20 @@ Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 [dialogic]
 
 directories/dch_directory={
+"BigCaveman": "res://dialogue/characters/BigCaveman.dch",
+"GoldenKnight": "res://dialogue/characters/GoldenKnight.dch",
 "ModernBoss": "res://dialogue/styles/ModernBoss.dch",
-"You": "res://dialogue/characters/You.dch",
-"narrator": "res://dialogue/characters/Portal.dch"
+"Portal": "res://dialogue/characters/Portal.dch",
+"You": "res://dialogue/characters/You.dch"
 }
 directories/dtl_directory={
+"EndMedieval": "res://dialogue/EndMedieval.dtl",
 "EndModern": "res://dialogue/EndModern.dtl",
+"EndStoneAge": "res://dialogue/EndStoneAge.dtl",
 "IntroCutscene": "res://dialogue/IntroCutscene.dtl",
-"ModernBoss": "res://dialogue/ModernBoss.dtl"
+"MedievalBoss": "res://dialogue/characters/MedievalBoss.dtl",
+"ModernBoss": "res://dialogue/ModernBoss.dtl",
+"StoneAgeBoss": "res://dialogue/StoneAgeBoss.dtl"
 }
 layout/style_directory={
 "": "res://dialogue/styles/textbox.tres",

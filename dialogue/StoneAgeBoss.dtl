@@ -1,0 +1,4 @@
+join BigCaveman center
+[signal arg="in_cutscene"]
+BigCaveman: [speed=4]OOOOOOOOOOOOOOOOOOOOOGAAAAAAAAAAAAA[input] BOOOOOOOOOOOOOGAAAAAAAAAAAAAA
+[signal arg="end_cutscene"]

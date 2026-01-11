@@ -1,9 +1,11 @@
 extends Area2D
 @onready var portal: Area2D = $"."
+@onready var marker_2d: Marker2D = $Marker2D
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var animation_player_game: AnimationPlayer = $"../TransitionAnimationPlayer"
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
+@onready var portal_dialogue_space: CollisionShape2D = $PortalDialogueSpace
 
 var dialogue_interacted: bool = false
 
@@ -15,7 +17,12 @@ func _ready() -> void:
 func DialogicSignal(arg: String):
 	match arg:
 		"allow_portal":
+			portal_dialogue_space.disabled = true
 			dialogue_interacted = true
+			collision_shape_2d.disabled = false
+		"end_cutscene":
+			dialogue_interacted = true
+			portal_dialogue_space.disabled = true
 			collision_shape_2d.disabled = false
 			
 
@@ -28,15 +35,29 @@ func _on_body_entered(body: Node2D) -> void:
 		player_position = Node2D.new()
 		get_tree().current_scene.add_child(player_position)
 		player_position.global_position = body.global_position
-		if !dialogue_interacted:
-			var layout = Dialogic.start("EndModern")
-			layout.register_character(load("uid://bwnmd4im5nn5y"), portal)
-			layout.register_character(load("uid://ducy0qg7xwt3r"), player_position)
-		elif dialogue_interacted:
+		
+		if dialogue_interacted:
 			animation_player_game.play_backwards("transition_iris")
 			await get_tree().create_timer(1.0).timeout
 			call_deferred("change_era_scene")
 		
+		match Globals.era:
+			"Modern":
+				if !dialogue_interacted:
+					var layout = Dialogic.start("EndModern")
+					layout.register_character(load("uid://bwnmd4im5nn5y"), portal)
+					layout.register_character(load("uid://ducy0qg7xwt3r"), player_position)
+			"Medieval":
+				if !dialogue_interacted:
+					var layout = Dialogic.start("EndMedieval")
+					layout.register_character(load("uid://bwnmd4im5nn5y"), portal)
+					layout.register_character(load("uid://ducy0qg7xwt3r"), player_position)
+			"StoneAge":
+				if !dialogue_interacted:
+					var layout = Dialogic.start("EndStoneAge")
+					layout.register_character(load("uid://bwnmd4im5nn5y"), portal)
+					layout.register_character(load("uid://ducy0qg7xwt3r"), player_position)
+
 
 func change_era_scene():
 		get_tree().change_scene_to_file("res://UserInterface/year_transition.tscn")

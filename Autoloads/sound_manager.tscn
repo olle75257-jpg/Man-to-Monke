@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://bq3iuwebjem4o"]
+[gd_scene load_steps=48 format=3 uid="uid://bq3iuwebjem4o"]
 
 [ext_resource type="Script" uid="uid://b6seibtksub8x" path="res://Autoloads/sound_manager.gd" id="1_jerlu"]
 [ext_resource type="AudioStream" uid="uid://csqg7r0ln03v7" path="res://Audio/GunAudio/Cannon shots 7.ogg" id="2_u5vrn"]
@@ -33,6 +33,7 @@
 [ext_resource type="AudioStream" uid="uid://b2n8qx1sltp18" path="res://Audio/BGM/we never go too deep.ogg" id="31_c24x7"]
 [ext_resource type="AudioStream" uid="uid://hwqotqiiglp6" path="res://Audio/BGM/back to flag.ogg" id="32_v2bb7"]
 [ext_resource type="AudioStream" uid="uid://b2uemq6s4m7wt" path="res://Audio/BGM/bones and stones.ogg" id="33_v2bb7"]
+[ext_resource type="AudioStream" uid="uid://56g6j7eo6hyy" path="res://Audio/BGM/chromed.ogg" id="34_8gj4l"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_0x1ep"]
 random_pitch = 1.2
@@ -220,3 +221,6 @@ bus = &"Music"
 
 [node name="StoneAgeMusic" type="AudioStreamPlayer" parent="Game/Music"]
 stream = ExtResource("33_v2bb7")
+
+[node name="StoryMusic" type="AudioStreamPlayer" parent="Game/Music"]
+stream = ExtResource("34_8gj4l")
