@@ -16,6 +16,7 @@ extends Node
 @onready var modern_music: AudioStreamPlayer = $Game/Music/ModernMusic
 @onready var medieval_music: AudioStreamPlayer = $Game/Music/MedievalMusic
 @onready var stone_age_music: AudioStreamPlayer = $Game/Music/StoneAgeMusic
+@onready var story_music: AudioStreamPlayer = $Game/Music/StoryMusic
 
 
 var current_bgm: AudioStreamPlayer = modern_music 
@@ -25,6 +26,8 @@ func play_BGM():
 	var target_music: AudioStreamPlayer = null
 	
 	match Globals.era:
+		"Intro":
+			target_music = story_music
 		"Modern":
 			target_music = modern_music
 		"Medieval":
