@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_soyhk")
 era = "Caveman"
-max_health = 750
+max_health = 1000
 move_speed = 245.0
 knockback_resistance = 0.9
 contact_knockback = 1000.0
