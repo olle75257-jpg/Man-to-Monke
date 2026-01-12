@@ -22,7 +22,12 @@ func _ready() -> void:
 			await get_tree().create_timer(1.0).timeout
 			change_year_to(5000)
 		"StoneAge":
-			pass
+			year = 5000
+			update_year_display(year)
+	
+			await get_tree().create_timer(1.0).timeout
+			change_year_to(10000000)
+			
 	
 	await get_tree().create_timer(2.0).timeout
 	
@@ -36,6 +41,22 @@ func change_year_to(target_year: int):
 	year = target_year
 	
 	await tween.finished
+	if Globals.era == "StoneAge":
+		var fade_tween = create_tween()
+		
+		
+		fade_tween.tween_property(year_label, "modulate:a", 0.0, 0.5)
+		await fade_tween.finished
+		
+		
+		year_label.text = "Monke"
+		
+		
+		fade_tween = create_tween() 
+		fade_tween.tween_property(year_label, "modulate:a", 1.0, 0.8)
+		await fade_tween.finished
+		
+		await get_tree().create_timer(2.0).timeout
 	animation_player.play_backwards("in")
 	await animation_player.animation_finished
 	change_era_scene()
@@ -43,6 +64,8 @@ func change_year_to(target_year: int):
 func update_year_display(value: int):
 	var suffix = " AD"
 	if Globals.era == "Medieval":
+		suffix = " BC"
+	elif Globals.era == "StoneAge":
 		suffix = " BC"
 	
 	year_label.text = "Year:   " + str(value) + suffix
@@ -54,4 +77,4 @@ func change_era_scene():
 			"Medieval":
 				get_tree().change_scene_to_file("uid://c4h4y5ns058j3")
 			"StoneAge":
-				print("Monke Era not built yet")
+				get_tree().change_scene_to_file("res://Scenes/end_cutscene.tscn")

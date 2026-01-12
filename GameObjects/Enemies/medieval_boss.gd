@@ -119,8 +119,7 @@ func start_dash():
 	current_state = State.DASH
 	velocity = dash_direction * dash_speed
 	dash_duration_timer = max_dash_duration
-	# SoundManager.play_BossDash()
-	push_error("Need boss dash sfx")
+	SoundManager.play_GoldenKnightDash()
 
 func handle_dash(delta: float):
 	velocity = dash_direction * dash_speed
@@ -128,6 +127,7 @@ func handle_dash(delta: float):
 	
 	if dash_duration_timer <= 0.0 || is_on_wall() || is_on_floor() || is_on_ceiling():
 		if is_on_wall() || is_on_floor() || is_on_ceiling():
+			SoundManager.play_GoldenKnightHitWall()
 			Globals.camera.shake(0.4, 15, 20)
 		finish_dash()
 

@@ -1,0 +1,139 @@
+[gd_scene load_steps=10 format=3 uid="uid://coeak1sx00kwj"]
+
+[ext_resource type="Script" uid="uid://n1mb8n43s5a5" path="res://Scenes/end_game.gd" id="1_2it4q"]
+[ext_resource type="Theme" uid="uid://17x2rvi1h60b" path="res://UserInterface/theme.tres" id="1_tiqjd"]
+[ext_resource type="Texture2D" uid="uid://6n6ctupmyr5b" path="res://Assets/character/MonkeSpriteSheet.png" id="2_5juuf"]
+[ext_resource type="Texture2D" uid="uid://c1mcx01vrexxu" path="res://Assets/character/brainlessCharacter.png" id="3_5juuf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2it4q"]
+atlas = ExtResource("2_5juuf")
+region = Rect2(0, 0, 33, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s1acs"]
+atlas = ExtResource("2_5juuf")
+region = Rect2(33, 0, 33, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dsb1p"]
+atlas = ExtResource("2_5juuf")
+region = Rect2(66, 0, 33, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s7v5u"]
+atlas = ExtResource("2_5juuf")
+region = Rect2(99, 0, 33, 30)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_koyvy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2it4q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s1acs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dsb1p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s7v5u")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="EndGame" type="CanvasLayer"]
+script = ExtResource("1_2it4q")
+
+[node name="GreenBackground" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.101960786, 0.24705882, 0.14901961, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -810.0
+offset_top = -471.0
+offset_right = -190.0
+offset_bottom = -173.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_tiqjd")
+theme_override_colors/default_color = Color(0.023529412, 0.16862746, 0.039215688, 1)
+theme_override_font_sizes/normal_font_size = 64
+bbcode_enabled = true
+text = "[wave amp=50.0 freq=5.0 connected=1]Thank you for playing![/wave]."
+fit_content = true
+scroll_active = false
+vertical_alignment = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1380, 517)
+scale = Vector2(20, 20)
+sprite_frames = SubResource("SpriteFrames_koyvy")
+autoplay = "default"
+frame_progress = 0.8273834
+flip_h = true
+
+[node name="Label" type="Label" parent="."]
+offset_left = 143.0
+offset_top = 369.0
+offset_right = 775.0
+offset_bottom = 696.0
+theme = ExtResource("1_tiqjd")
+theme_override_colors/font_color = Color(0.023529412, 0.16862746, 0.039215688, 1)
+theme_override_constants/line_spacing = 48
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 32
+text = "Created by:
+Development: Yolo & Alfiz
+Art: Yolo
+Music: Zuziarine
+SFX: Yolo & Spirit
+Story: Yolo, Carlos & Spirit"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -902.0
+offset_top = 71.0
+offset_right = 782.0
+offset_bottom = 487.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_tiqjd")
+theme_override_colors/default_color = Color(0.023529412, 0.16862746, 0.039215688, 1)
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "[wave amp=25.0 freq=5.0 connected=1]made in 7 days for the brainless mini-jam[/wave]."
+fit_content = true
+scroll_active = false
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = 1765.0
+offset_top = 937.0
+offset_right = 1874.0
+offset_bottom = 1047.101
+texture = ExtResource("3_5juuf")
+expand_mode = 1
+
+[node name="ReplayBtn" type="Button" parent="."]
+offset_left = 1163.0
+offset_top = 739.0
+offset_right = 1649.0
+offset_bottom = 887.0
+theme = ExtResource("1_tiqjd")
+text = " Replay "
+
+[connection signal="pressed" from="ReplayBtn" to="." method="_on_replay_btn_pressed"]

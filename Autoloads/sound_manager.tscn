@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://bq3iuwebjem4o"]
+[gd_scene load_steps=52 format=3 uid="uid://bq3iuwebjem4o"]
 
 [ext_resource type="Script" uid="uid://b6seibtksub8x" path="res://Autoloads/sound_manager.gd" id="1_jerlu"]
 [ext_resource type="AudioStream" uid="uid://csqg7r0ln03v7" path="res://Audio/GunAudio/Cannon shots 7.ogg" id="2_u5vrn"]
@@ -30,6 +30,8 @@
 [ext_resource type="AudioStream" uid="uid://cp3l44qmj72nj" path="res://Audio/Eras/Medieval/bow-loading-38752.mp3" id="17_s0uvp"]
 [ext_resource type="AudioStream" uid="uid://djf1qf3sesyas" path="res://Audio/Eras/StoneAge/CaveManHit/ouch-oof-hurt-sound-effect-262616_3.mp3" id="18_mywe5"]
 [ext_resource type="AudioStream" uid="uid://cqea3e4fl1r3a" path="res://Audio/Eras/StoneAge/CaveManHit/ouch-oof-hurt-sound-effect-262616_4.mp3" id="19_rjude"]
+[ext_resource type="AudioStream" uid="uid://dq5ek45nfbpqp" path="res://Audio/Eras/Medieval/long-medium-swish-44324.mp3" id="26_utu8i"]
+[ext_resource type="AudioStream" uid="uid://dljwqwif0pgdj" path="res://Audio/Eras/Medieval/falling-of-heavy-object-291096.mp3" id="27_xjxhw"]
 [ext_resource type="AudioStream" uid="uid://b2n8qx1sltp18" path="res://Audio/BGM/we never go too deep.ogg" id="31_c24x7"]
 [ext_resource type="AudioStream" uid="uid://hwqotqiiglp6" path="res://Audio/BGM/back to flag.ogg" id="32_v2bb7"]
 [ext_resource type="AudioStream" uid="uid://b2uemq6s4m7wt" path="res://Audio/BGM/bones and stones.ogg" id="33_v2bb7"]
@@ -99,6 +101,16 @@ stream_3/stream = ExtResource("11_yndwn")
 stream_4/stream = ExtResource("12_4hpuk")
 stream_5/stream = ExtResource("13_jviym")
 stream_6/stream = ExtResource("14_iqgph")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_xjxhw"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("26_utu8i")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_utu8i"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("27_xjxhw")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_iqgph"]
 random_pitch = 1.1
@@ -187,6 +199,15 @@ bus = &"SFX"
 
 [node name="KnightDeath" type="AudioStreamPlayer" parent="Game/Era/Medieval"]
 bus = &"SFX"
+
+[node name="GoldenKnightDash" type="AudioStreamPlayer" parent="Game/Era/Medieval"]
+stream = SubResource("AudioStreamRandomizer_xjxhw")
+volume_db = 3.852
+bus = &"SFX"
+
+[node name="GoldenKnightHitWall" type="AudioStreamPlayer" parent="Game/Era/Medieval"]
+stream = SubResource("AudioStreamRandomizer_utu8i")
+volume_db = 5.392
 
 [node name="StoneAge" type="Node" parent="Game/Era"]
 

@@ -1,14 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://2d6sqn51xfpb"]
+[gd_scene load_steps=6 format=3 uid="uid://2d6sqn51xfpb"]
 
 [ext_resource type="PackedScene" uid="uid://db13gohluc1jr" path="res://GameObjects/Enemies/enemy.tscn" id="1_yysyy"]
 [ext_resource type="Script" uid="uid://bq71s0k5q1aqx" path="res://GameObjects/Enemies/modern_boss.gd" id="2_3rvo4"]
 [ext_resource type="Resource" uid="uid://c14ci864a6wx1" path="res://Resources/enemy_types/modern_boss.tres" id="2_vrqo7"]
 [ext_resource type="PackedScene" uid="uid://c3477hpr37pvv" path="res://UserInterface/HUD/boss_health_bar.tscn" id="3_3rvo4"]
+[ext_resource type="Texture2D" uid="uid://ehybyw3j24nx" path="res://Assets/enemy/Enemy-ModernBoss.png" id="4_76ib5"]
 
 [node name="ModernBoss" instance=ExtResource("1_yysyy")]
 scale = Vector2(5, 5)
 script = ExtResource("2_3rvo4")
 era_data = ExtResource("2_vrqo7")
+
+[node name="Sprite2D" parent="." index="4"]
+texture = ExtResource("4_76ib5")
 
 [node name="BossHealthBar" parent="." index="7" instance=ExtResource("3_3rvo4")]
 

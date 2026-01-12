@@ -17,6 +17,8 @@ extends Node
 @onready var medieval_music: AudioStreamPlayer = $Game/Music/MedievalMusic
 @onready var stone_age_music: AudioStreamPlayer = $Game/Music/StoneAgeMusic
 @onready var story_music: AudioStreamPlayer = $Game/Music/StoryMusic
+@onready var golden_knight_dash: AudioStreamPlayer = $Game/Era/Medieval/GoldenKnightDash
+@onready var golden_knight_hit_wall: AudioStreamPlayer = $Game/Era/Medieval/GoldenKnightHitWall
 
 
 var current_bgm: AudioStreamPlayer = modern_music 
@@ -27,6 +29,8 @@ func play_BGM():
 	
 	match Globals.era:
 		"Intro":
+			target_music = story_music
+		"Story":
 			target_music = story_music
 		"Modern":
 			target_music = modern_music
@@ -105,6 +109,12 @@ func play_playerHit():
 			player_hit_stone_age.play()
 		_:
 			pass
+
+func play_GoldenKnightDash():
+	golden_knight_dash.play()
+
+func play_GoldenKnightHitWall():
+	golden_knight_hit_wall.play()
 
 func template():
 	match Globals.era:
